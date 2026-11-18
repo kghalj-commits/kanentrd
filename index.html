@@ -109,7 +109,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <section class="panel">
  <h2>Investment Parameters & Action Horizon</h2>
  <p class="muted">Configure your review horizon (1 to 90 days) and entry/exit strategy for cash spot holding.</p>
- <div class="grid">
+ <div class="grid" style="grid-template-columns: 1fr;">
   <div>
    <label for="horizon">Investment review horizon</label>
    <select id="horizon">
@@ -117,12 +117,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
     <option value="30" selected>8–30 days (Medium term spot holding)</option>
     <option value="60">31–60 days (Extended cash accumulation)</option>
     <option value="90">61–90 days (Quarterly review target)</option>
-   </select>
-  </div>
-  <div>
-   <label for="strategy">Strategy Mode</label>
-   <select id="strategy">
-    <option value="spot">Cash Spot Only (Zero Leverage)</option>
    </select>
   </div>
  </div>
@@ -139,7 +133,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  <h3>THE REASON — 24/7 Economic & Financial Proof & Exit Plan</h3>
  <div id="reasons">
   <div class="reason"><strong>1. Supply Chain & Economic Moat:</strong> High operating margins and secure multi-year contracts protect against macroeconomic volatility, justifying a cash entry now.</div>
-  <div class="reason"><strong>2. Balance Sheet Strength:</strong> Massive cash reserves with minimal debt, fully aligned with safe screening standards (no excessive interest or leverage).</div>
+  <div class="reason"><strong>2. Balance Sheet Strength:</strong> Massive cash reserves with minimal debt, ensuring strong financial stability (no excessive interest or leverage).</div>
   <div class="reason"><strong>3. Entry & Exit Strategy (1–90 Days):</strong> Recommended for spot cash accumulation over your selected review horizon. Enter in stages using cash only; review position or take partial profits when the horizon period concludes or if fundamental trends shift. Zero margin or short selling.</div>
  </div>
 </section>
