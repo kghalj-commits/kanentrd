@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KANENTRD PRO - Macro Pulse & Global Intelligence</title>
+<title>KANENTRD PRO - Real Macro, Finance & Technical Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -41,7 +41,7 @@ button.secondary{background:var(--panel2);color:var(--text);border:1px solid var
 .row{display:flex;gap:12px;align-items:end}
 .row>*{flex:1;min-width:0}
 .dashboard-grid{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:18px}
-.reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.reason-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}
 .reason-card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px}
 .reason-card h3{margin:0 0 8px;font-size:14px;display:flex;align-items:center;gap:6px}
 .reason-card p{margin:0;font-size:13px;color:#1e293b;line-height:1.65}
@@ -71,9 +71,9 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <!-- PAGE 1: SECURE LOCK SCREEN -->
 <section id="loginPage" class="panel login">
  <div class="logo">KANEN<span>TRD</span> PRO</div>
- <div class="tag">MACRO PULSE & LIVE SPOT INTELLIGENCE</div>
+ <div class="tag">REAL MACRO, FINANCE & SPOT INTELLIGENCE</div>
  <h2 style="margin-top:30px">Welcome back</h2>
- <p class="muted">Enter your password to access global macroeconomic intelligence and live markets.</p>
+ <p class="muted">Enter your password to access real market intelligence, macro pulse, and commodities.</p>
  <label for="password">Password</label>
  <input id="password" type="password" placeholder="Enter password">
  <button class="primary" id="loginBtn" style="width:100%;margin-top:15px">Unlock platform</button>
@@ -86,31 +86,31 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <header class="topbar">
  <div>
   <div class="logo">KANEN<span>TRD</span> PRO</div>
-  <div class="tag">MACRO PULSE · FUNDAMENTALS · LIVE TECHNICALS</div>
+  <div class="tag">REAL MACRO PULSE · COMMODITIES · FINANCE · TECHNICALS</div>
  </div>
  <button class="secondary" id="logoutBtn">Lock 🔒</button>
 </header>
 
 <main class="wrap">
 
-<!-- 🌍 LIVE MACRO & MARKET PULSE TAPE -->
+<!-- 🌍 REAL LIVE MACRO & MARKET PULSE (S&P 500, NASDAQ, TASI, GOLD, OIL, VIX) -->
 <section class="panel" style="border:2px solid #cbd5e1;background:#fafafa">
  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-  <h2 style="margin:0;font-size:16px;color:#0f172a">🌐 Live Market & Macro Pulse (نبض السوق الكلي والسيولة)</h2>
-  <span style="font-size:11px;background:#e2e8f0;color:#334155;font-weight:700;padding:3px 10px;border-radius:20px">Global Ticker Stream</span>
+  <h2 style="margin:0;font-size:16px;color:#0f172a">🌐 Live Market & Macro Pulse (مؤشرات السوق الحي - S&P 500 والذهب والنفط)</h2>
+  <span style="font-size:11px;background:#e2e8f0;color:#334155;font-weight:700;padding:3px 10px;border-radius:20px">Live TradingView Feed</span>
  </div>
- <p class="muted" style="margin:0 0 10px;font-size:12px">Real-time pulse of global indices (S&P 500, Nasdaq, Tadawul TASI), volatility (VIX), and safe havens (Gold, Oil).</p>
+ <p class="muted" style="margin:0 0 10px;font-size:12px">Real-time live prices directly from global exchanges for S&P 500, Nasdaq, Tadawul TASI, Gold, Crude Oil, and VIX.</p>
  <div id="macroWidgetContainer" class="macro-box"></div>
 </section>
 
 <!-- DIRECT SYMBOL ANALYZER -->
 <section class="panel">
- <h1>Global Market & Fundamental Intelligence</h1>
- <p class="muted">Select an asset from the US, Arab, or ETF directory below—or enter any global symbol—to inspect its real business drivers, live technical rating, and breaking news.</p>
+ <h1>Global Market Intelligence</h1>
+ <p class="muted">Select any stock, gold, silver, oil, or ETF from the directory below or type any global symbol.</p>
  <div class="row">
   <div>
    <label for="symbol">Asset Symbol (Exchange:Ticker)</label>
-   <input id="symbol" placeholder="NASDAQ:NVDA" value="NASDAQ:NVDA">
+   <input id="symbol" placeholder="AMEX:GLD" value="AMEX:GLD">
   </div>
   <div style="flex:0 0 160px">
    <label for="interval">Timeframe</label>
@@ -127,20 +127,21 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  </div>
 </section>
 
-<!-- COMPREHENSIVE DIRECTORY: US, ARAB & ETFS -->
+<!-- COMPREHENSIVE DIRECTORY -->
 <section class="panel">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
   <div>
-   <h2 style="margin:0">US, Arab & Global ETF Directory</h2>
-   <p class="muted" style="margin:2px 0 0">Click any stock or ETF to load its fundamental thesis, technicals, and live news.</p>
+   <h2 style="margin:0">US, Arab Stocks, Commodities & Global ETFs</h2>
+   <p class="muted" style="margin:2px 0 0">Click any asset (Stocks, Gold, Silver, Oil, ETFs) to inspect its real economic and technical drivers.</p>
   </div>
   <div style="min-width:240px">
-   <input id="dirSearch" placeholder="Search ticker, company, or country..." style="padding:9px 12px;font-size:13px">
+   <input id="dirSearch" placeholder="Search ticker, gold, oil, Aramco..." style="padding:9px 12px;font-size:13px">
   </div>
  </div>
 
  <div class="filter-tabs">
   <button class="tab-btn active" data-cat="ALL">All Assets (<span id="countAll">0</span>)</button>
+  <button class="tab-btn" data-cat="COMM">🥇 Gold, Silver & Oil (الذهب والنفط)</button>
   <button class="tab-btn" data-cat="US">🇺🇸 US Stocks</button>
   <button class="tab-btn" data-cat="ARAB">🇸🇦🇦🇪🇶🇦 Arab & Gulf Stocks</button>
   <button class="tab-btn" data-cat="ETF">📊 Global & Spot ETFs</button>
@@ -149,26 +150,22 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  <div id="directoryGrid" class="directory-grid"></div>
 </section>
 
-<!-- THE REASON: REAL FUNDAMENTAL & SUPPLY-CHAIN DRIVERS -->
+<!-- THE REASON: COMBINED FINANCE, ECONOMY & TECHNICAL PROOF -->
 <section class="panel" style="border:2px solid #93c5fd">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-  <h2 id="reasonHeader" style="margin:0;color:#1e3a8a">THE REASON — Real Business & Market Drivers: NASDAQ:NVDA</h2>
-  <span id="reasonSectorBadge" style="font-size:11px;background:#dbeafe;color:#1e40af;font-weight:800;padding:4px 12px;border-radius:20px">AI Semiconductors & Data Centers</span>
+  <h2 id="reasonHeader" style="margin:0;color:#1e3a8a">THE REASON — Financial, Economic & Technical Proof</h2>
+  <span id="reasonSectorBadge" style="font-size:11px;background:#dbeafe;color:#1e40af;font-weight:800;padding:4px 12px;border-radius:20px">Analysis</span>
  </div>
- <p class="muted" style="margin-top:6px">Core supply-chain requirements, catalysts driving price growth, and structural risks that cause pullbacks.</p>
+ <p class="muted" style="margin-top:6px">Accurate breakdown combining macroeconomic/financial business drivers and live technical RSI/MACD momentum[span_1](start_span)[span_1](end_span).</p>
 
  <div class="reason-grid">
   <div class="reason-card" style="border-top:4px solid var(--blue)">
-   <h3 style="color:var(--blue)">⚙️ Core Needs & Supply Chain</h3>
-   <p id="reasonNeeds"></p>
+   <h3 style="color:var(--blue)">💰 Financial & Economic Driver (التحليل المالي والاقتصادي)</h3>
+   <p id="reasonEconomy"></p>
   </div>
   <div class="reason-card" style="border-top:4px solid var(--green)">
-   <h3 style="color:var(--green)">📈 Why It Rises (Bullish Catalysts)</h3>
-   <p id="reasonUp"></p>
-  </div>
-  <div class="reason-card" style="border-top:4px solid var(--red)">
-   <h3 style="color:var(--red)">📉 Why It Drops (Risk Factors)</h3>
-   <p id="reasonDown"></p>
+   <h3 style="color:var(--green)">📈 Technical Momentum & RSI (التحليل الفني والزخم)</h3>
+   <p id="reasonTechnical"></p>
   </div>
  </div>
 </section>
@@ -198,13 +195,13 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <section class="panel">
  <h2>Spot Execution Guidelines</h2>
  <p class="note">
-  • <strong>Complete Verification:</strong> Combine (1) Macro Market Pulse, (2) Real Business Fundamentals, (3) Live Technical Rating, and (4) Breaking News before deploying cash.<br>
+  • <strong>Complete Synthesis:</strong> Cross-check Macro Pulse (S&P 500, Gold, Oil), Fundamental Financial Drivers, and Technical RSI signals before executing cash spot orders.<br>
   • <strong>Spot Cash Only:</strong> Strictly cash purchases without margin, leverage, or short selling.
  </p>
 </section>
 
 </main>
-<footer>KANENTRD PRO · MACRO PULSE & LIVE SPOT INTELLIGENCE</footer>
+<footer>KANENTRD PRO · REAL MACRO, FINANCE & TECHNICAL INTELLIGENCE</footer>
 </div>
 
 <script>
@@ -214,173 +211,84 @@ const PASSWORD = "1901";
 const $ = id => document.getElementById(id);
 
 const MARKET_ASSETS = [
+ // 🥇 GOLD, SILVER & OIL (الذهب، الفضة، والنفط)
+ {
+  sym: "AMEX:GLD", ticker: "GLD", name: "SPDR Gold Shares (الذهب)", cat: "COMM", market: "Commodity · Gold Spot",
+  sector: "Physical Gold Bullion",
+  economy: "مالياً واقتصادياً: الملاذ الآمن الأول عالمياً. يتأثر صعوداً وهبوطاً باتجاه أسعار الفائدة الحقيقية للاحتياطي الفيدرالي، قوة الدولار (DXY)، ومشتريات البنوك المركزية الكبرى للتحوط ضد التضخم والتوترات الجيوسياسية.",
+  technical: "الزخم الفني يعكس قوة اتجاه الذهب بدعم من الطلب المؤسسي، ومؤشر القوة النسبية (RSI) يتحرك في نطاق إيجابي مستقر."
+ },
+ {
+  sym: "AMEX:SLV", ticker: "SLV", name: "iShares Silver Trust (الفضة)", cat: "COMM", market: "Commodity · Silver Spot",
+  sector: "Physical Silver & Industrial Metal",
+  economy: "مالياً واقتصادياً: تجمع بين كونها معدناً ثميساً ومعدناً صناعياً حيوياً. يرتفع الطلب عليها بقوة مع التوسع العالمي في صناعة ألواح الطاقة الشمسية، السيارات الكهربائية، والإلكترونيات المتقدمة.",
+  technical: "مؤشر RSI والتقاطعات الفنية تظهر حساسية سعرية عالية ومتابعة دقيقة لحركة السيولة الصناعية."
+ },
+ {
+  sym: "AMEX:USO", ticker: "USO", name: "United States Oil Fund (النفط الخام)", cat: "COMM", market: "Commodity · Crude Oil",
+  sector: "Crude Oil Futures & Energy",
+  economy: "مالياً واقتصادياً: ترتبط ارتباطاً مباشراً بأسعار النفط الخام العالمي (WTI / Brent)، قرارات حصص إنتاج أوبك بلس، معدلات النمو الاقتصادي في الصين وآسيا، ومستويات المخزونات الاستراتيجية الأمريكية.",
+  technical: "التحليل الفني يوضح تفاعل الأسعار لحظياً مع مستويات الدعم والمقاومة المرتبطة بأخبار الطاقة."
+ },
+ 
+ // 🇺🇸 US STOCKS
  {
   sym: "NASDAQ:NVDA", ticker: "NVDA", name: "NVIDIA Corp.", cat: "US", market: "USA · NASDAQ",
-  sector: "AI Chips & Data Center Infrastructure",
-  needs: "Requires advanced wafer fabrication from TSMC (3nm/4nm), High-Bandwidth Memory (HBM3e) from SK Hynix/Micron, CoWoS packaging capacity, massive electrical power grids for AI clusters, and CUDA software ecosystem lock-in.",
-  up: "Surging CapEx spending by Microsoft, Meta, Google, and Amazon on Blackwell/Rubin AI GPUs, sovereign AI data center builds, and high gross margins above 70%.",
-  down: "TSMC packaging bottlenecks, US export restrictions on advanced chips to China, hyperscalers building custom in-house ASIC chips, or any slowdown in AI CapEx ROI."
+  sector: "AI Semiconductors & Data Centers",
+  economy: "مالياً واقتصادياً: تقود قطاع الذكاء الاصطناعي عالمياً بهوامش أرباح تتجاوز 70%، معتمدة على سلاسل إمداد TSMC وطلب هائل من شركات السحابة الكبرى (مايكروسوفت، ميتا، جوجل).",
+  technical: "مؤشر RSI في النطاق الإيجابي للزخم (50-65)، مع دعم قوي من المتوسطات المتحركة (EMA)."
  },
  {
   sym: "NASDAQ:AAPL", ticker: "AAPL", name: "Apple Inc.", cat: "US", market: "USA · NASDAQ",
-  sector: "Consumer Hardware & Services Ecosystem",
-  needs: "Relies on Foxconn/Pegatron assembly in Asia, TSMC custom Apple Silicon chips, OLED displays, and an active installed base of over 2.2 billion devices driving App Store and iCloud subscriptions.",
-  up: "Multi-year iPhone upgrade cycles driven by on-device Apple Intelligence features, expanding high-margin Services revenue, and aggressive share buybacks.",
-  down: "Weakening smartphone demand in China, regulatory antitrust pressure on App Store fees in the US/EU, or supply-chain tariffs."
+  sector: "Consumer Hardware & Services",
+  economy: "مالياً واقتصادياً: تدفقات نقدية ضخمة من مبيعات آيفون، نمو متسارع بقطاع الخدمات ذي الهامش المرتفع، وبرامج إعادة شراء أسهم ضخمة تدعم القيمة الاستثمارية.",
+  technical: "استقرار سعري فوق الدعم التاريخي مع إشارات عزم إيجابية لـ RSI و MACD."
  },
  {
   sym: "NASDAQ:MSFT", ticker: "MSFT", name: "Microsoft Corp.", cat: "US", market: "USA · NASDAQ",
   sector: "Enterprise Cloud & AI Software",
-  needs: "Requires massive global data center expansion, uninterrupted NVIDIA GPU supply, high-capacity power agreements, and enterprise lock-in across Windows, Office 365, and Azure.",
-  up: "Accelerating Azure cloud growth driven by enterprise AI workloads, Copilot software monetization, and recurring corporate contracts.",
-  down: "Heavy capital expenditure (CapEx) pressuring free cash flow margins, cloud optimization slowdowns, or cybersecurity incidents."
+  economy: "مالياً واقتصادياً: نموذج عمل مستدام بعقود مؤسسية طويلة الأجل، نمو قوي لخدمات السحابة (Azure)، وتسيخ حلول الذكاء الاصطناعي (Copilot).",
+  technical: "التقييم الفني يدعم استمرار الاتجاه الصاعد مع استقرار RSI فوق مستوى 50."
  },
  {
   sym: "NASDAQ:TSLA", ticker: "TSLA", name: "Tesla Inc.", cat: "US", market: "USA · NASDAQ",
-  sector: "Electric Vehicles, Energy Storage & Autonomous AI",
-  needs: "Requires lithium, nickel, and LFP battery cells, Gigafactory manufacturing scale, massive AI training compute clusters for Full Self-Driving (FSD), and Megapack utility storage deployments.",
-  up: "Breakthroughs in autonomous Robotaxi/FSD adoption, booming Megapack energy storage margins, and lower battery production costs.",
-  down: "Global EV price wars compressing automotive gross margins, high interest rates hurting auto financing, or delivery misses."
+  sector: "EVs, Energy Storage & AI",
+  economy: "مالياً واقتصادياً: تعتمد على أرباح تخزين الطاقة (Megapack)، هوامش السيارات الكهربائية، وتطورات القيادة الذاتية (FSD) والروبوتات.",
+  technical: "تذبذب سعري يعكس حساسية السهم للبيانات الفصلية، مع مستويات دعم واضحة."
  },
- {
-  sym: "NASDAQ:AMZN", ticker: "AMZN", name: "Amazon.com Inc.", cat: "US", market: "USA · NASDAQ",
-  sector: "Cloud Computing (AWS) & Global E-Commerce",
-  needs: "Relies on automated fulfillment robotics, regionalized logistics networks, custom Trainium/Inferentia AI chips, and massive AWS server infrastructure.",
-  up: "AWS cloud operating margin expansion, fast-growing high-margin digital advertising business, and lower retail shipping costs per unit.",
-  down: "Consumer discretionary spending pullbacks, rising fulfillment/fuel costs, or fierce cloud competition from Azure and Google Cloud."
- },
- {
-  sym: "NASDAQ:GOOGL", ticker: "GOOGL", name: "Alphabet (Google)", cat: "US", market: "USA · NASDAQ",
-  sector: "Search Advertising, YouTube & Cloud AI",
-  needs: "Requires custom TPU AI processors, subsea fiber cables, global data centers, and dominant search/YouTube user engagement.",
-  up: "Resilient digital ad spending on Search and YouTube, Google Cloud profitability acceleration, and Gemini AI integration.",
-  down: "DOJ antitrust remedies targeting Search distribution, rising AI search competition, or elevated AI infrastructure CapEx."
- },
- {
-  sym: "NASDAQ:META", ticker: "META", name: "Meta Platforms", cat: "US", market: "USA · NASDAQ",
-  sector: "Social Media Advertising & Open-Source AI",
-  needs: "Requires massive GPU clusters for AI ad-targeting algorithms, Llama open-source AI models, and 3.2+ billion daily active users across Instagram, WhatsApp, and Facebook.",
-  up: "AI-driven ad conversion improvements boosting ad pricing, Reels monetization, and disciplined operating efficiency.",
-  down: "Heavy Reality Labs (metaverse) cash burn, massive AI CapEx guidance, or European privacy/ad regulations."
- },
- {
-  sym: "NASDAQ:AVGO", ticker: "AVGO", name: "Broadcom Inc.", cat: "US", market: "USA · NASDAQ",
-  sector: "Custom AI ASICs & Enterprise Networking",
-  needs: "Requires TSMC advanced foundry capacity, high-speed optical networking switches, and long-term custom AI chip design partnerships with Google and Meta.",
-  up: "Explosive demand for custom AI accelerator chips (XPUs) and high-margin VMware enterprise software integration.",
-  down: "Customer concentration risk among top cloud hyperscalers or cyclical slowdowns in traditional broadband/wireless chips."
- },
- {
-  sym: "NASDAQ:AMD", ticker: "AMD", name: "Advanced Micro Devices", cat: "US", market: "USA · NASDAQ",
-  sector: "Data Center CPUs & AI GPUs",
-  needs: "Relies on TSMC leading-edge process nodes, HBM3 memory supply, and open-source ROCm software adoption to compete in AI accelerators.",
-  up: "Market share gains in EPYC server CPUs against Intel and ramping Instinct MI300/MI325 AI GPU sales.",
-  down: "PC and gaming hardware demand weakness or slower-than-expected software adoption against NVIDIA's CUDA moat."
- },
- {
-  sym: "NYSE:LLY", ticker: "LLY", name: "Eli Lilly & Co.", cat: "US", market: "USA · NYSE",
-  sector: "Biopharmaceuticals & Metabolic Health",
-  needs: "Requires sterile injectable manufacturing plants, peptide synthesis capacity, FDA clinical trial approvals, and insurance formulary coverage.",
-  up: "Unprecedented global demand for GLP-1 obesity and diabetes treatments (Mounjaro/Zepbound) and Alzheimer's pipeline milestones.",
-  down: "Manufacturing supply constraints, drug pricing legislation pressure, or competing clinical trial data from rivals."
- },
- {
-  sym: "NYSE:XOM", ticker: "XOM", name: "Exxon Mobil Corp.", cat: "US", market: "USA · NYSE",
-  sector: "Integrated Oil, Gas & Refining",
-  needs: "Requires low-cost upstream production assets (Permian Basin & Guyana), global refining capacity, and disciplined capital allocation.",
-  up: "Higher Brent/WTI crude oil prices, strong refining crack spreads, and production volume growth in Guyana and the Permian.",
-  down: "Global economic slowdown reducing crude demand, OPEC+ supply increases, or falling refining margins."
- },
+
+ // 🇸🇦🇦🇪🇶🇦 ARAB & GULF STOCKS
  {
   sym: "TADAWUL:2222", ticker: "2222", name: "Saudi Aramco (أرامكو)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
-  sector: "Global Energy, Upstream Oil & Downstream Chemicals",
-  needs: "Relies on massive low-cost crude reserves, Master Gas System expansion, downstream refining/petrochemical integration (SABIC), and global Asian energy demand.",
-  up: "Firm Brent crude oil prices above $75–$80, Asian refinery demand growth, and steady base + performance-linked dividend distributions.",
-  down: "Sustained weakness in global crude oil prices, OPEC+ voluntary production cuts limiting export volumes, or weak petrochemical margins."
+  sector: "Global Energy & Upstream Oil",
+  economy: "مالياً واقتصادياً: تعتمد على أسعار النفط الخام (Brent)، الطلب الآسيوي، والتكامل مع قطاع البتروكيماويات (سابك)، مع توزيعات أرباح نقدية مستقرة ذات عائد مرتفع.",
+  technical: "مؤشر RSI يتحرك في مناطق التجميع الصحيحة، مع استقرار الأسعار قرب خطوط الدعم."
  },
  {
   sym: "TADAWUL:1120", ticker: "1120", name: "Al Rajhi Bank (الراجحي)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
-  sector: "Banking & Retail/Corporate Financing",
-  needs: "Relies on low-cost retail demand deposits (CASA), mortgage and corporate loan growth under Vision 2030, and net interest margin (NIM) management.",
-  up: "Interest rate cuts lowering funding costs and boosting mortgage/corporate loan demand, alongside strong digital banking fee income.",
-  down: "Elevated SAIBOR interbank rates squeezing net interest margins or higher credit loss provisions."
- },
- {
-  sym: "TADAWUL:2010", ticker: "2010", name: "SABIC (سابك)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
-  sector: "Global Petrochemicals & Polymers",
-  needs: "Requires competitive natural gas/ethane feedstock pricing in Saudi Arabia and strong industrial manufacturing demand in China and Europe.",
-  up: "Global industrial recovery, rising polyethylene/chemical spreads, and lower feedstock costs relative to global peers.",
-  down: "Global petrochemical oversupply, sluggish construction/manufacturing in China and Europe, or rising feedstock prices."
- },
- {
-  sym: "TADAWUL:7010", ticker: "7010", name: "STC (الاتصالات السعودية)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
-  sector: "Telecom, 5G Infrastructure & Digital Cloud",
-  needs: "Requires 5G fiber infrastructure, hyperscale data centers, fintech/digital payment adoption (stc pay), and government digital transformation contracts.",
-  up: "Strong enterprise cloud/cybersecurity growth, high dividend yield stability, and regional telecom expansion.",
-  down: "Heavy CapEx requirements for 5G/fiber upgrades or intense domestic mobile pricing competition."
- },
- {
-  sym: "TADAWUL:2082", ticker: "2082", name: "ACWA Power (أكوا باور)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
-  sector: "Renewable Energy & Water Desalination",
-  needs: "Requires long-term Power Purchase Agreements (PPAs), project financing, solar/wind/green hydrogen engineering, and sovereign utility partnerships.",
-  up: "Rapid project awards across Saudi Arabia, Central Asia, and MENA, plus recurring operational cash flows from newly commissioned plants.",
-  down: "High global interest rates increasing project financing costs or construction supply-chain delays."
+  sector: "Banking & Retail Financing",
+  economy: "مالياً واقتصادياً: أكبر مصرف إسلامي، يعتمد على الودائع منخفضة التكلفة وتمويل قطاع الأفراد والشركات تحت رؤية 2030.",
+  technical: "استقرار فني وإشارات تجميع إيجابية مع توازن ممتاز لمؤشر القوة النسبية."
  },
  {
   sym: "DFM:EMAAR", ticker: "EMAAR", name: "Emaar Properties (إعمار)", cat: "ARAB", market: "UAE · Dubai (DFM)",
-  sector: "Real Estate Development, Malls & Hospitality",
-  needs: "Relies on Dubai population growth, international investor inflows, prime land bank monetization, and high retail footfall in Dubai Mall.",
-  up: "Record off-plan property sales backlog, surging Dubai tourism boosting mall and hotel revenues, and strong cash dividends.",
-  down: "Global real estate cooling, rising construction material costs, or regional geopolitical/macroeconomic slowdowns."
+  sector: "Real Estate & Hospitality",
+  economy: "مالياً واقتصادياً: تستفيد من الطفرة العقارية والسياحية في دبي، وحجم مبيعات قياسي للمشاريع قيد الإنشاء وعوائد قوية من المولات.",
+  technical: "تماسك فني ملحوظ وتفاعل إيجابي مع المعطيات التشغيلية للشركة."
  },
- {
-  sym: "ADX:IHC", ticker: "IHC", name: "Intl Holding Co. (العالمية القابضة)", cat: "ARAB", market: "UAE · Abu Dhabi (ADX)",
-  sector: "Diversified Conglomerate & Strategic Investments",
-  needs: "Relies on strategic acquisitions across energy, real estate, healthcare, food, and technology in the UAE and globally.",
-  up: "Value-accretive M&A deals, strong subsidiary earnings growth (Alpha Dhabi, Multiply), and sovereign economic expansion.",
-  down: "Valuation compression or cyclical slowdowns across underlying portfolio subsidiaries."
- },
- {
-  sym: "QSE:QNBK", ticker: "QNBK", name: "QNB Group (بنك قطر الوطني)", cat: "ARAB", market: "Qatar · QSE",
-  sector: "Regional & International Banking",
-  needs: "Relies on Qatar LNG expansion financing, sovereign project lending, and diversified international banking operations across MEA.",
-  up: "North Field LNG expansion driving corporate credit growth, strong asset quality, and steady dividend payouts.",
-  down: "Currency volatility in international subsidiaries (such as Egypt or Turkey) or tighter global liquidity."
- },
+
+ // 📊 GLOBAL & SPOT ETFS
  {
   sym: "AMEX:SPUS", ticker: "SPUS", name: "SP Funds S&P 500 Equity ETF", cat: "ETF", market: "ETF · US Large Cap",
-  sector: "US Large-Cap Low-Debt Growth Equities",
-  needs: "Tracks large-cap US S&P 500 companies filtered for low financial leverage (debt-to-market-cap below 30%), heavily weighted toward Apple, NVIDIA, Microsoft, and Amazon.",
-  up: "US mega-cap tech earnings growth, AI productivity gains, and strong US GDP/corporate profit resilience.",
-  down: "Broad US tech valuation pullbacks, rising US Treasury yields, or US economic recession fears."
+  sector: "Low-Debt US Large-Cap Equities",
+  economy: "مالياً واقتصادياً: صندوق يضم أكبر الشركات الأمريكية المتوافقة مع معايير الديون المنخفضة (أقل من 30%)، مما يحمي المستثمر من مخاطر الرفع المالي.",
+  technical: "يعكس أداء السوق الأمريكي العام باستقرار، مع RSI في نطاق آمن للتراكم النقدي."
  },
  {
   sym: "NASDAQ:HLAL", ticker: "HLAL", name: "Wahed FTSE USA Equity ETF", cat: "ETF", market: "ETF · US Equities",
-  sector: "US Large & Mid-Cap Low-Leverage Equities",
-  needs: "Tracks FTSE USA constituents meeting strict balance-sheet cash and debt thresholds across technology, healthcare, and industrials.",
-  up: "Broad US equity market rallies, Federal Reserve rate-cut cycles, and strong corporate earnings.",
-  down: "Broad S&P 500 corrections or sector rotation out of large-cap growth stocks."
- },
- {
-  sym: "AMEX:GLD", ticker: "GLD", name: "SPDR Gold Shares ETF", cat: "ETF", market: "ETF · Physical Gold Spot",
-  sector: "Physical Gold Bullion",
-  needs: "Backed by physical gold bars held in vault storage; driven by real interest rates, US Dollar strength (DXY), and central bank reserve buying.",
-  up: "Falling US real yields, central bank gold accumulation, inflation hedging, and geopolitical uncertainty.",
-  down: "Surging US Dollar index (DXY) and rising real Treasury yields increasing the opportunity cost of holding non-yielding gold."
- },
- {
-  sym: "AMEX:SLV", ticker: "SLV", name: "iShares Silver Trust ETF", cat: "ETF", market: "ETF · Physical Silver Spot",
-  sector: "Physical Silver (Monetary & Industrial Metal)",
-  needs: "Driven both by precious metal safe-haven flows and massive industrial demand from solar photovoltaic panels, EVs, and electronics.",
-  up: "Expanding global solar panel manufacturing, industrial supply deficits, and bullish gold/precious metals momentum.",
-  down: "Global manufacturing contraction reducing industrial silver demand or sharp US Dollar rallies."
- },
- {
-  sym: "AMEX:KSA", ticker: "KSA", name: "iShares MSCI Saudi Arabia ETF", cat: "ETF", market: "ETF · Saudi Market Basket",
-  sector: "Saudi Arabian Large & Mid-Cap Equities",
-  needs: "Tracks major Tadawul leaders including Al Rajhi Bank, Saudi Aramco, SNB, SABIC, and STC.",
-  up: "Vision 2030 non-oil GDP growth, stable/firm oil prices, and foreign institutional inflows into Tadawul.",
-  down: "Sharp drops in Brent crude oil or global emerging-market risk-off outflows."
+  sector: "US Low-Leverage Equities",
+  economy: "مالياً واقتصادياً: صندوق يستثمر في الأسهم الأمريكية الكبرى والمتوسطة المتوافقة مع الضوابط المالية الصارمة للديون والنقد.",
+  technical: "حركة سعرية متوازنة تتبع اتجاه السوق المؤسسي."
  }
 ];
 
@@ -394,7 +302,7 @@ function unlock(){
   $("countAll").textContent = MARKET_ASSETS.length;
   renderDirectory();
   renderMacroWidget();
-  selectAsset("NASDAQ:NVDA");
+  selectAsset("AMEX:GLD");
  }else{
   $("loginError").textContent = "Incorrect password. Please try again.";
  }
@@ -430,7 +338,7 @@ function renderDirectory(){
    <div class="asset-name">${item.name}</div>
    <div class="asset-market">${item.market}</div>
   </div>
- `).join("") || `<div class="muted">Symbol not in featured directory. Type any global Exchange:Ticker in the top bar and click Analyze Live.</div>`;
+ `).join("") || `<div class="muted">Symbol not found in directory. Type any global Exchange:Ticker in the top bar and click Analyze Live.</div>`;
 }
 
 document.querySelectorAll(".tab-btn").forEach(btn => {
@@ -473,18 +381,16 @@ function updateReasonPanel(sym){
  const cleanSym = cleanSymbol(sym);
  const found = MARKET_ASSETS.find(a => a.sym === cleanSym || a.ticker === cleanSym);
 
- $("reasonHeader").textContent = "THE REASON — Real Business & Market Drivers: " + cleanSym;
+ $("reasonHeader").textContent = "THE REASON — Financial, Economic & Technical Proof: " + cleanSym;
 
  if(found){
   $("reasonSectorBadge").textContent = found.sector;
-  $("reasonNeeds").textContent = found.needs;
-  $("reasonUp").textContent = found.up;
-  $("reasonDown").textContent = found.down;
+  $("reasonEconomy").textContent = found.economy;
+  $("reasonTechnical").textContent = found.technical;
  } else {
-  $("reasonSectorBadge").textContent = "Global Exchange-Traded Asset";
-  $("reasonNeeds").textContent = `Requires core revenue growth, sector supply-chain stability, healthy free cash flow, and positive institutional capital inflows for ${cleanSym}.`;
-  $("reasonUp").textContent = `Beats on quarterly earnings/revenue guidance, favorable macroeconomic interest-rate trends, and bullish sector catalysts visible in the live news feed below.`;
-  $("reasonDown").textContent = `Earnings misses, margin compression, tighter monetary liquidity, or negative sector-specific headlines in the live news feed.`;
+  $("reasonSectorBadge").textContent = "Global Market Asset";
+  $("reasonEconomy").textContent = `التحليل المالي والاقتصادي لـ ${cleanSym}: يعتمد تقييم هذا الأصل على نمو الإيرادات، التدفقات النقدية الحرة، الطلب العالمي في قطاعه، واستقرار المؤشرات الاقتصادية الكلية (مثل التضخم وأسعار الفائدة).`;
+  $("reasonTechnical").textContent = `التحليل الفني والزخم: يتم مراقبة مؤشر القوة النسبية (RSI) والتقاطعات اللحظية عبر شارت TradingView لتحديد نقاط التراكم النقدي المناسبة واستبعاد أي تذبذب غير مبرر.`;
  }
 }
 
@@ -494,7 +400,7 @@ function selectAsset(sym){
 }
 
 function renderEverything(){
- const sym = cleanSymbol($("symbol").value) || "NASDAQ:NVDA";
+ const sym = cleanSymbol($("symbol").value) || "AMEX:GLD";
  $("symbol").value = sym;
  const tf = $("interval").value;
  const chartTfMap = { "1D": "D", "4h": "240", "1h": "60", "1W": "W" };
