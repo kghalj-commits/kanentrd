@@ -145,6 +145,48 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  </div>
 </section>
 
+<!-- NOTEBOOK SPLIT GRID: INCREASING VS DECREASING (STOCKS & ETFS) -->
+<div class="space-y-6" style="margin-bottom: 18px;">
+                
+    <!-- SECTION 1: INCREASING (GREEN - BUY NOW) -->
+    <div class="panel" style="border: 2px solid #93c5fd;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
+            <h3 style="margin:0; color:#1e3a8a;">📈 Increasing (BUY NOW Candidates)</h3>
+            <span style="font-size: 11px; background: #d1fae5; color: #065f46; font-weight: bold; padding: 4px 10px; border-radius: 20px;">🟢 Green Signal</span>
+        </div>
+        
+        <div class="grid" style="grid-template-columns: 2fr 1fr;">
+            <div>
+                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">Stocks</div>
+                <div id="incStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
+            </div>
+            <div>
+                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">ETFs</div>
+                <div id="incEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: DECREASING (YELLOW - WAIT) -->
+    <div class="panel" style="border: 2px solid #cbd5e1;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
+            <h3 style="margin:0; color:#334155;">📉 Decreasing (WAIT / Watchlist)</h3>
+            <span style="font-size: 11px; background: #fef3c7; color: #92400e; font-weight: bold; padding: 4px 10px; border-radius: 20px;">🟡 Yellow Signal</span>
+        </div>
+        
+        <div class="grid" style="grid-template-columns: 2fr 1fr;">
+            <div>
+                <div style="font-weight: bold; font-size: 12px; color: #475569; margin-bottom: 8px; text-transform: uppercase;">Stocks</div>
+                <div id="decStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
+            </div>
+            <div>
+                <div style="font-weight: bold; font-size: 12px; color: #475569; margin-bottom: 8px; text-transform: uppercase;">ETFs</div>
+                <div id="decEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- TRADINGVIEW CHART -->
 <section class="panel">
  <div class="row">
@@ -188,6 +230,7 @@ function unlock(){
   $("loginPage").classList.add("hidden");
   $("mainApp").classList.remove("hidden");
   $("loginError").textContent = "";
+  initLists();
   updateChart();
  }else{
   $("loginError").textContent = "Incorrect password. Please try again.";
@@ -206,6 +249,56 @@ $("logoutBtn").addEventListener("click",()=>{
 
 function cleanSymbol(value){
  return value.trim().toUpperCase().replace(/\s+/g,"");
+}
+
+const incStocks = ['NVDA', 'AAPL', 'MSFT', 'AVGO', 'LLY', 'COST', 'AMD', 'GOOGL'];
+const incEtfs   = ['SPUS', 'HLAL', 'UMMA', 'ISDW'];
+const decStocks = ['TSLA', 'INTC', 'NKE', 'PFE', 'BA'];
+const decEtfs   = ['SPRE', 'SPSK'];
+
+const assetNames = {
+    'NVDA': 'NVIDIA Corporation', 'AAPL': 'Apple Inc.', 'MSFT': 'Microsoft Corporation', 'AVGO': 'Broadcom Inc.',
+    'LLY': 'Eli Lilly and Co.', 'COST': 'Costco Wholesale', 'AMD': 'Advanced Micro Devices', 'GOOGL': 'Alphabet Inc.',
+    'SPUS': 'SP Funds S&P 500 Sharia', 'HLAL': 'Wahed FTSE USA Shariah', 'UMMA': 'Wahed Dow Jones Islamic', 'ISDW': 'iShares MSCI World',
+    'TSLA': 'Tesla, Inc.', 'INTC': 'Intel Corporation', 'NKE': 'NIKE, Inc.', 'PFE': 'Pfizer Inc.', 'BA': 'Boeing Company',
+    'SPRE': 'SP Funds Global REIT', 'SPSK': 'SP Funds Global Sukuk'
+};
+
+function initLists(){
+    document.getElementById('incStocksList').innerHTML = incStocks.map(s => `
+        <div onclick="selectSymbol('NASDAQ:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
+            <div style="font-weight:900; color:#065f46;">${s}</div>
+            <div style="font-size:10px; color:#64748b;">🟢 BUY NOW</div>
+        </div>
+    `).join('');
+
+    document.getElementById('incEtfsList').innerHTML = incEtfs.map(s => `
+        <div onclick="selectSymbol('AMEX:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
+            <div style="font-weight:900; color:#065f46;">${s}</div>
+            <div style="font-size:10px; color:#64748b;">🟢 BUY NOW</div>
+        </div>
+    `).join('');
+
+    document.getElementById('decStocksList').innerHTML = decStocks.map(s => `
+        <div onclick="selectSymbol('NASDAQ:${s}')" style="background:#fffbeb; border:1px solid #fde68a; padding:10px; border-radius:8px; cursor:pointer;">
+            <div style="font-weight:900; color:#b45309;">${s}</div>
+            <div style="font-size:10px; color:#64748b;">🟡 WAIT</div>
+        </div>
+    `).join('');
+
+    document.getElementById('decEtfsList').innerHTML = decEtfs.map(s => `
+        <div onclick="selectSymbol('NYSE:${s}')" style="background:#fffbeb; border:1px solid #fde68a; padding:10px; border-radius:8px; cursor:pointer;">
+            <div style="font-weight:900; color:#b45309;">${s}</div>
+            <div style="font-size:10px; color:#64748b;">🟡 WAIT</div>
+        </div>
+    `).join('');
+}
+
+function selectSymbol(sym){
+    $("symbol").value = sym;
+    updateChart();
+    $("resultTitle").textContent = "Market Analysis: " + sym;
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function updateChart(){
