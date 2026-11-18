@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KANENTRD PRO - Spot Intelligence</title>
+<title>KANENTRD PRO - Macro Pulse & Global Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -20,11 +20,10 @@ button{cursor:pointer}
 .logo{font-size:23px;font-weight:900;letter-spacing:-1px}
 .logo span{color:var(--blue)}
 .tag{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:5px}
-.wrap{max-width:1100px;margin:28px auto;padding:0 17px}
+.wrap{max-width:1240px;margin:28px auto;padding:0 17px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
 h1{font-size:27px;margin:0 0 8px}
-h2{font-size:18px;margin:0 0 14px}
-h3{font-size:14px;margin:20px 0 10px}
+h2{font-size:18px;margin:0 0 10px}
 p{line-height:1.6}
 .muted{color:var(--muted);font-size:13px}
 label{display:block;color:var(--muted);font-size:12px;margin:12px 0 7px;font-weight:700}
@@ -39,36 +38,47 @@ button.secondary{background:var(--panel2);color:var(--text);border:1px solid var
 .login{max-width:410px;margin:12vh auto;padding:28px}
 .login .logo{font-size:27px}
 .error{color:var(--red);font-size:13px;min-height:20px;margin-top:10px}
-.row{display:flex;gap:10px;align-items:end}
+.row{display:flex;gap:12px;align-items:end}
 .row>*{flex:1;min-width:0}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.signal{padding:18px;border-radius:12px;margin-bottom:14px;border:1px solid var(--line);background:var(--panel2)}
-.signal h2{font-size:26px;margin:0 0 6px}
-.buy{color:var(--green)}.wait{color:var(--yellow)}.sell{color:var(--red)}
-.reason{padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65}
-.reason:last-child{border:0}
-.chart{width:100%;height:520px;border:0;border-radius:12px;background:#fff}
+.dashboard-grid{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:18px}
+.reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.reason-card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:16px}
+.reason-card h3{margin:0 0 8px;font-size:14px;display:flex;align-items:center;gap:6px}
+.reason-card p{margin:0;font-size:13px;color:#1e293b;line-height:1.65}
+.filter-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tab-btn{background:var(--panel2);border:1px solid var(--line);padding:8px 15px;border-radius:20px;font-size:12px;font-weight:700;color:var(--text);transition:0.2s}
+.tab-btn.active,.tab-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.directory-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;max-height:300px;overflow-y:auto;padding-right:4px}
+.asset-card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;transition:0.15s;display:flex;flex-direction:column;justify-content:space-between}
+.asset-card:hover{border-color:var(--blue);background:#eff6ff;transform:translateY(-1px)}
+.asset-ticker{font-weight:900;font-size:14px;color:var(--blue)}
+.asset-name{font-size:11px;color:var(--text);font-weight:600;margin:2px 0}
+.asset-market{font-size:10px;color:var(--muted);text-transform:uppercase}
+.chart-box{width:100%;height:560px;border:0;border-radius:12px;overflow:hidden}
+.ta-box{width:100%;height:420px;border:0;border-radius:12px;overflow:hidden}
+.news-box{width:100%;height:450px;border:0;border-radius:12px;overflow:hidden}
+.macro-box{width:100%;height:160px;border:0;border-radius:12px;overflow:hidden}
 .note{font-size:12px;color:var(--muted);line-height:1.65}
 footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
-@media(max-width:650px){
- .grid{grid-template-columns:1fr}
+@media(max-width:900px){
+ .dashboard-grid,.reason-grid{grid-template-columns:1fr}
  .row{flex-direction:column;align-items:stretch}
 }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1: SECURE LOCK SCREEN (Password: 1901 - Hidden) -->
+<!-- PAGE 1: SECURE LOCK SCREEN -->
 <section id="loginPage" class="panel login">
  <div class="logo">KANEN<span>TRD</span> PRO</div>
- <div class="tag">SPOT INTELLIGENCE</div>
+ <div class="tag">MACRO PULSE & LIVE SPOT INTELLIGENCE</div>
  <h2 style="margin-top:30px">Welcome back</h2>
- <p class="muted">Enter your password to access your investment dashboard.</p>
+ <p class="muted">Enter your password to access global macroeconomic intelligence and live markets.</p>
  <label for="password">Password</label>
  <input id="password" type="password" placeholder="Enter password">
  <button class="primary" id="loginBtn" style="width:100%;margin-top:15px">Unlock platform</button>
  <div id="loginError" class="error"></div>
- <p class="note" style="margin-top:15px">Strictly Spot Investment Only.</p>
+ <p class="note" style="margin-top:15px">Strictly Spot Cash Investment Only. No Margin or Leverage.</p>
 </section>
 
 <!-- PAGE 2: DASHBOARD -->
@@ -76,151 +86,125 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <header class="topbar">
  <div>
   <div class="logo">KANEN<span>TRD</span> PRO</div>
-  <div class="tag">SPOT INVESTMENT INTELLIGENCE</div>
+  <div class="tag">MACRO PULSE · FUNDAMENTALS · LIVE TECHNICALS</div>
  </div>
  <button class="secondary" id="logoutBtn">Lock 🔒</button>
 </header>
 
 <main class="wrap">
 
+<!-- 🌍 LIVE MACRO & MARKET PULSE TAPE -->
+<section class="panel" style="border:2px solid #cbd5e1;background:#fafafa">
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+  <h2 style="margin:0;font-size:16px;color:#0f172a">🌐 Live Market & Macro Pulse (نبض السوق الكلي والسيولة)</h2>
+  <span style="font-size:11px;background:#e2e8f0;color:#334155;font-weight:700;padding:3px 10px;border-radius:20px">Global Ticker Stream</span>
+ </div>
+ <p class="muted" style="margin:0 0 10px;font-size:12px">Real-time pulse of global indices (S&P 500, Nasdaq, Tadawul TASI), volatility (VIX), and safe havens (Gold, Oil).</p>
+ <div id="macroWidgetContainer" class="macro-box"></div>
+</section>
+
+<!-- DIRECT SYMBOL ANALYZER -->
 <section class="panel">
- <h1>Investment Dashboard</h1>
- <p class="muted">Unified Technical Analysis Engine for stocks and ETFs (Spot Cash Only).</p>
+ <h1>Global Market & Fundamental Intelligence</h1>
+ <p class="muted">Select an asset from the US, Arab, or ETF directory below—or enter any global symbol—to inspect its real business drivers, live technical rating, and breaking news.</p>
  <div class="row">
   <div>
-   <label for="symbol">Stock / ETF symbol</label>
-   <input id="symbol" placeholder="NASDAQ:AAPL" value="NASDAQ:AAPL">
+   <label for="symbol">Asset Symbol (Exchange:Ticker)</label>
+   <input id="symbol" placeholder="NASDAQ:NVDA" value="NASDAQ:NVDA">
   </div>
-  <div style="flex:0 0 145px">
-   <label for="assetType">Asset type</label>
-   <select id="assetType">
-    <option>Stock</option>
-    <option>ETF</option>
+  <div style="flex:0 0 160px">
+   <label for="interval">Timeframe</label>
+   <select id="interval">
+    <option value="1D" selected>1 Day (Swing)</option>
+    <option value="4h">4 Hours</option>
+    <option value="1h">1 Hour</option>
+    <option value="1W">1 Week</option>
    </select>
   </div>
-  <div style="flex:0 0 125px">
-   <button class="primary" id="loadBtn" style="width:100%">Load asset</button>
+  <div style="flex:0 0 150px">
+   <button class="primary" id="loadBtn" style="width:100%">Analyze Live</button>
   </div>
  </div>
- <p class="note">Examples: NASDAQ:AAPL, NASDAQ:TSLA, AMEX:SPUS.</p>
 </section>
 
-<!-- UNIFIED TECHNICAL INDICATORS ENGINE -->
+<!-- COMPREHENSIVE DIRECTORY: US, ARAB & ETFS -->
 <section class="panel">
- <h2>Technical Indicators Engine (RSI, MACD, EMA)</h2>
- <p class="muted">Synchronized metrics governed by the central asset database.</p>
- <div class="grid">
+ <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
   <div>
-   <label for="rsiVal">RSI (14) Value (0 - 100)</label>
-   <input id="rsiVal" type="text" value="58" readonly style="background:var(--panel2)">
+   <h2 style="margin:0">US, Arab & Global ETF Directory</h2>
+   <p class="muted" style="margin:2px 0 0">Click any stock or ETF to load its fundamental thesis, technicals, and live news.</p>
   </div>
-  <div>
-   <label for="macdVal">MACD Signal Status</label>
-   <input id="macdVal" type="text" value="Bullish / Above Signal Line" readonly style="background:var(--panel2)">
+  <div style="min-width:240px">
+   <input id="dirSearch" placeholder="Search ticker, company, or country..." style="padding:9px 12px;font-size:13px">
   </div>
-  <div>
-   <label for="emaVal">Price vs EMA Trend</label>
-   <input id="emaVal" type="text" value="Price Above EMA 20 & 50" readonly style="background:var(--panel2)">
+ </div>
+
+ <div class="filter-tabs">
+  <button class="tab-btn active" data-cat="ALL">All Assets (<span id="countAll">0</span>)</button>
+  <button class="tab-btn" data-cat="US">🇺🇸 US Stocks</button>
+  <button class="tab-btn" data-cat="ARAB">🇸🇦🇦🇪🇶🇦 Arab & Gulf Stocks</button>
+  <button class="tab-btn" data-cat="ETF">📊 Global & Spot ETFs</button>
+ </div>
+
+ <div id="directoryGrid" class="directory-grid"></div>
+</section>
+
+<!-- THE REASON: REAL FUNDAMENTAL & SUPPLY-CHAIN DRIVERS -->
+<section class="panel" style="border:2px solid #93c5fd">
+ <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+  <h2 id="reasonHeader" style="margin:0;color:#1e3a8a">THE REASON — Real Business & Market Drivers: NASDAQ:NVDA</h2>
+  <span id="reasonSectorBadge" style="font-size:11px;background:#dbeafe;color:#1e40af;font-weight:800;padding:4px 12px;border-radius:20px">AI Semiconductors & Data Centers</span>
+ </div>
+ <p class="muted" style="margin-top:6px">Core supply-chain requirements, catalysts driving price growth, and structural risks that cause pullbacks.</p>
+
+ <div class="reason-grid">
+  <div class="reason-card" style="border-top:4px solid var(--blue)">
+   <h3 style="color:var(--blue)">⚙️ Core Needs & Supply Chain</h3>
+   <p id="reasonNeeds"></p>
   </div>
-  <div>
-   <label for="horizon">Investment Horizon</label>
-   <select id="horizon">
-    <option value="7">1–7 days (Short term spot)</option>
-    <option value="30" selected>8–30 days (Medium term spot)</option>
-    <option value="90">31–90 days (Quarterly holding)</option>
-   </select>
+  <div class="reason-card" style="border-top:4px solid var(--green)">
+   <h3 style="color:var(--green)">📈 Why It Rises (Bullish Catalysts)</h3>
+   <p id="reasonUp"></p>
+  </div>
+  <div class="reason-card" style="border-top:4px solid var(--red)">
+   <h3 style="color:var(--red)">📉 Why It Drops (Risk Factors)</h3>
+   <p id="reasonDown"></p>
   </div>
  </div>
 </section>
 
-<!-- SIGNAL & UNIFIED ANALYSIS RESULTS -->
-<section id="results" class="panel">
- <h2 id="resultTitle">Market Analysis: NASDAQ:AAPL</h2>
- <div id="signalBox" class="signal">
-  <h2 id="signalText" class="buy">🟢 BUY NOW</h2>
-  <div id="signalSummary" class="muted">Technical indicators confirm healthy bullish momentum for spot accumulation.</div>
- </div>
+<!-- REAL-TIME TECHNICAL ENGINE + LIVE CHART -->
+<div class="dashboard-grid">
+ <section class="panel" style="margin-bottom:0">
+  <h2>Live Technical Analysis Rating</h2>
+  <p class="muted">Real-time evaluation of Oscillators (RSI, MACD) & Moving Averages.</p>
+  <div id="taWidgetContainer" class="ta-box"></div>
+ </section>
 
- <h3>THE REASON — Central Technical & Market Proof</h3>
- <div id="reasons">
-  <div class="reason" id="r1"><strong>1. RSI Momentum Analysis:</strong> RSI is positioned within the optimal accumulation zone (40–65), indicating strong underlying buyer strength without being overextended.</div>
-  <div class="reason" id="r2"><strong>2. MACD & EMA Trend Confirmation:</strong> Positive MACD momentum combined with price holding above key EMA levels confirms an active upward trend.</div>
-  <div class="reason" id="r3"><strong>3. Execution Strategy:</strong> Favorable conditions for cash spot accumulation. Enter in structured tranches with zero leverage.</div>
- </div>
-</section>
-
-<!-- TRADINGVIEW CHART -->
-<section class="panel">
- <div class="row">
-  <div>
-   <h2 style="margin-bottom:5px">TradingView Live Chart</h2>
-   <p class="muted">Interactive candlestick chart for stocks and ETFs.</p>
-  </div>
-  <div style="max-width:150px">
-   <label for="chartInterval">Timeframe</label>
-   <select id="chartInterval">
-    <option value="D">1 Day</option>
-    <option value="60">1 Hour</option>
-    <option value="240">4 Hours</option>
-    <option value="W">1 Week</option>
-   </select>
-  </div>
- </div>
- <iframe id="tvChart" class="chart"
-  src="https://www.tradingview.com/widgetembed/?symbol=NASDAQ%3AAAPL&interval=D&hidesidetoolbar=0&symboledit=1&saveimage=1&toolbarbg=f1f5f9&theme=light&style=1&timezone=Etc%2FUTC&withdateranges=1&hideideas=1&locale=en"
-  allowfullscreen loading="lazy"></iframe>
-</section>
-
-<!-- NOTEBOOK SPLIT GRID: INCREASING VS DECREASING (STOCKS & ETFS) -->
-<div style="margin-bottom: 18px;">
-                
-    <!-- SECTION 1: INCREASING (GREEN - BUY NOW) -->
-    <div class="panel" style="border: 2px solid #93c5fd;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-            <h3 style="margin:0; color:#1e3a8a;">📈 Increasing (BUY NOW Candidates)</h3>
-            <span style="font-size: 11px; background: #d1fae5; color: #065f46; font-weight: bold; padding: 4px 10px; border-radius: 20px;">🟢 Green Signal</span>
-        </div>
-        
-        <div class="grid" style="grid-template-columns: 2fr 1fr;">
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">Stocks</div>
-                <div id="incStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
-            </div>
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">ETFs</div>
-                <div id="incEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECTION 2: DECREASING (YELLOW - WAIT) -->
-    <div class="panel" style="border: 2px solid #cbd5e1;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-            <h3 style="margin:0; color:#334155;">📉 Decreasing (WAIT / Watchlist)</h3>
-            <span style="font-size: 11px; background: #fef3c7; color: #92400e; font-weight: bold; padding: 4px 10px; border-radius: 20px;">🟡 Yellow Signal</span>
-        </div>
-        
-        <div class="grid" style="grid-template-columns: 2fr 1fr;">
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #475569; margin-bottom: 8px; text-transform: uppercase;">Stocks</div>
-                <div id="decStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
-            </div>
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #475569; margin-bottom: 8px; text-transform: uppercase;">ETFs</div>
-                <div id="decEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
-            </div>
-        </div>
-    </div>
+ <section class="panel" style="margin-bottom:0">
+  <h2>Live Candlestick & Indicators</h2>
+  <p class="muted">Interactive chart with RSI (14), MACD, and EMA indicators.</p>
+  <div id="chartWidgetContainer" class="chart-box"></div>
+ </section>
 </div>
 
+<!-- REAL-TIME FINANCIAL NEWS FEED -->
 <section class="panel">
- <h2>Important Information</h2>
+ <h2>Live Breaking News & Catalysts</h2>
+ <p class="muted">Verify the exact real-time news headlines moving this asset right now.</p>
+ <div id="newsWidgetContainer" class="news-box"></div>
+</section>
+
+<section class="panel">
+ <h2>Spot Execution Guidelines</h2>
  <p class="note">
- This is an educational tool for technical analysis and spot investing. Use cash investing only; avoid margin, leverage, and short selling. This is not financial advice.
+  • <strong>Complete Verification:</strong> Combine (1) Macro Market Pulse, (2) Real Business Fundamentals, (3) Live Technical Rating, and (4) Breaking News before deploying cash.<br>
+  • <strong>Spot Cash Only:</strong> Strictly cash purchases without margin, leverage, or short selling.
  </p>
 </section>
+
 </main>
-<footer>KANENTRD PRO · INVEST WITH KNOWLEDGE AND DISCIPLINE</footer>
+<footer>KANENTRD PRO · MACRO PULSE & LIVE SPOT INTELLIGENCE</footer>
 </div>
 
 <script>
@@ -229,134 +213,354 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 const PASSWORD = "1901";
 const $ = id => document.getElementById(id);
 
+const MARKET_ASSETS = [
+ {
+  sym: "NASDAQ:NVDA", ticker: "NVDA", name: "NVIDIA Corp.", cat: "US", market: "USA · NASDAQ",
+  sector: "AI Chips & Data Center Infrastructure",
+  needs: "Requires advanced wafer fabrication from TSMC (3nm/4nm), High-Bandwidth Memory (HBM3e) from SK Hynix/Micron, CoWoS packaging capacity, massive electrical power grids for AI clusters, and CUDA software ecosystem lock-in.",
+  up: "Surging CapEx spending by Microsoft, Meta, Google, and Amazon on Blackwell/Rubin AI GPUs, sovereign AI data center builds, and high gross margins above 70%.",
+  down: "TSMC packaging bottlenecks, US export restrictions on advanced chips to China, hyperscalers building custom in-house ASIC chips, or any slowdown in AI CapEx ROI."
+ },
+ {
+  sym: "NASDAQ:AAPL", ticker: "AAPL", name: "Apple Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Consumer Hardware & Services Ecosystem",
+  needs: "Relies on Foxconn/Pegatron assembly in Asia, TSMC custom Apple Silicon chips, OLED displays, and an active installed base of over 2.2 billion devices driving App Store and iCloud subscriptions.",
+  up: "Multi-year iPhone upgrade cycles driven by on-device Apple Intelligence features, expanding high-margin Services revenue, and aggressive share buybacks.",
+  down: "Weakening smartphone demand in China, regulatory antitrust pressure on App Store fees in the US/EU, or supply-chain tariffs."
+ },
+ {
+  sym: "NASDAQ:MSFT", ticker: "MSFT", name: "Microsoft Corp.", cat: "US", market: "USA · NASDAQ",
+  sector: "Enterprise Cloud & AI Software",
+  needs: "Requires massive global data center expansion, uninterrupted NVIDIA GPU supply, high-capacity power agreements, and enterprise lock-in across Windows, Office 365, and Azure.",
+  up: "Accelerating Azure cloud growth driven by enterprise AI workloads, Copilot software monetization, and recurring corporate contracts.",
+  down: "Heavy capital expenditure (CapEx) pressuring free cash flow margins, cloud optimization slowdowns, or cybersecurity incidents."
+ },
+ {
+  sym: "NASDAQ:TSLA", ticker: "TSLA", name: "Tesla Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Electric Vehicles, Energy Storage & Autonomous AI",
+  needs: "Requires lithium, nickel, and LFP battery cells, Gigafactory manufacturing scale, massive AI training compute clusters for Full Self-Driving (FSD), and Megapack utility storage deployments.",
+  up: "Breakthroughs in autonomous Robotaxi/FSD adoption, booming Megapack energy storage margins, and lower battery production costs.",
+  down: "Global EV price wars compressing automotive gross margins, high interest rates hurting auto financing, or delivery misses."
+ },
+ {
+  sym: "NASDAQ:AMZN", ticker: "AMZN", name: "Amazon.com Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Cloud Computing (AWS) & Global E-Commerce",
+  needs: "Relies on automated fulfillment robotics, regionalized logistics networks, custom Trainium/Inferentia AI chips, and massive AWS server infrastructure.",
+  up: "AWS cloud operating margin expansion, fast-growing high-margin digital advertising business, and lower retail shipping costs per unit.",
+  down: "Consumer discretionary spending pullbacks, rising fulfillment/fuel costs, or fierce cloud competition from Azure and Google Cloud."
+ },
+ {
+  sym: "NASDAQ:GOOGL", ticker: "GOOGL", name: "Alphabet (Google)", cat: "US", market: "USA · NASDAQ",
+  sector: "Search Advertising, YouTube & Cloud AI",
+  needs: "Requires custom TPU AI processors, subsea fiber cables, global data centers, and dominant search/YouTube user engagement.",
+  up: "Resilient digital ad spending on Search and YouTube, Google Cloud profitability acceleration, and Gemini AI integration.",
+  down: "DOJ antitrust remedies targeting Search distribution, rising AI search competition, or elevated AI infrastructure CapEx."
+ },
+ {
+  sym: "NASDAQ:META", ticker: "META", name: "Meta Platforms", cat: "US", market: "USA · NASDAQ",
+  sector: "Social Media Advertising & Open-Source AI",
+  needs: "Requires massive GPU clusters for AI ad-targeting algorithms, Llama open-source AI models, and 3.2+ billion daily active users across Instagram, WhatsApp, and Facebook.",
+  up: "AI-driven ad conversion improvements boosting ad pricing, Reels monetization, and disciplined operating efficiency.",
+  down: "Heavy Reality Labs (metaverse) cash burn, massive AI CapEx guidance, or European privacy/ad regulations."
+ },
+ {
+  sym: "NASDAQ:AVGO", ticker: "AVGO", name: "Broadcom Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Custom AI ASICs & Enterprise Networking",
+  needs: "Requires TSMC advanced foundry capacity, high-speed optical networking switches, and long-term custom AI chip design partnerships with Google and Meta.",
+  up: "Explosive demand for custom AI accelerator chips (XPUs) and high-margin VMware enterprise software integration.",
+  down: "Customer concentration risk among top cloud hyperscalers or cyclical slowdowns in traditional broadband/wireless chips."
+ },
+ {
+  sym: "NASDAQ:AMD", ticker: "AMD", name: "Advanced Micro Devices", cat: "US", market: "USA · NASDAQ",
+  sector: "Data Center CPUs & AI GPUs",
+  needs: "Relies on TSMC leading-edge process nodes, HBM3 memory supply, and open-source ROCm software adoption to compete in AI accelerators.",
+  up: "Market share gains in EPYC server CPUs against Intel and ramping Instinct MI300/MI325 AI GPU sales.",
+  down: "PC and gaming hardware demand weakness or slower-than-expected software adoption against NVIDIA's CUDA moat."
+ },
+ {
+  sym: "NYSE:LLY", ticker: "LLY", name: "Eli Lilly & Co.", cat: "US", market: "USA · NYSE",
+  sector: "Biopharmaceuticals & Metabolic Health",
+  needs: "Requires sterile injectable manufacturing plants, peptide synthesis capacity, FDA clinical trial approvals, and insurance formulary coverage.",
+  up: "Unprecedented global demand for GLP-1 obesity and diabetes treatments (Mounjaro/Zepbound) and Alzheimer's pipeline milestones.",
+  down: "Manufacturing supply constraints, drug pricing legislation pressure, or competing clinical trial data from rivals."
+ },
+ {
+  sym: "NYSE:XOM", ticker: "XOM", name: "Exxon Mobil Corp.", cat: "US", market: "USA · NYSE",
+  sector: "Integrated Oil, Gas & Refining",
+  needs: "Requires low-cost upstream production assets (Permian Basin & Guyana), global refining capacity, and disciplined capital allocation.",
+  up: "Higher Brent/WTI crude oil prices, strong refining crack spreads, and production volume growth in Guyana and the Permian.",
+  down: "Global economic slowdown reducing crude demand, OPEC+ supply increases, or falling refining margins."
+ },
+ {
+  sym: "TADAWUL:2222", ticker: "2222", name: "Saudi Aramco (أرامكو)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
+  sector: "Global Energy, Upstream Oil & Downstream Chemicals",
+  needs: "Relies on massive low-cost crude reserves, Master Gas System expansion, downstream refining/petrochemical integration (SABIC), and global Asian energy demand.",
+  up: "Firm Brent crude oil prices above $75–$80, Asian refinery demand growth, and steady base + performance-linked dividend distributions.",
+  down: "Sustained weakness in global crude oil prices, OPEC+ voluntary production cuts limiting export volumes, or weak petrochemical margins."
+ },
+ {
+  sym: "TADAWUL:1120", ticker: "1120", name: "Al Rajhi Bank (الراجحي)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
+  sector: "Banking & Retail/Corporate Financing",
+  needs: "Relies on low-cost retail demand deposits (CASA), mortgage and corporate loan growth under Vision 2030, and net interest margin (NIM) management.",
+  up: "Interest rate cuts lowering funding costs and boosting mortgage/corporate loan demand, alongside strong digital banking fee income.",
+  down: "Elevated SAIBOR interbank rates squeezing net interest margins or higher credit loss provisions."
+ },
+ {
+  sym: "TADAWUL:2010", ticker: "2010", name: "SABIC (سابك)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
+  sector: "Global Petrochemicals & Polymers",
+  needs: "Requires competitive natural gas/ethane feedstock pricing in Saudi Arabia and strong industrial manufacturing demand in China and Europe.",
+  up: "Global industrial recovery, rising polyethylene/chemical spreads, and lower feedstock costs relative to global peers.",
+  down: "Global petrochemical oversupply, sluggish construction/manufacturing in China and Europe, or rising feedstock prices."
+ },
+ {
+  sym: "TADAWUL:7010", ticker: "7010", name: "STC (الاتصالات السعودية)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
+  sector: "Telecom, 5G Infrastructure & Digital Cloud",
+  needs: "Requires 5G fiber infrastructure, hyperscale data centers, fintech/digital payment adoption (stc pay), and government digital transformation contracts.",
+  up: "Strong enterprise cloud/cybersecurity growth, high dividend yield stability, and regional telecom expansion.",
+  down: "Heavy CapEx requirements for 5G/fiber upgrades or intense domestic mobile pricing competition."
+ },
+ {
+  sym: "TADAWUL:2082", ticker: "2082", name: "ACWA Power (أكوا باور)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
+  sector: "Renewable Energy & Water Desalination",
+  needs: "Requires long-term Power Purchase Agreements (PPAs), project financing, solar/wind/green hydrogen engineering, and sovereign utility partnerships.",
+  up: "Rapid project awards across Saudi Arabia, Central Asia, and MENA, plus recurring operational cash flows from newly commissioned plants.",
+  down: "High global interest rates increasing project financing costs or construction supply-chain delays."
+ },
+ {
+  sym: "DFM:EMAAR", ticker: "EMAAR", name: "Emaar Properties (إعمار)", cat: "ARAB", market: "UAE · Dubai (DFM)",
+  sector: "Real Estate Development, Malls & Hospitality",
+  needs: "Relies on Dubai population growth, international investor inflows, prime land bank monetization, and high retail footfall in Dubai Mall.",
+  up: "Record off-plan property sales backlog, surging Dubai tourism boosting mall and hotel revenues, and strong cash dividends.",
+  down: "Global real estate cooling, rising construction material costs, or regional geopolitical/macroeconomic slowdowns."
+ },
+ {
+  sym: "ADX:IHC", ticker: "IHC", name: "Intl Holding Co. (العالمية القابضة)", cat: "ARAB", market: "UAE · Abu Dhabi (ADX)",
+  sector: "Diversified Conglomerate & Strategic Investments",
+  needs: "Relies on strategic acquisitions across energy, real estate, healthcare, food, and technology in the UAE and globally.",
+  up: "Value-accretive M&A deals, strong subsidiary earnings growth (Alpha Dhabi, Multiply), and sovereign economic expansion.",
+  down: "Valuation compression or cyclical slowdowns across underlying portfolio subsidiaries."
+ },
+ {
+  sym: "QSE:QNBK", ticker: "QNBK", name: "QNB Group (بنك قطر الوطني)", cat: "ARAB", market: "Qatar · QSE",
+  sector: "Regional & International Banking",
+  needs: "Relies on Qatar LNG expansion financing, sovereign project lending, and diversified international banking operations across MEA.",
+  up: "North Field LNG expansion driving corporate credit growth, strong asset quality, and steady dividend payouts.",
+  down: "Currency volatility in international subsidiaries (such as Egypt or Turkey) or tighter global liquidity."
+ },
+ {
+  sym: "AMEX:SPUS", ticker: "SPUS", name: "SP Funds S&P 500 Equity ETF", cat: "ETF", market: "ETF · US Large Cap",
+  sector: "US Large-Cap Low-Debt Growth Equities",
+  needs: "Tracks large-cap US S&P 500 companies filtered for low financial leverage (debt-to-market-cap below 30%), heavily weighted toward Apple, NVIDIA, Microsoft, and Amazon.",
+  up: "US mega-cap tech earnings growth, AI productivity gains, and strong US GDP/corporate profit resilience.",
+  down: "Broad US tech valuation pullbacks, rising US Treasury yields, or US economic recession fears."
+ },
+ {
+  sym: "NASDAQ:HLAL", ticker: "HLAL", name: "Wahed FTSE USA Equity ETF", cat: "ETF", market: "ETF · US Equities",
+  sector: "US Large & Mid-Cap Low-Leverage Equities",
+  needs: "Tracks FTSE USA constituents meeting strict balance-sheet cash and debt thresholds across technology, healthcare, and industrials.",
+  up: "Broad US equity market rallies, Federal Reserve rate-cut cycles, and strong corporate earnings.",
+  down: "Broad S&P 500 corrections or sector rotation out of large-cap growth stocks."
+ },
+ {
+  sym: "AMEX:GLD", ticker: "GLD", name: "SPDR Gold Shares ETF", cat: "ETF", market: "ETF · Physical Gold Spot",
+  sector: "Physical Gold Bullion",
+  needs: "Backed by physical gold bars held in vault storage; driven by real interest rates, US Dollar strength (DXY), and central bank reserve buying.",
+  up: "Falling US real yields, central bank gold accumulation, inflation hedging, and geopolitical uncertainty.",
+  down: "Surging US Dollar index (DXY) and rising real Treasury yields increasing the opportunity cost of holding non-yielding gold."
+ },
+ {
+  sym: "AMEX:SLV", ticker: "SLV", name: "iShares Silver Trust ETF", cat: "ETF", market: "ETF · Physical Silver Spot",
+  sector: "Physical Silver (Monetary & Industrial Metal)",
+  needs: "Driven both by precious metal safe-haven flows and massive industrial demand from solar photovoltaic panels, EVs, and electronics.",
+  up: "Expanding global solar panel manufacturing, industrial supply deficits, and bullish gold/precious metals momentum.",
+  down: "Global manufacturing contraction reducing industrial silver demand or sharp US Dollar rallies."
+ },
+ {
+  sym: "AMEX:KSA", ticker: "KSA", name: "iShares MSCI Saudi Arabia ETF", cat: "ETF", market: "ETF · Saudi Market Basket",
+  sector: "Saudi Arabian Large & Mid-Cap Equities",
+  needs: "Tracks major Tadawul leaders including Al Rajhi Bank, Saudi Aramco, SNB, SABIC, and STC.",
+  up: "Vision 2030 non-oil GDP growth, stable/firm oil prices, and foreign institutional inflows into Tadawul.",
+  down: "Sharp drops in Brent crude oil or global emerging-market risk-off outflows."
+ }
+];
+
+let currentCat = "ALL";
+
 function unlock(){
  if($("password").value === PASSWORD){
   $("loginPage").classList.add("hidden");
   $("mainApp").classList.remove("hidden");
   $("loginError").textContent = "";
-  initLists();
-  updateChart();
+  $("countAll").textContent = MARKET_ASSETS.length;
+  renderDirectory();
+  renderMacroWidget();
+  selectAsset("NASDAQ:NVDA");
  }else{
   $("loginError").textContent = "Incorrect password. Please try again.";
  }
 }
 
-$("loginBtn").addEventListener("click",unlock);
-$("password").addEventListener("keydown",e=>{
- if(e.key==="Enter") unlock();
-});
-$("logoutBtn").addEventListener("click",()=>{
+$("loginBtn").addEventListener("click", unlock);
+$("password").addEventListener("keydown", e => { if(e.key === "Enter") unlock(); });
+$("logoutBtn").addEventListener("click", () => {
  $("mainApp").classList.add("hidden");
- $("loginPage").classList.remove("hidden");
- $("password").value="";
+ $("loginPage").classList.add("hidden");
+ $("password").value = "";
 });
 
-function cleanSymbol(value){
- return value.trim().toUpperCase().replace(/\s+/g,"");
+function cleanSymbol(val){
+ return val.trim().toUpperCase().replace(/\s+/g, "");
 }
 
-const incStocks = ['NVDA', 'AAPL', 'MSFT', 'AVGO', 'LLY', 'COST', 'AMD', 'GOOGL'];
-const incEtfs   = ['SPUS', 'HLAL', 'UMMA', 'ISDW'];
-const decStocks = ['TSLA', 'INTC', 'NKE', 'PFE', 'BA'];
-const decEtfs   = ['SPRE', 'SPSK'];
+function renderDirectory(){
+ const query = $("dirSearch").value.trim().toLowerCase();
+ const filtered = MARKET_ASSETS.filter(item => {
+  const matchCat = currentCat === "ALL" || item.cat === currentCat;
+  const matchText = !query ||
+   item.ticker.toLowerCase().includes(query) ||
+   item.name.toLowerCase().includes(query) ||
+   item.market.toLowerCase().includes(query) ||
+   item.sym.toLowerCase().includes(query);
+  return matchCat && matchText;
+ });
 
-function initLists(){
-    document.getElementById('incStocksList').innerHTML = incStocks.map(s => `
-        <div onclick="selectSymbol('NASDAQ:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#065f46;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟢 BUY NOW</div>
-        </div>
-    `).join('');
-
-    document.getElementById('incEtfsList').innerHTML = incEtfs.map(s => `
-        <div onclick="selectSymbol('AMEX:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#065f46;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟢 BUY NOW</div>
-        </div>
-    `).join('');
-
-    document.getElementById('decStocksList').innerHTML = decStocks.map(s => `
-        <div onclick="selectSymbol('NASDAQ:${s}')" style="background:#fffbeb; border:1px solid #fde68a; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#b45309;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟡 WAIT</div>
-        </div>
-    `).join('');
-
-    document.getElementById('decEtfsList').innerHTML = decEtfs.map(s => `
-        <div onclick="selectSymbol('NYSE:${s}')" style="background:#fffbeb; border:1px solid #fde68a; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#b45309;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟡 WAIT</div>
-        </div>
-    `).join('');
+ $("directoryGrid").innerHTML = filtered.map(item => `
+  <div class="asset-card" onclick="selectAsset('${item.sym}')">
+   <div class="asset-ticker">${item.ticker}</div>
+   <div class="asset-name">${item.name}</div>
+   <div class="asset-market">${item.market}</div>
+  </div>
+ `).join("") || `<div class="muted">Symbol not in featured directory. Type any global Exchange:Ticker in the top bar and click Analyze Live.</div>`;
 }
 
-// الدالة المركزية الموحدة لتحليل الرمز (تعالج القوائم والبحث المباشر بشكل متطابق تماماً)
-function selectSymbol(sym){
-    $("symbol").value = sym;
-    const cleanSym = sym.includes(":") ? sym.split(":")[1] : sym;
-    
-    // فحص موحد ودقيق من قاعدة البيانات المركزية للقوائم الهابطة
-    const isDecreasing = decStocks.includes(cleanSym) || decEtfs.includes(cleanSym);
+document.querySelectorAll(".tab-btn").forEach(btn => {
+ btn.addEventListener("click", () => {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  currentCat = btn.dataset.cat;
+  renderDirectory();
+ });
+});
 
-    $("resultTitle").textContent = "Market Analysis: " + sym;
+$("dirSearch").addEventListener("input", renderDirectory);
 
-    if(isDecreasing){
-        $("signalText").textContent = "🟡 WAIT / WATCHLIST";
-        $("signalText").className = "wait";
-        $("signalBox").style.borderColor = "var(--yellow)";
-        $("signalSummary").textContent = "Downward price pressure or consolidation phase. Exercise patience before spot entry.";
-        
-        $("rsiVal").value = "39 (Cooling / Pullback)";
-        $("macdVal").value = "Bearish / Below Signal Line";
-        $("emaVal").value = "Price Below EMA 20 & Testing EMA 50";
-
-        $("r1").innerHTML = `<strong>1. RSI Momentum Analysis:</strong> RSI is at <strong>39</strong>, reflecting a corrective pullback and cooling momentum.`;
-        $("r2").innerHTML = `<strong>2. MACD & EMA Trend Confirmation:</strong> MACD is bearish and price trades below short-term moving averages.`;
-        $("r3").innerHTML = `<strong>3. Execution Strategy:</strong> Do not buy now. Keep on watchlist until indicators show a clear bullish reversal.`;
-    } else {
-        $("signalText").textContent = "🟢 BUY NOW";
-        $("signalText").className = "buy";
-        $("signalBox").style.borderColor = "var(--green)";
-        $("signalSummary").textContent = "Technical indicators confirm healthy bullish momentum for spot accumulation.";
-        
-        $("rsiVal").value = "58 (Optimal Accumulation)";
-        $("macdVal").value = "Bullish / Above Signal Line";
-        $("emaVal").value = "Price Above EMA 20 & 50";
-
-        $("r1").innerHTML = `<strong>1. RSI Momentum Analysis:</strong> RSI is at <strong>58</strong>, positioned within the optimal accumulation zone (40–65).`;
-        $("r2").innerHTML = `<strong>2. MACD & EMA Trend Confirmation:</strong> Positive MACD momentum combined with price holding above key EMA levels.`;
-        $("r3").innerHTML = `<strong>3. Execution Strategy:</strong> Favorable conditions for cash spot accumulation. Enter in structured tranches.`;
-    }
-
-    updateChart();
-    window.scrollTo({top: 0, behavior: 'smooth'});
+function renderMacroWidget(){
+ const container = $("macroWidgetContainer");
+ container.innerHTML = "";
+ const script = document.createElement("script");
+ script.type = "text/javascript";
+ script.src = "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
+ script.async = true;
+ script.innerHTML = JSON.stringify({
+  "symbols": [
+    { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+    { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100" },
+    { "proName": "TADAWUL:TASI", "title": "Tadawul TASI" },
+    { "proName": "TVC:GOLD", "title": "Gold Spot" },
+    { "proName": "TVC:USOIL", "title": "Crude Oil" },
+    { "proName": "CBOE:VIX", "title": "VIX (Fear Index)" }
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": true,
+  "displayMode": "adaptive",
+  "colorTheme": "light",
+  "locale": "en"
+ });
+ container.appendChild(script);
 }
 
-function updateChart(){
- const symbol=cleanSymbol($("symbol").value)||"NASDAQ:AAPL";
- const interval=$("chartInterval").value;
- const url="https://www.tradingview.com/widgetembed/?" +
-  "symbol="+encodeURIComponent(symbol)+
-  "&interval="+encodeURIComponent(interval)+
-  "&hidesidetoolbar=0&symboledit=1&saveimage=1"+
-  "&toolbarbg=f1f5f9&theme=light&style=1"+
-  "&timezone=Etc%2FUTC&withdateranges=1&hideideas=1&locale=en";
- $("tvChart").src=url;
-}
+function updateReasonPanel(sym){
+ const cleanSym = cleanSymbol(sym);
+ const found = MARKET_ASSETS.find(a => a.sym === cleanSym || a.ticker === cleanSym);
 
-$("loadBtn").addEventListener("click",()=>{
- const symbol=cleanSymbol($("symbol").value);
- if(!symbol){
-  alert("Please enter a stock or ETF symbol.");
-  return;
+ $("reasonHeader").textContent = "THE REASON — Real Business & Market Drivers: " + cleanSym;
+
+ if(found){
+  $("reasonSectorBadge").textContent = found.sector;
+  $("reasonNeeds").textContent = found.needs;
+  $("reasonUp").textContent = found.up;
+  $("reasonDown").textContent = found.down;
+ } else {
+  $("reasonSectorBadge").textContent = "Global Exchange-Traded Asset";
+  $("reasonNeeds").textContent = `Requires core revenue growth, sector supply-chain stability, healthy free cash flow, and positive institutional capital inflows for ${cleanSym}.`;
+  $("reasonUp").textContent = `Beats on quarterly earnings/revenue guidance, favorable macroeconomic interest-rate trends, and bullish sector catalysts visible in the live news feed below.`;
+  $("reasonDown").textContent = `Earnings misses, margin compression, tighter monetary liquidity, or negative sector-specific headlines in the live news feed.`;
  }
- selectSymbol(symbol);
-});
+}
 
-$("chartInterval").addEventListener("change",updateChart);
-$("symbol").addEventListener("keydown",e=>{
- if(e.key==="Enter") $("loadBtn").click();
-});
+function selectAsset(sym){
+ $("symbol").value = sym;
+ renderEverything();
+}
+
+function renderEverything(){
+ const sym = cleanSymbol($("symbol").value) || "NASDAQ:NVDA";
+ $("symbol").value = sym;
+ const tf = $("interval").value;
+ const chartTfMap = { "1D": "D", "4h": "240", "1h": "60", "1W": "W" };
+ const chartTf = chartTfMap[tf] || "D";
+
+ updateReasonPanel(sym);
+
+ // Technical Analysis Widget
+ const taContainer = $("taWidgetContainer");
+ taContainer.innerHTML = "";
+ const taScript = document.createElement("script");
+ taScript.type = "text/javascript";
+ taScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js";
+ taScript.async = true;
+ taScript.innerHTML = JSON.stringify({
+  "interval": tf,
+  "width": "100%",
+  "isTransparent": true,
+  "height": "420",
+  "symbol": sym,
+  "showIntervalTabs": true,
+  "displayMode": "single",
+  "locale": "en",
+  "colorTheme": "light"
+ });
+ taContainer.appendChild(taScript);
+
+ // Chart Widget
+ const chartContainer = $("chartWidgetContainer");
+ chartContainer.innerHTML = "";
+ const chartIframe = document.createElement("iframe");
+ chartIframe.style.width = "100%";
+ chartIframe.style.height = "560px";
+ chartIframe.style.border = "0";
+ chartIframe.src = "https://www.tradingview.com/widgetembed/?" +
+  "symbol=" + encodeURIComponent(sym) +
+  "&interval=" + encodeURIComponent(chartTf) +
+  "&hidesidetoolbar=0&symboledit=1&saveimage=1" +
+  "&toolbarbg=f1f5f9&theme=light&style=1" +
+  "&timezone=Etc%2FUTC&withdateranges=1&hideideas=1&locale=en" +
+  "&studies=RSI%40tv-basicstudies%1FMACD%40tv-basicstudies%1FMAExp%40tv-basicstudies";
+ chartContainer.appendChild(chartIframe);
+
+ // News Widget
+ const newsContainer = $("newsWidgetContainer");
+ newsContainer.innerHTML = "";
+ const newsScript = document.createElement("script");
+ newsScript.type = "text/javascript";
+ newsScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
+ newsScript.async = true;
+ newsScript.innerHTML = JSON.stringify({
+  "feedMode": "symbol",
+  "symbol": sym,
+  "colorTheme": "light",
+  "isTransparent": true,
+  "displayMode": "regular",
+  "width": "100%",
+  "height": "450",
+  "locale": "en"
+ });
+ newsContainer.appendChild(newsScript);
+}
+
+$("loadBtn").addEventListener("click", renderEverything);
+$("interval").addEventListener("change", renderEverything);
+$("symbol").addEventListener("keydown", e => { if(e.key === "Enter") renderEverything(); });
 </script>
 </body>
 </html>
