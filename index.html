@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KANENTRD PRO - Halal Spot Investment Intelligence</title>
+<title>KANENTRD PRO - Halal Spot Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -16,40 +16,40 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Cairo',sans-se
 button,input,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
-.topbar{padding:18px 5%;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff}
-.logo{font-size:23px;font-weight:900;letter-spacing:-1px}
+.topbar{padding:16px 5%;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;position:sticky;top:0;z-index:40}
+.logo{font-size:21px;font-weight:900;letter-spacing:-1px}
 .logo span{color:var(--blue)}
-.tag{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:5px}
-.wrap{max-width:1100px;margin:28px auto;padding:0 17px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
-h1{font-size:27px;margin:0 0 8px}
-h2{font-size:18px;margin:0 0 14px}
-h3{font-size:14px;margin:20px 0 10px}
+.tag{font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:3px}
+.wrap{max-width:1100px;margin:24px auto;padding:0 15px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+h1{font-size:24px;margin:0 0 6px}
+h2{font-size:17px;margin:0 0 12px}
+h3{font-size:13px;margin:16px 0 8px}
 p{line-height:1.6}
-.muted{color:var(--muted);font-size:13px}
-label{display:block;color:var(--muted);font-size:12px;margin:12px 0 7px;font-weight:700}
+.muted{color:var(--muted);font-size:12px}
+label{display:block;color:var(--muted);font-size:11px;margin:10px 0 6px;font-weight:700}
 input,select{
  width:100%;background:#ffffff;color:var(--text);
- border:1px solid var(--line);padding:13px;border-radius:9px;
- outline:none;min-width:0
+ border:1px solid var(--line);padding:11px;border-radius:8px;
+ outline:none;min-width:0;font-size:13px
 }
 input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(37,99,235,0.1)}
-button.primary{background:var(--blue);color:white;border:0;border-radius:9px;padding:13px 18px;font-weight:800}
-button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:11px 15px;font-weight:700}
-.login{max-width:410px;margin:12vh auto;padding:28px}
-.login .logo{font-size:27px}
-.error{color:#dc2626;font-size:13px;min-height:20px;margin-top:10px}
+button.primary{background:var(--blue);color:white;border:0;border-radius:8px;padding:12px 16px;font-weight:800;font-size:13px}
+button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-weight:700;font-size:12px}
+.login{max-width:400px;margin:12vh auto;padding:26px}
+.login .logo{font-size:25px}
+.error{color:#dc2626;font-size:12px;min-height:18px;margin-top:8px}
 .row{display:flex;gap:10px;align-items:end}
 .row>*{flex:1;min-width:0}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.signal{padding:18px;border-radius:12px;margin-bottom:14px;border:1px solid var(--line);background:var(--panel2)}
-.signal h2{font-size:26px;margin:0 0 6px}
-.buy{color:var(--green)}.wait{color:var(--yellow)}
-.reason{padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.signal{padding:16px;border-radius:10px;margin-bottom:12px;border:1px solid var(--line);background:var(--panel2)}
+.signal h2{font-size:24px;margin:0 0 4px}
+.buy{color:var(--green)}.wait{color:var(--yellow)}.exit{color:#dc2626}
+.reason{padding:10px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.6}
 .reason:last-child{border:0}
-.chart{width:100%;height:520px;border:0;border-radius:12px;background:#fff}
-.note{font-size:12px;color:var(--muted);line-height:1.65}
-footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
+.chart{width:100%;height:480px;border:0;border-radius:10px;background:#fff}
+.note{font-size:11px;color:var(--muted);line-height:1.5}
+footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
 @media(max-width:650px){
  .grid{grid-template-columns:1fr}
  .row{flex-direction:column;align-items:stretch}
@@ -62,13 +62,13 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <section id="loginPage" class="panel login">
  <div class="logo">KANEN<span>TRD</span> PRO</div>
  <div class="tag">HALAL SPOT INTELLIGENCE</div>
- <h2 style="margin-top:30px">Welcome back</h2>
+ <h2 style="margin-top:25px">Welcome back</h2>
  <p class="muted">Enter your password to access your investment dashboard.</p>
  <label for="password">Password</label>
  <input id="password" type="password" placeholder="Enter password">
- <button class="primary" id="loginBtn" style="width:100%;margin-top:15px">Unlock platform</button>
+ <button class="primary" id="loginBtn" style="width:100%;margin-top:14px">Unlock platform</button>
  <div id="loginError" class="error"></div>
- <p class="note" style="margin-top:15px">Strictly Halal Spot Investment Only.</p>
+ <p class="note" style="margin-top:12px">Strictly Halal Spot Investment Only.</p>
 </section>
 
 <!-- PAGE 2: DASHBOARD -->
@@ -76,7 +76,11 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <header class="topbar">
  <div>
   <div class="logo">KANEN<span>TRD</span> PRO</div>
-  <div class="tag">HALAL SPOT INVESTMENT INTELLIGENCE</div>
+  <div class="tag">HALAL SPOT INTELLIGENCE</div>
+ </div>
+ <div style="display:flex; gap:8px; align-items:center; flex:1; max-width:400px; margin:0 15px;">
+  <input id="topSearch" placeholder="Search Symbol (e.g. AAPL, SPUS)..." style="padding:8px 12px; font-size:12px;">
+  <button class="primary" onclick="quickTopSearch()" style="padding:8px 12px; font-size:12px;">Search</button>
  </div>
  <button class="secondary" id="logoutBtn">Lock 🔒</button>
 </header>
@@ -85,116 +89,116 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 
 <section class="panel">
  <h1>Investment Dashboard</h1>
- <p class="muted">Analyze Halal stocks and ETFs for cash spot investing (1 to 90 days horizon).</p>
+ <p class="muted">Rule-based technical engine for Halal stocks and ETFs (Spot Cash Only).</p>
  <div class="row">
   <div>
    <label for="symbol">Stock / ETF symbol</label>
    <input id="symbol" placeholder="NASDAQ:AAPL" value="NASDAQ:AAPL">
   </div>
-  <div style="flex:0 0 145px">
+  <div style="flex:0 0 135px">
    <label for="assetType">Asset type</label>
    <select id="assetType">
     <option>Stock</option>
     <option>ETF</option>
    </select>
   </div>
-  <div style="flex:0 0 125px">
+  <div style="flex:0 0 115px">
    <button class="primary" id="loadBtn" style="width:100%">Load asset</button>
   </div>
  </div>
  <p class="note">Examples: NASDAQ:AAPL, NASDAQ:NVDA, AMEX:SPUS, NASDAQ:HLAL.</p>
 </section>
 
-<!-- HALAL INVESTMENT PARAMETERS & HORIZON (1 to 90 Days) -->
+<!-- TECHNICAL INDICATORS & TIMEFRAME ENGINE -->
 <section class="panel">
- <h2>Halal Investment Parameters & Action Horizon</h2>
- <p class="muted">Configure your review horizon (1 to 90 days) and entry/exit strategy for cash spot holding.</p>
+ <h2>Technical & Term Strategy Engine</h2>
+ <p class="muted">Select your investment term to filter available assets, and enter TradingView chart indicators to run the rule-based decision engine.</p>
+
  <div class="grid">
   <div>
-   <label for="horizon">Investment review horizon</label>
-   <select id="horizon">
-    <option value="7">1–7 days (Short term spot entry)</option>
-    <option value="30" selected>8–30 days (Medium term spot holding)</option>
-    <option value="60">31–60 days (Extended cash accumulation)</option>
-    <option value="90">61–90 days (Quarterly review target)</option>
+   <label for="termHorizon">Investment Term (Horizon)</label>
+   <select id="termHorizon" onchange="filterAssetsByTerm()">
+    <option value="short">Short Term (1–7 Days) — Active Spot</option>
+    <option value="medium" selected>Medium Term (8–30 Days) — Swing Spot</option>
+    <option value="long">Long Term (31–90+ Days) — Core Holding</option>
    </select>
   </div>
   <div>
-   <label for="shariah">Shariah screening status</label>
+   <label for="shariah">Shariah Screening Status</label>
    <select id="shariah">
     <option value="pass">Passed (Trusted Halal Source)</option>
-    <option value="unknown">Unverified</option>
+    <option value="unknown">Unverified / Check Provider</option>
+    <option value="fail">Failed Screening</option>
+   </select>
+  </div>
+  <div>
+   <label for="price">Current Price</label>
+   <input id="price" type="number" step="any" placeholder="Example: 185.50">
+  </div>
+  <div>
+   <label for="rsi">RSI (14)</label>
+   <input id="rsi" type="number" min="0" max="100" step="any" placeholder="Example: 52">
+  </div>
+  <div>
+   <label for="ema20">Price vs EMA 20</label>
+   <select id="ema20">
+    <option value="above">Price above EMA 20 (Bullish)</option>
+    <option value="below">Price below EMA 20 (Bearish)</option>
+    <option value="unknown">Not checked</option>
+   </select>
+  </div>
+  <div>
+   <label for="ema50">Price vs EMA 50</label>
+   <select id="ema50">
+    <option value="above">Price above EMA 50 (Bullish)</option>
+    <option value="below">Price below EMA 50 (Bearish)</option>
+    <option value="unknown">Not checked</option>
+   </select>
+  </div>
+  <div>
+   <label for="macd">MACD Momentum</label>
+   <select id="macd">
+    <option value="bullish">Bullish / MACD above signal</option>
+    <option value="bearish">Bearish / MACD below signal</option>
+    <option value="neutral">Neutral / Uncertain</option>
+   </select>
+  </div>
+  <div>
+   <label for="volume">Volume Confirmation</label>
+   <select id="volume">
+    <option value="yes">Volume supports the move</option>
+    <option value="no">Volume does not confirm</option>
+    <option value="unknown">Not checked</option>
    </select>
   </div>
  </div>
+
+ <button class="primary" id="analyzeBtn" style="width:100%;margin-top:16px">Run Technical & Shariah Analysis</button>
 </section>
 
-<!-- SIGNAL & REASON (24/7 Economic Intelligence + Entry/Exit Guidance) -->
-<section id="results" class="panel">
- <h2 id="resultTitle">Market Analysis: NASDAQ:AAPL</h2>
+<!-- ANALYSIS RESULTS & DECISION ENGINE -->
+<section id="results" class="panel hidden">
+ <h2 id="resultTitle">Analysis Result</h2>
  <div id="signalBox" class="signal">
-  <h2 id="signalText" class="buy">🟢 BUY NOW</h2>
-  <div id="signalSummary" class="muted">Strong fundamental momentum and robust cash flow generation for spot holding.</div>
+  <h2 id="signalText">WAIT</h2>
+  <div id="signalSummary" class="muted"></div>
  </div>
 
- <h3>THE REASON — 24/7 Economic & Financial Proof & Exit Plan</h3>
- <div id="reasons">
-  <div class="reason"><strong>1. Supply Chain & Economic Moat:</strong> High operating margins and secure multi-year contracts protect against macroeconomic volatility, justifying a cash entry now.</div>
-  <div class="reason"><strong>2. Balance Sheet Strength:</strong> Massive cash reserves with minimal debt, fully aligned with Shariah screening standards (no excessive interest or leverage).</div>
-  <div class="reason"><strong>3. Entry & Exit Strategy (1–90 Days):</strong> Recommended for spot cash accumulation over your selected review horizon. Enter in stages using cash only; review position or take partial profits when the horizon period concludes or if fundamental trends shift. Zero margin or short selling.</div>
- </div>
+ <h3>THE REASON — Technical & Economic Proof</h3>
+ <div id="reasons"></div>
+
+ <h3>Entry and Term Plan</h3>
+ <div id="plan" class="reason" style="font-weight:600;"></div>
 </section>
-
-<!-- NOTEBOOK SPLIT GRID: INCREASING VS DECREASING (STOCKS & ETFS) -->
-<div class="space-y-6" style="margin-bottom: 18px;">
-                
-    <!-- SECTION 1: INCREASING (GREEN - BUY NOW) -->
-    <div class="panel" style="border: 2px solid #93c5fd;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-            <h3 style="margin:0; color:#1e3a8a;">📈 Increasing (BUY NOW Candidates)</h3>
-            <span style="font-size: 11px; background: #d1fae5; color: #065f46; font-weight: bold; padding: 4px 10px; border-radius: 20px;">🟢 Green Signal</span>
-        </div>
-        
-        <div class="grid" style="grid-template-columns: 2fr 1fr;">
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">Stocks</div>
-                <div id="incStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
-            </div>
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">ETFs</div>
-                <div id="incEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECTION 2: DECREASING (YELLOW - WAIT) -->
-    <div class="panel" style="border: 2px solid #cbd5e1;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
-            <h3 style="margin:0; color:#334155;">📉 Decreasing (WAIT / Watchlist)</h3>
-            <span style="font-size: 11px; background: #fef3c7; color: #92400e; font-weight: bold; padding: 4px 10px; border-radius: 20px;">🟡 Yellow Signal</span>
-        </div>
-        
-        <div class="grid" style="grid-template-columns: 2fr 1fr;">
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #475569; margin-bottom: 8px; text-transform: uppercase;">Stocks</div>
-                <div id="decStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
-            </div>
-            <div>
-                <div style="font-weight: bold; font-size: 12px; color: #475569; margin-bottom: 8px; text-transform: uppercase;">ETFs</div>
-                <div id="decEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- TRADINGVIEW CHART -->
 <section class="panel">
  <div class="row">
   <div>
-   <h2 style="margin-bottom:5px">TradingView Live Chart</h2>
-   <p class="muted">Interactive candlestick chart for stocks and ETFs.</p>
+   <h2 style="margin-bottom:4px">TradingView Live Chart</h2>
+   <p class="muted">Interactive candlestick chart for technical analysis.</p>
   </div>
-  <div style="max-width:150px">
+  <div style="max-width:140px">
    <label for="chartInterval">Timeframe</label>
    <select id="chartInterval">
     <option value="D">1 Day</option>
@@ -209,10 +213,31 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
   allowfullscreen loading="lazy"></iframe>
 </section>
 
+<!-- TERM-BASED ASSET DISCOVERY (SHORT, MEDIUM, LONG TERM AVAILABILITY) -->
+<div style="margin-bottom: 16px;">
+    <div class="panel" style="border: 2px solid #93c5fd;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 12px;">
+            <h3 style="margin:0; color:#1e3a8a;" id="termCategoryTitle">📈 Available Assets for Medium Term (8–30 Days)</h3>
+            <span style="font-size: 10px; background: #d1fae5; color: #065f46; font-weight: bold; padding: 3px 8px; border-radius: 20px;">Spot Cash Only</span>
+        </div>
+        
+        <div class="grid" style="grid-template-columns: 2fr 1fr;">
+            <div>
+                <div style="font-weight: bold; font-size: 11px; color: #1e3a8a; margin-bottom: 6px; text-transform: uppercase;">Available Stocks</div>
+                <div id="termStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
+            </div>
+            <div>
+                <div style="font-weight: bold; font-size: 11px; color: #1e3a8a; margin-bottom: 6px; text-transform: uppercase;">Available ETFs</div>
+                <div id="termEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section class="panel">
  <h2>Important Information</h2>
  <p class="note">
- This is an educational tool for Halal spot investing. Verify stocks and ETFs using a trusted Shariah screening provider. Use cash investing only; avoid margin, leverage, and short selling. This is not financial advice or a religious ruling.
+ This is an educational technical-analysis tool. Indicator readings (RSI, MACD, EMA) must be checked against current market data. Verify Shariah compliance using a trusted provider. Use cash investing only; avoid margin, leverage, and short selling. This is not financial advice.
  </p>
 </section>
 </main>
@@ -230,7 +255,7 @@ function unlock(){
   $("loginPage").classList.add("hidden");
   $("mainApp").classList.remove("hidden");
   $("loginError").textContent = "";
-  initLists();
+  filterAssetsByTerm();
   updateChart();
  }else{
   $("loginError").textContent = "Incorrect password. Please try again.";
@@ -243,62 +268,13 @@ $("password").addEventListener("keydown",e=>{
 });
 $("logoutBtn").addEventListener("click",()=>{
  $("mainApp").classList.add("hidden");
- $("loginPage").classList.remove("hidden");
+ $("loginPage").classList.add("hidden"); // Reset
  $("password").value="";
+ location.reload();
 });
 
 function cleanSymbol(value){
  return value.trim().toUpperCase().replace(/\s+/g,"");
-}
-
-const incStocks = ['NVDA', 'AAPL', 'MSFT', 'AVGO', 'LLY', 'COST', 'AMD', 'GOOGL'];
-const incEtfs   = ['SPUS', 'HLAL', 'UMMA', 'ISDW'];
-const decStocks = ['TSLA', 'INTC', 'NKE', 'PFE', 'BA'];
-const decEtfs   = ['SPRE', 'SPSK'];
-
-const assetNames = {
-    'NVDA': 'NVIDIA Corporation', 'AAPL': 'Apple Inc.', 'MSFT': 'Microsoft Corporation', 'AVGO': 'Broadcom Inc.',
-    'LLY': 'Eli Lilly and Co.', 'COST': 'Costco Wholesale', 'AMD': 'Advanced Micro Devices', 'GOOGL': 'Alphabet Inc.',
-    'SPUS': 'SP Funds S&P 500 Sharia', 'HLAL': 'Wahed FTSE USA Shariah', 'UMMA': 'Wahed Dow Jones Islamic', 'ISDW': 'iShares MSCI World',
-    'TSLA': 'Tesla, Inc.', 'INTC': 'Intel Corporation', 'NKE': 'NIKE, Inc.', 'PFE': 'Pfizer Inc.', 'BA': 'Boeing Company',
-    'SPRE': 'SP Funds Global REIT', 'SPSK': 'SP Funds Global Sukuk'
-};
-
-function initLists(){
-    document.getElementById('incStocksList').innerHTML = incStocks.map(s => `
-        <div onclick="selectSymbol('NASDAQ:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#065f46;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟢 BUY NOW</div>
-        </div>
-    `).join('');
-
-    document.getElementById('incEtfsList').innerHTML = incEtfs.map(s => `
-        <div onclick="selectSymbol('AMEX:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#065f46;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟢 BUY NOW</div>
-        </div>
-    `).join('');
-
-    document.getElementById('decStocksList').innerHTML = decStocks.map(s => `
-        <div onclick="selectSymbol('NASDAQ:${s}')" style="background:#fffbeb; border:1px solid #fde68a; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#b45309;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟡 WAIT</div>
-        </div>
-    `).join('');
-
-    document.getElementById('decEtfsList').innerHTML = decEtfs.map(s => `
-        <div onclick="selectSymbol('NYSE:${s}')" style="background:#fffbeb; border:1px solid #fde68a; padding:10px; border-radius:8px; cursor:pointer;">
-            <div style="font-weight:900; color:#b45309;">${s}</div>
-            <div style="font-size:10px; color:#64748b;">🟡 WAIT</div>
-        </div>
-    `).join('');
-}
-
-function selectSymbol(sym){
-    $("symbol").value = sym;
-    updateChart();
-    $("resultTitle").textContent = "Market Analysis: " + sym;
-    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function updateChart(){
@@ -321,13 +297,168 @@ $("loadBtn").addEventListener("click",()=>{
  }
  $("symbol").value=symbol;
  updateChart();
- $("resultTitle").textContent="Market Analysis: "+symbol;
 });
+
+function quickTopSearch(){
+ const val = cleanSymbol($("topSearch").value);
+ if(val){
+  $("symbol").value = val.includes(":") ? val : "NASDAQ:" + val;
+  updateChart();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+ }
+}
 
 $("chartInterval").addEventListener("change",updateChart);
 $("symbol").addEventListener("keydown",e=>{
  if(e.key==="Enter") $("loadBtn").click();
 });
+$("topSearch").addEventListener("keydown",e=>{
+ if(e.key==="Enter") quickTopSearch();
+});
+
+// قاعدة بيانات الأسهم حسب المدى الزمني (Short, Medium, Long)
+const termData = {
+    short: {
+        title: "⚡ Short Term (1–7 Days) — Active Spot Momentum",
+        stocks: ['NVDA', 'AMD', 'AAPL'],
+        etfs: ['SPUS', 'HLAL']
+    },
+    medium: {
+        title: "📈 Medium Term (8–30 Days) — Swing Spot Holding",
+        stocks: ['NVDA', 'AAPL', 'MSFT', 'AVGO', 'COST'],
+        etfs: ['SPUS', 'HLAL', 'UMMA']
+    },
+    long: {
+        title: "🏛️ Long Term (31–90+ Days) — Quarterly Core Holding",
+        stocks: ['AAPL', 'MSFT', 'LLY', 'GOOGL'],
+        etfs: ['SPUS', 'HLAL', 'ISDW', 'UMMA']
+    }
+};
+
+function filterAssetsByTerm(){
+    const term = $("termHorizon").value;
+    const data = termData[term];
+    $("termCategoryTitle").textContent = data.title;
+
+    $("termStocksList").innerHTML = data.stocks.map(s => `
+        <div onclick="selectAssetFromList('NASDAQ:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:9px; border-radius:8px; cursor:pointer;">
+            <div style="font-weight:900; color:#065f46; font-size:12px;">${s}</div>
+            <div style="font-size:10px; color:#64748b;">🟢 Available Spot</div>
+        </div>
+    `).join('');
+
+    $("termEtfsList").innerHTML = data.etfs.map(s => `
+        <div onclick="selectAssetFromList('AMEX:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:9px; border-radius:8px; cursor:pointer;">
+            <div style="font-weight:900; color:#065f46; font-size:12px;">${s}</div>
+            <div style="font-size:10px; color:#64748b;">🟢 ETF Spot</div>
+        </div>
+    `).join('');
+}
+
+function selectAssetFromList(sym){
+    $("symbol").value = sym;
+    updateChart();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// محرك التحليل الفني والشرعي الذكي (Rule-Based Engine)
+function analyzeAsset(){
+    const symbol = cleanSymbol($("symbol").value);
+    if(!symbol){ alert("Enter symbol first."); return; }
+
+    const price = Number($("price").value);
+    const rsi = Number($("rsi").value);
+    const hasPrice = !isNaN(price) && price > 0;
+    const hasRsi = !isNaN(rsi) && rsi >= 0 && rsi <= 100;
+
+    const ema20 = $("ema20").value;
+    const ema50 = $("ema50").value;
+    const macd = $("macd").value;
+    const volume = $("volume").value;
+    const shariah = $("shariah").value;
+    const term = $("termHorizon").value;
+
+    let score = 0;
+    let blocked = false;
+    const reasons = [];
+
+    if(shariah === "fail"){
+        blocked = true;
+        reasons.push("❌ Shariah screening failed. This asset is strictly ineligible for a Halal spot purchase.");
+    } else if(shariah === "unknown"){
+        reasons.push("⚠️ Shariah status is unverified. Confirm compliance with a trusted provider before investing.");
+    } else {
+        score++;
+        reasons.push("✅ Shariah screening passed. Compliant with debt and revenue purification rules.");
+    }
+
+    if(!hasPrice || !hasRsi){
+        reasons.push("⚠️ Missing price or RSI readings. Enter values from your TradingView chart for accurate evaluation.");
+    } else {
+        if(rsi >= 40 && rsi <= 65){
+            score++;
+            reasons.push(`📊 RSI is ${rsi} (Optimal momentum zone 40–65).`);
+        } else if(rsi < 30){
+            reasons.push(`📉 RSI is ${rsi} (Oversold condition; monitor for stabilization).`);
+        } else if(rsi > 70){
+            reasons.push(`📈 RSI is ${rsi} (Overbought condition; chase with caution).`);
+        } else {
+            reasons.push(`📊 RSI is ${rsi} (Neutral range).`);
+        }
+    }
+
+    if(ema20 === "above") { score++; reasons.push("📈 Price is above EMA 20, confirming short-term bullish trend."); }
+    else if(ema20 === "below") { reasons.push("📉 Price is below EMA 20, showing short-term weakness."); }
+
+    if(ema50 === "above") { score++; reasons.push("📈 Price is above EMA 50, supporting medium-term strength."); }
+    else if(ema50 === "below") { reasons.push("📉 Price is below EMA 50, showing medium-term pressure."); }
+
+    if(macd === "bullish") { score++; reasons.push("🟢 MACD is bullish (above signal line), confirming upward momentum."); }
+    else if(macd === "bearish") { reasons.push("🔴 MACD is bearish, indicating downward pressure."); }
+
+    if(volume === "yes") { score++; reasons.push("📊 Volume confirms price action."); }
+
+    let signal = "WAIT / DO NOT BUY";
+    let cssClass = "wait";
+    let summary = "Indicators do not meet full bullish criteria. Wait for better confirmation.";
+
+    if(blocked){
+        signal = "DO NOT BUY";
+        cssClass = "exit";
+        summary = "Asset failed Shariah screening.";
+    } else if(score >= 4 && shariah === "pass" && ema20 === "above" && macd === "bullish"){
+        signal = "BUY CANDIDATE (SPOT)";
+        cssClass = "buy";
+        summary = "Strong alignment with technical indicators and Shariah compliance for cash spot buying.";
+    }
+
+    $("resultTitle").textContent = symbol + " Technical & Shariah Analysis";
+    $("signalText").textContent = signal;
+    $("signalText").className = cssClass;
+    $("signalSummary").textContent = summary;
+    $("signalBox").style.borderColor = cssClass === "buy" ? "var(--green)" : "var(--yellow)";
+
+    $("reasons").replaceChildren();
+    reasons.forEach(r => {
+        const div = document.createElement("div");
+        div.className = "reason";
+        div.textContent = r;
+        $("reasons").appendChild(div);
+    });
+
+    let planText = "";
+    if(signal.includes("BUY")){
+        planText = `💡 Strategy (${term.toUpperCase()} Term): Execute staged cash spot purchases. Review position or take partial gains as per your ${term} term horizon. Strict cash investing only; zero margin or leverage.`;
+    } else {
+        planText = `💡 Strategy (${term.toUpperCase()} Term): No purchase recommended at this reading. Wait for price above EMA 20/50 and bullish MACD confirmation.`;
+    }
+    $("plan").textContent = planText;
+
+    $("results").classList.remove("hidden");
+    $("results").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+$("analyzeBtn").addEventListener("click", analyzeAsset);
 </script>
 </body>
 </html>
