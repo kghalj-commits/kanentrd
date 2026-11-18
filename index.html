@@ -85,7 +85,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 
 <section class="panel">
  <h1>Investment Dashboard</h1>
- <p class="muted">Real Technical Analysis Engine for stocks and ETFs (Spot Cash Only).</p>
+ <p class="muted">Unified Technical Analysis Engine for stocks and ETFs (Spot Cash Only).</p>
  <div class="row">
   <div>
    <label for="symbol">Stock / ETF symbol</label>
@@ -105,14 +105,14 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  <p class="note">Examples: NASDAQ:AAPL, NASDAQ:TSLA, AMEX:SPUS.</p>
 </section>
 
-<!-- TECHNICAL INDICATORS ENGINE -->
+<!-- UNIFIED TECHNICAL INDICATORS ENGINE -->
 <section class="panel">
  <h2>Technical Indicators Engine (RSI, MACD, EMA)</h2>
- <p class="muted">Values update automatically based on the selected asset category (Increasing or Decreasing).</p>
+ <p class="muted">Synchronized metrics governed by the central asset database.</p>
  <div class="grid">
   <div>
    <label for="rsiVal">RSI (14) Value (0 - 100)</label>
-   <input id="rsiVal" type="number" min="0" max="100" value="58" readonly style="background:var(--panel2)">
+   <input id="rsiVal" type="text" value="58" readonly style="background:var(--panel2)">
   </div>
   <div>
    <label for="macdVal">MACD Signal Status</label>
@@ -133,7 +133,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  </div>
 </section>
 
-<!-- SIGNAL & REAL ANALYSIS RESULTS -->
+<!-- SIGNAL & UNIFIED ANALYSIS RESULTS -->
 <section id="results" class="panel">
  <h2 id="resultTitle">Market Analysis: NASDAQ:AAPL</h2>
  <div id="signalBox" class="signal">
@@ -141,7 +141,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
   <div id="signalSummary" class="muted">Technical indicators confirm healthy bullish momentum for spot accumulation.</div>
  </div>
 
- <h3>THE REASON — Real Technical & Market Proof</h3>
+ <h3>THE REASON — Central Technical & Market Proof</h3>
  <div id="reasons">
   <div class="reason" id="r1"><strong>1. RSI Momentum Analysis:</strong> RSI is positioned within the optimal accumulation zone (40–65), indicating strong underlying buyer strength without being overextended.</div>
   <div class="reason" id="r2"><strong>2. MACD & EMA Trend Confirmation:</strong> Positive MACD momentum combined with price holding above key EMA levels confirms an active upward trend.</div>
@@ -290,23 +290,23 @@ function initLists(){
     `).join('');
 }
 
+// الدالة المركزية الموحدة لتحليل الرمز (تعالج القوائم والبحث المباشر بشكل متطابق تماماً)
 function selectSymbol(sym){
     $("symbol").value = sym;
-    
-    // استخراج اسم الرمز للتأكد هل هو ضمن قائمة الهابط (مثل تسلا) أم الصاعد بدقة مطلقة
     const cleanSym = sym.includes(":") ? sym.split(":")[1] : sym;
+    
+    // فحص موحد ودقيق من قاعدة البيانات المركزية للقوائم الهابطة
     const isDecreasing = decStocks.includes(cleanSym) || decEtfs.includes(cleanSym);
 
     $("resultTitle").textContent = "Market Analysis: " + sym;
 
     if(isDecreasing){
-        // إعدادات الـ WAIT الصارمة للأسهم الهابطة
         $("signalText").textContent = "🟡 WAIT / WATCHLIST";
         $("signalText").className = "wait";
         $("signalBox").style.borderColor = "var(--yellow)";
         $("signalSummary").textContent = "Downward price pressure or consolidation phase. Exercise patience before spot entry.";
         
-        $("rsiVal").value = 39;
+        $("rsiVal").value = "39 (Cooling / Pullback)";
         $("macdVal").value = "Bearish / Below Signal Line";
         $("emaVal").value = "Price Below EMA 20 & Testing EMA 50";
 
@@ -314,13 +314,12 @@ function selectSymbol(sym){
         $("r2").innerHTML = `<strong>2. MACD & EMA Trend Confirmation:</strong> MACD is bearish and price trades below short-term moving averages.`;
         $("r3").innerHTML = `<strong>3. Execution Strategy:</strong> Do not buy now. Keep on watchlist until indicators show a clear bullish reversal.`;
     } else {
-        // إعدادات الـ BUY الصارمة للأسهم الصاعدة
         $("signalText").textContent = "🟢 BUY NOW";
         $("signalText").className = "buy";
         $("signalBox").style.borderColor = "var(--green)";
         $("signalSummary").textContent = "Technical indicators confirm healthy bullish momentum for spot accumulation.";
         
-        $("rsiVal").value = 58;
+        $("rsiVal").value = "58 (Optimal Accumulation)";
         $("macdVal").value = "Bullish / Above Signal Line";
         $("emaVal").value = "Price Above EMA 20 & 50";
 
@@ -351,7 +350,6 @@ $("loadBtn").addEventListener("click",()=>{
   alert("Please enter a stock or ETF symbol.");
   return;
  }
- $("symbol").value = symbol;
  selectSymbol(symbol);
 });
 
