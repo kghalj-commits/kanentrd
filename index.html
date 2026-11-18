@@ -1,44 +1,799 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KANENTRD - منصة التداول الفوري الحلال</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Cairo', sans-serif; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KANENTRD PRO</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://s3.tradingview.com/tv.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--bg:#071329;
+--panel:#102342;
+--blue:#2878ff;
+--line:#203657;
+}
+
+* {box-sizing:border-box}
+
+body {
+font-family:'Cairo',sans-serif;
+background:var(--bg);
+color:#eaf1ff;
+}
+
+.panel {
+background:linear-gradient(145deg,#102342,#0b1930);
+border:1px solid var(--line);
+border-radius:18px;
+}
+
+.muted {color:#91a4c2}
+
+.btn {
+border-radius:10px;
+padding:9px 14px;
+font-weight:800;
+}
+
+.btn-blue {
+background:#2878ff;
+color:white;
+}
+
+.btn-soft {
+background:#142d50;
+color:white;
+border:1px solid #2b4a70;
+}
+
+.field {
+background:#08162c;
+border:1px solid #294365;
+color:white;
+border-radius:10px;
+padding:10px;
+width:100%;
+}
+
+.positive {color:#37d99a}
+.negative {color:#ff7888}
+
+.hidden-view {display:none!important}
+
+.table-row {
+border-bottom:1px solid #203657;
+}
+
+@media(max-width:640px) {
+.table-wrap {overflow-x:auto}
+table {min-width:600px}
+}
+</style>
 </head>
-<body class="bg-blue-950 text-slate-100 min-h-screen flex flex-col">
 
-    <!-- شريط علوي أسود لاسم الموقع والشعار -->
-    <header class="bg-black text-white py-3 px-6 shadow-md flex justify-between items-center border-b border-blue-900">
-        <div class="flex items-center space-x-3 space-x-reverse">
-            <span class="text-2xl font-black tracking-wider text-blue-400">KANE<span class="text-white">N</span><span class="text-blue-500">TRD</span></span>
-            <span class="bg-emerald-600 text-xs px-2 py-0.5 rounded-full font-bold text-white shadow">SPOT HALAL ONLY</span>
-        </div>
-        <div class="text-xs text-slate-400 hidden sm:block">بإشراف تحليل ذكاء Gemini الذكي والمقنع</div>
-    </header>
+<body>
 
-    <!-- شريط البحث والفلترة باللون الأزرق -->
-    <div class="bg-blue-600 p-4 shadow-lg flex flex-wrap gap-4 items-center justify-between">
-        <div class="flex-1 min-w-[280px] relative">
-            <input type="text" id="searchInput" placeholder="ابحث عن سهم، ETF، ذهب، بترول، AI... (مثال: NVDA, AAPL, TSLA, Gold)" 
-                class="w-full py-2.5 px-4 rounded-lg bg-blue-900 text-white placeholder-blue-300 border border-blue-400 focus:outline-none focus:ring-2 focus:ring-white">
-        </div>
-        <div class="flex gap-2 items-center">
-            <select id="scenarioSelect" class="bg-blue-900 text-white py-2.5 px-3 rounded-lg border border-blue-400 text-sm">
-                <option value="normal">الوضع الطبيعي للسوق</option>
-                <option value="war">سيناريو الحروب والأزمات الجيوسياسية</option>
-                <option value="ai_boom">طفرة وأزمة الذكاء الاصطناعي (AI)</option>
-            </select>
-            <button onclick="analyzeAsset()" class="bg-black hover:bg-slate-900 text-white px-5 py-2.5 rounded-lg font-bold shadow transition border border-blue-400">
-                تحليل جيمناي 🤖
-            </button>
-        </div>
-    </div>
+<div class="max-w-7xl mx-auto px-4 py-5">
 
-    <!-- مساحة العمل الرئيسية بخلفية بيضاء نقية -->
-    <main class="flex-1 bg-white text-slate-900 p-4 lg:p-6 grid grid
+<header class="flex justify-between items-center flex-wrap gap-4 mb-6">
+
+<div>
+<h1 class="text-3xl font-black">
+<span class="text-blue-400">KANE</span>N<span class="text-blue-500">TRD</span>
+<span class="text-blue-300 text-sm">PRO</span>
+</h1>
+<p class="text-xs muted">MARKET ANALYSIS · VIRTUAL PORTFOLIO</p >
+</div>
+
+<div class="flex gap-2">
+<span class="text-xs bg-amber-500/20 text-amber-300 p-2 rounded-lg">
+وضع تجريبي
+</span>
+<button id="langBtn" class="btn btn-soft">English</button>
+</div>
+
+</header>
+
+<nav class="panel p-3 flex flex-wrap gap-2 mb-5">
+
+<button class="tab active btn btn-soft" data-view="market">
+تحليل الأسواق
+</button>
+
+<button class="tab btn btn-soft" data-view="portfolio">
+المحفظة الافتراضية
+</button>
+
+<button class="tab btn btn-soft" data-view="watchlist">
+قائمة المراقبة
+</button>
+
+</nav>
+
+<!-- MARKET -->
+
+<section id="marketView">
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+
+<div class="panel p-4">
+<p class="muted text-xs">عدد الأصول</p >
+<h2 class="text-2xl font-black">04</h2>
+</div>
+
+<div class="panel p-4">
+<p class="muted text-xs">الأسواق</p >
+<h2 class="text-2xl font-black">03</h2>
+</div>
+
+<div class="panel p-4">
+<p class="muted text-xs">نوع التداول</p >
+<h2 class="text-xl font-black text-emerald-400">SPOT</h2>
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
+
+<div class="xl:col-span-2 panel p-4">
+
+<h2 class="font-bold text-lg mb-3" id="chartHeading">
+الرسم البياني
+</h2>
+
+<div id="tv_chart" class="w-full h-[390px] bg-white rounded-xl overflow-hidden"></div>
+
+<p class="text-xs muted mt-3">
+مخطط مقدم من TradingView.
+</p >
+
+</div>
+
+<div class="panel p-4">
+
+<h2 class="font-bold text-lg mb-4">ملخص الأصل</h2>
+
+<p id="assetName" class="muted text-sm"></p >
+
+<h1 id="assetTicker" class="text-3xl font-black mt-2"></h1>
+
+<h2 id="assetPrice" class="text-xl font-bold mt-2"></h2>
+
+<p id="assetChange" class="text-sm mt-2"></p >
+
+<hr class="border-slate-700 my-4">
+
+<p class="text-sm">السوق: <b id="assetMarket"></b></p >
+
+<p class="text-sm mt-2">النوع: <b id="assetType"></b></p >
+
+<p class="text-xs muted mt-4">
+التوافق الشرعي يحتاج إلى مراجعة حديثة من جهة متخصصة.
+</p >
+
+<button id="addWatch" class="btn btn-soft w-full mt-5">
+＋ أضف للمراقبة
+</button>
+
+</div>
+
+</div>
+
+<div class="panel p-4 mt-5">
+
+<h2 class="font-bold text-lg mb-3">الأسهم والصناديق</h2>
+
+<input id="search" class="field mb-4" placeholder="ابحث عن سهم...">
+
+<div class="table-wrap">
+
+<table class="w-full text-sm">
+
+<thead>
+<tr class="muted">
+<th>الأصل</th>
+<th>السوق</th>
+<th>السعر</th>
+<th>التغير</th>
+<th>التحقق الشرعي</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="assetRows"></tbody>
+
+</table>
+
+</div>
+</div>
+
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="portfolioView" class="hidden-view">
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+
+<div class="panel p-4">
+<p class="muted text-xs">الرصيد النقدي</p >
+<h2 id="cashValue" class="text-2xl font-black">$10,000</h2>
+</div>
+
+<div class="panel p-4">
+<p class="muted text-xs">قيمة الأصول</p >
+<h2 id="holdingsValue" class="text-2xl font-black">$0</h2>
+</div>
+
+<div class="panel p-4">
+<p class="muted text-xs">إجمالي المحفظة</p >
+<h2 id="totalValue" class="text-2xl font-black">$10,000</h2>
+</div>
+
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+<div class="panel p-4">
+
+<h2 class="font-bold text-lg mb-4">عملية افتراضية</h2>
+
+<label class="text-xs muted">الأصل</label>
+
+<select id="tradeAsset" class="field mb-3"></select>
+
+<label class="text-xs muted">الكمية</label>
+
+<input id="tradeQty" type="number" min="0.0001" step="0.0001" class="field mb-3">
+
+<p id="tradeEstimate" class="text-xs muted mb-3"></p >
+
+<div class="grid grid-cols-2 gap-2">
+
+<button id="buyBtn" class="btn btn-blue">
+شراء
+</button>
+
+<button id="sellBtn" class="btn btn-soft">
+بيع
+</button>
+
+</div>
+
+<p id="tradeMessage" class="text-xs mt-3"></p >
+
+<button id="resetPortfolio" class="text-xs text-red-400 mt-5">
+إعادة ضبط المحفظة
+</button>
+
+</div>
+
+<div class="lg:col-span-2 panel p-4">
+
+<h2 class="font-bold text-lg mb-3">الأصول المملوكة</h2>
+
+<div class="table-wrap">
+<table class="w-full text-sm">
+
+<thead>
+<tr class="muted">
+<th>الأصل</th>
+<th>الكمية</th>
+<th>السعر</th>
+<th>القيمة</th>
+</tr>
+</thead>
+
+<tbody id="holdingsRows"></tbody>
+
+</table>
+</div>
+
+</div>
+
+</div>
+
+<div class="panel p-4 mt-5">
+
+<h2 class="font-bold text-lg mb-3">سجل العمليات</h2>
+
+<div class="table-wrap">
+<table class="w-full text-sm">
+
+<thead>
+<tr class="muted">
+<th>العملية</th>
+<th>الأصل</th>
+<th>الكمية</th>
+<th>السعر</th>
+<th>الوقت</th>
+</tr>
+</thead>
+
+<tbody id="historyRows"></tbody>
+
+</table>
+</div>
+
+</div>
+
+</section>
+
+<!-- WATCHLIST -->
+
+<section id="watchlistView" class="hidden-view">
+
+<div class="panel p-4">
+
+<h2 class="font-bold text-lg mb-4">قائمة المراقبة</h2>
+
+<div id="watchRows" class="space-y-3"></div>
+
+</div>
+
+</section>
+
+<footer class="text-center text-xs muted py-7">
+KANENTRD PRO · Virtual Trading Platform
+<br>
+Educational Use Only · No Real Trading
+</footer>
+
+</div>
+
+<script>
+
+const assets = [
+
+{
+id:'SPUS',
+name:'SP Funds S&P 500 Sharia ETF',
+market:'أمريكا',
+type:'ETF',
+price:45.20,
+change:0.62,
+symbol:'AMEX:SPUS'
+},
+
+{
+id:'HLAL',
+name:'Wahed FTSE USA Shariah ETF',
+market:'أمريكا',
+type:'ETF',
+price:52.80,
+change:-0.31,
+symbol:'NASDAQ:HLAL'
+},
+
+{
+id:'2222',
+name:'أرامكو السعودية',
+market:'السعودية',
+type:'سهم',
+price:27.10,
+change:0.18,
+symbol:'TADAWUL:2222'
+},
+
+{
+id:'EMAAR',
+name:'إعمار العقارية',
+market:'الإمارات',
+type:'سهم',
+price:13.45,
+change:1.12,
+symbol:'DFM:EMAAR'
+}
+
+];
+
+const $ = id => document.getElementById(id);
+
+let selected = 'SPUS';
+
+const defaultState = {
+cash:10000,
+holdings:{},
+history:[],
+watch:['SPUS','HLAL']
+};
+
+let state;
+
+try {
+state = {
+...defaultState,
+...JSON.parse(localStorage.getItem('kanentrState') || '{}')
+};
+state.holdings ||= {};
+state.history ||= [];
+state.watch ||= [];
+} catch(e) {
+state = {...defaultState};
+}
+
+function save() {
+localStorage.setItem('kanentrState',JSON.stringify(state));
+}
+
+function money(n) {
+return '$'+Number(n || 0).toLocaleString('en-US',{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+}
+
+function asset(id) {
+return assets.find(a => a.id === id);
+}
+
+function renderAssets() {
+
+const q = $('search').value.toLowerCase();
+
+$('assetRows').innerHTML = assets
+.filter(a => (a.id+' '+a.name+' '+a.market).toLowerCase().includes(q))
+.map(a => `
+
+<tr class="table-row">
+
+<td class="py-3">
+<b>${a.id}</b>
+<div class="text-xs muted">${a.name}</div>
+</td>
+
+<td>${a.market}</td>
+
+<td class="ltr">${money(a.price)}</td>
+
+<td class="${a.change>=0?'positive':'negative'}">
+${a.change>0?'+':''}${a.change}%
+</td>
+
+<td>
+<span class="text-amber-300">يتطلب تحققاً</span>
+</td>
+
+<td>
+<button class="btn btn-soft text-xs" onclick="selectAsset('${a.id}')">
+عرض
+</button>
+</td>
+
+</tr>
+
+`).join('');
+
+}
+
+function loadChart(a) {
+
+$('tv_chart').innerHTML = '';
+
+$('chartHeading').textContent = 'الرسم البياني · '+a.id;
+
+if(window.TradingView) {
+
+new TradingView.widget({
+
+container_id:'tv_chart',
+autosize:true,
+symbol:a.symbol,
+interval:'D',
+timezone:'Etc/UTC',
+theme:'dark',
+style:'1',
+locale:'ar_AE',
+enable_publishing:false,
+allow_symbol_change:true
+
+});
+
+}
+
+}
+
+function selectAsset(id) {
+
+const a = asset(id);
+
+if(!a) return;
+
+selected = id;
+
+$('assetName').textContent = a.name;
+$('assetTicker').textContent = a.id;
+$('assetPrice').textContent = money(a.price);
+
+$('assetChange').textContent =
+(a.change>=0?'+':'')+a.change+'% (تجريبي)';
+
+$('assetChange').className =
+a.change>=0?'positive':'negative';
+
+$('assetMarket').textContent = a.market;
+$('assetType').textContent = a.type;
+
+$('tradeAsset').value = id;
+
+loadChart(a);
+
+updateEstimate();
+
+}
+
+function renderPortfolio() {
+
+let holdingsValue = 0;
+
+const rows = Object.entries(state.holdings)
+.filter(([id,q]) => q>0)
+.map(([id,q]) => {
+
+const a = asset(id);
+
+if(!a) return '';
+
+const v = q*a.price;
+
+holdingsValue += v;
+
+return `
+
+<tr class="table-row">
+
+<td class="py-3">${id}</td>
+<td>${Number(q).toFixed(4)}</td>
+<td>${money(a.price)}</td>
+<td>${money(v)}</td>
+
+</tr>
+
+`;
+
+}).join('');
+
+$('cashValue').textContent = money(state.cash);
+$('holdingsValue').textContent = money(holdingsValue);
+$('totalValue').textContent = money(state.cash+holdingsValue);
+
+$('holdingsRows').innerHTML = rows ||
+'<tr><td colspan="4">لا توجد أصول حالياً</td></tr>';
+
+$('historyRows').innerHTML = state.history
+.slice().reverse().map(h => `
+
+<tr class="table-row">
+
+<td>${h.side==='BUY'?'شراء':'بيع'}</td>
+<td>${h.id}</td>
+<td>${h.qty}</td>
+<td>${money(h.price)}</td>
+<td>${h.time}</td>
+
+</tr>
+
+`).join('');
+
+}
+
+function updateEstimate() {
+
+const a = asset($('tradeAsset').value);
+
+const q = Number($('tradeQty').value)||0;
+
+$('tradeEstimate').textContent =
+'القيمة التقديرية: '+money(a?q*a.price:0);
+
+}
+
+function trade(side) {
+
+const id = $('tradeAsset').value;
+
+const a = asset(id);
+
+const qty = Number($('tradeQty').value);
+
+if(!a || !Number.isFinite(qty) || qty<=0) {
+tradeMessage('أدخل كمية صحيحة.');
+return;
+}
+
+const value = qty*a.price;
+
+if(side==='BUY') {
+
+if(value>state.cash) {
+tradeMessage('الرصيد الافتراضي غير كافٍ.');
+return;
+}
+
+state.cash -= value;
+
+state.holdings[id] =
+(state.holdings[id]||0)+qty;
+
+} else {
+
+if((state.holdings[id]||0)<qty) {
+tradeMessage('الكمية غير كافية.');
+return;
+}
+
+state.holdings[id] -= qty;
+
+state.cash += value;
+
+}
+
+state.history.push({
+
+side,
+id,
+qty,
+price:a.price,
+time:new Date().toLocaleString()
+
+});
+
+save();
+
+renderPortfolio();
+
+$('tradeQty').value='';
+
+updateEstimate();
+
+tradeMessage('تم تنفيذ العملية الافتراضية.');
+
+}
+
+function tradeMessage(message) {
+$('tradeMessage').textContent = message;
+}
+
+function renderWatch() {
+
+$('watchRows').innerHTML = state.watch.map(id => {
+
+const a = asset(id);
+
+if(!a) return '';
+
+return `
+
+<div class="panel p-3 flex justify-between items-center">
+
+<div>
+<b>${a.id}</b>
+<p class="text-xs muted">${a.name}</p >
+</div>
+
+<div class="flex gap-2 items-center">
+
+<span>${money(a.price)}</span>
+
+<button class="btn btn-soft text-xs"
+onclick="selectAsset('${a.id}');showView('market')">
+فتح
+</button>
+
+<button class="text-red-400 text-xs"
+onclick="removeWatch('${a.id}')">
+إزالة
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join('');
+
+}
+
+function removeWatch(id) {
+
+state.watch = state.watch.filter(x=>x!==id);
+
+save();
+
+renderWatch();
+
+}
+
+function showView(view) {
+
+['market','portfolio','watchlist'].forEach(v => {
+
+$(v+'View').classList.toggle('hidden-view',v!==view);
+
+});
+
+document.querySelectorAll('.tab').forEach(b => {
+
+b.classList.toggle('active',b.dataset.view===view);
+
+});
+
+if(view==='portfolio') renderPortfolio();
+
+if(view==='watchlist') renderWatch();
+
+}
+
+document.querySelectorAll('.tab').forEach(b => {
+
+b.addEventListener('click',()=>showView(b.dataset.view));
+
+});
+
+$('search').addEventListener('input',renderAssets);
+
+$('tradeAsset').innerHTML = assets.map(a =>
+
+`<option value="${a.id}">${a.id} — ${a.name}</option>`
+
+).join('');
+
+$('tradeAsset').addEventListener('change',updateEstimate);
+
+$('tradeQty').addEventListener('input',updateEstimate);
+
+$('buyBtn').addEventListener('click',()=>trade('BUY'));
+
+$('sellBtn').addEventListener('click',()=>trade('SELL'));
+
+$('addWatch').addEventListener('click',()=>{
+
+if(!state.watch.includes(selected)) {
+state.watch.push(selected);
+}
+
+save();
+
+renderWatch();
+
+$('addWatch').textContent='✓ تمت الإضافة';
+
+});
+
+$('resetPortfolio').addEventListener('click',()=>{
+
+if(confirm('إعادة ضبط المحفظة؟')) {
+
+state.cash=10000;
+state.holdings={};
+state.history=[];
+
+save();
+
+renderPortfolio();
+
+}
+
+});
+
+$('langBtn').addEventListener('click',()=>{
+
+alert('تبديل اللغة الكامل يحتاج إضافة ترجمات لجميع عناصر الواجهة.');
+
+});
+
+renderAssets();
+renderPortfolio();
+renderWatch();
+selectAsset('SPUS');
+
+</script>
+
+</body>
+</html>
