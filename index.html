@@ -16,40 +16,40 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'Cairo',sans-se
 button,input,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
-.topbar{padding:16px 5%;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;position:sticky;top:0;z-index:40}
-.logo{font-size:21px;font-weight:900;letter-spacing:-1px}
+.topbar{padding:18px 5%;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;position:sticky;top:0;z-index:40}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1px}
 .logo span{color:var(--blue)}
-.tag{font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:3px}
-.wrap{max-width:1100px;margin:24px auto;padding:0 15px}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
-h1{font-size:24px;margin:0 0 6px}
-h2{font-size:17px;margin:0 0 12px}
-h3{font-size:13px;margin:16px 0 8px}
+.tag{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:3px}
+.wrap{max-width:1100px;margin:28px auto;padding:0 15px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+h1{font-size:27px;margin:0 0 8px}
+h2{font-size:18px;margin:0 0 14px}
+h3{font-size:14px;margin:20px 0 10px}
 p{line-height:1.6}
-.muted{color:var(--muted);font-size:12px}
-label{display:block;color:var(--muted);font-size:11px;margin:10px 0 6px;font-weight:700}
+.muted{color:var(--muted);font-size:13px}
+label{display:block;color:var(--muted);font-size:12px;margin:12px 0 7px;font-weight:700}
 input,select{
  width:100%;background:#ffffff;color:var(--text);
- border:1px solid var(--line);padding:11px;border-radius:8px;
- outline:none;min-width:0;font-size:13px
+ border:1px solid var(--line);padding:13px;border-radius:9px;
+ outline:none;min-width:0;font-size:14px
 }
 input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(37,99,235,0.1)}
-button.primary{background:var(--blue);color:white;border:0;border-radius:8px;padding:12px 16px;font-weight:800;font-size:13px}
-button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-weight:700;font-size:12px}
-.login{max-width:400px;margin:12vh auto;padding:26px}
-.login .logo{font-size:25px}
-.error{color:#dc2626;font-size:12px;min-height:18px;margin-top:8px}
+button.primary{background:var(--blue);color:white;border:0;border-radius:9px;padding:13px 18px;font-weight:800;font-size:14px}
+button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:11px 15px;font-weight:700;font-size:13px}
+.login{max-width:410px;margin:12vh auto;padding:28px}
+.login .logo{font-size:27px}
+.error{color:#dc2626;font-size:13px;min-height:20px;margin-top:10px}
 .row{display:flex;gap:10px;align-items:end}
 .row>*{flex:1;min-width:0}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.signal{padding:16px;border-radius:10px;margin-bottom:12px;border:1px solid var(--line);background:var(--panel2)}
-.signal h2{font-size:24px;margin:0 0 4px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.signal{padding:18px;border-radius:12px;margin-bottom:14px;border:1px solid var(--line);background:var(--panel2)}
+.signal h2{font-size:26px;margin:0 0 6px}
 .buy{color:var(--green)}.wait{color:var(--yellow)}.exit{color:#dc2626}
-.reason{padding:10px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.6}
+.reason{padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.65}
 .reason:last-child{border:0}
-.chart{width:100%;height:480px;border:0;border-radius:10px;background:#fff}
-.note{font-size:11px;color:var(--muted);line-height:1.5}
-footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
+.chart{width:100%;height:520px;border:0;border-radius:12px;background:#fff}
+.note{font-size:12px;color:var(--muted);line-height:1.6}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 @media(max-width:650px){
  .grid{grid-template-columns:1fr}
  .row{flex-direction:column;align-items:stretch}
@@ -62,13 +62,13 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
 <section id="loginPage" class="panel login">
  <div class="logo">KANEN<span>TRD</span> PRO</div>
  <div class="tag">HALAL SPOT INTELLIGENCE</div>
- <h2 style="margin-top:25px">Welcome back</h2>
+ <h2 style="margin-top:30px">Welcome back</h2>
  <p class="muted">Enter your password to access your investment dashboard.</p>
  <label for="password">Password</label>
  <input id="password" type="password" placeholder="Enter password">
- <button class="primary" id="loginBtn" style="width:100%;margin-top:14px">Unlock platform</button>
+ <button class="primary" id="loginBtn" style="width:100%;margin-top:15px">Unlock platform</button>
  <div id="loginError" class="error"></div>
- <p class="note" style="margin-top:12px">Strictly Halal Spot Investment Only.</p>
+ <p class="note" style="margin-top:15px">Strictly Halal Spot Investment Only.</p>
 </section>
 
 <!-- PAGE 2: DASHBOARD -->
@@ -77,10 +77,6 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
  <div>
   <div class="logo">KANEN<span>TRD</span> PRO</div>
   <div class="tag">HALAL SPOT INTELLIGENCE</div>
- </div>
- <div style="display:flex; gap:8px; align-items:center; flex:1; max-width:400px; margin:0 15px;">
-  <input id="topSearch" placeholder="Search Symbol (e.g. AAPL, SPUS)..." style="padding:8px 12px; font-size:12px;">
-  <button class="primary" onclick="quickTopSearch()" style="padding:8px 12px; font-size:12px;">Search</button>
  </div>
  <button class="secondary" id="logoutBtn">Lock 🔒</button>
 </header>
@@ -95,21 +91,21 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
    <label for="symbol">Stock / ETF symbol</label>
    <input id="symbol" placeholder="NASDAQ:AAPL" value="NASDAQ:AAPL">
   </div>
-  <div style="flex:0 0 135px">
+  <div style="flex:0 0 145px">
    <label for="assetType">Asset type</label>
    <select id="assetType">
     <option>Stock</option>
     <option>ETF</option>
    </select>
   </div>
-  <div style="flex:0 0 115px">
+  <div style="flex:0 0 125px">
    <button class="primary" id="loadBtn" style="width:100%">Load asset</button>
   </div>
  </div>
  <p class="note">Examples: NASDAQ:AAPL, NASDAQ:NVDA, AMEX:SPUS, NASDAQ:HLAL.</p>
 </section>
 
-<!-- TECHNICAL INDICATORS & TIMEFRAME ENGINE -->
+<!-- TECHNICAL INDICATORS & TERM STRATEGY ENGINE -->
 <section class="panel">
  <h2>Technical & Term Strategy Engine</h2>
  <p class="muted">Select your investment term to filter available assets, and enter TradingView chart indicators to run the rule-based decision engine.</p>
@@ -173,7 +169,7 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
   </div>
  </div>
 
- <button class="primary" id="analyzeBtn" style="width:100%;margin-top:16px">Run Technical & Shariah Analysis</button>
+ <button class="primary" id="analyzeBtn" style="width:100%;margin-top:18px">Run Technical & Shariah Analysis</button>
 </section>
 
 <!-- ANALYSIS RESULTS & DECISION ENGINE -->
@@ -195,10 +191,10 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
 <section class="panel">
  <div class="row">
   <div>
-   <h2 style="margin-bottom:4px">TradingView Live Chart</h2>
+   <h2 style="margin-bottom:5px">TradingView Live Chart</h2>
    <p class="muted">Interactive candlestick chart for technical analysis.</p>
   </div>
-  <div style="max-width:140px">
+  <div style="max-width:150px">
    <label for="chartInterval">Timeframe</label>
    <select id="chartInterval">
     <option value="D">1 Day</option>
@@ -214,20 +210,20 @@ footer{text-align:center;padding:20px;color:var(--muted);font-size:11px}
 </section>
 
 <!-- TERM-BASED ASSET DISCOVERY (SHORT, MEDIUM, LONG TERM AVAILABILITY) -->
-<div style="margin-bottom: 16px;">
+<div style="margin-bottom: 18px;">
     <div class="panel" style="border: 2px solid #93c5fd;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
             <h3 style="margin:0; color:#1e3a8a;" id="termCategoryTitle">📈 Available Assets for Medium Term (8–30 Days)</h3>
-            <span style="font-size: 10px; background: #d1fae5; color: #065f46; font-weight: bold; padding: 3px 8px; border-radius: 20px;">Spot Cash Only</span>
+            <span style="font-size: 11px; background: #d1fae5; color: #065f46; font-weight: bold; padding: 4px 10px; border-radius: 20px;">Spot Cash Only</span>
         </div>
         
         <div class="grid" style="grid-template-columns: 2fr 1fr;">
             <div>
-                <div style="font-weight: bold; font-size: 11px; color: #1e3a8a; margin-bottom: 6px; text-transform: uppercase;">Available Stocks</div>
+                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">Available Stocks</div>
                 <div id="termStocksList" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"></div>
             </div>
             <div>
-                <div style="font-weight: bold; font-size: 11px; color: #1e3a8a; margin-bottom: 6px; text-transform: uppercase;">Available ETFs</div>
+                <div style="font-weight: bold; font-size: 12px; color: #1e3a8a; margin-bottom: 8px; text-transform: uppercase;">Available ETFs</div>
                 <div id="termEtfsList" style="display: flex; flex-direction: column; gap: 8px;"></div>
             </div>
         </div>
@@ -268,7 +264,7 @@ $("password").addEventListener("keydown",e=>{
 });
 $("logoutBtn").addEventListener("click",()=>{
  $("mainApp").classList.add("hidden");
- $("loginPage").classList.add("hidden"); // Reset
+ $("loginPage").classList.add("hidden");
  $("password").value="";
  location.reload();
 });
@@ -299,24 +295,12 @@ $("loadBtn").addEventListener("click",()=>{
  updateChart();
 });
 
-function quickTopSearch(){
- const val = cleanSymbol($("topSearch").value);
- if(val){
-  $("symbol").value = val.includes(":") ? val : "NASDAQ:" + val;
-  updateChart();
-  window.scrollTo({top: 0, behavior: 'smooth'});
- }
-}
-
 $("chartInterval").addEventListener("change",updateChart);
 $("symbol").addEventListener("keydown",e=>{
  if(e.key==="Enter") $("loadBtn").click();
 });
-$("topSearch").addEventListener("keydown",e=>{
- if(e.key==="Enter") quickTopSearch();
-});
 
-// قاعدة بيانات الأسهم حسب المدى الزمني (Short, Medium, Long)
+// قاعدة بيانات الأسهم حسب المدى الزمني
 const termData = {
     short: {
         title: "⚡ Short Term (1–7 Days) — Active Spot Momentum",
@@ -341,14 +325,14 @@ function filterAssetsByTerm(){
     $("termCategoryTitle").textContent = data.title;
 
     $("termStocksList").innerHTML = data.stocks.map(s => `
-        <div onclick="selectAssetFromList('NASDAQ:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:9px; border-radius:8px; cursor:pointer;">
+        <div onclick="selectAssetFromList('NASDAQ:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
             <div style="font-weight:900; color:#065f46; font-size:12px;">${s}</div>
             <div style="font-size:10px; color:#64748b;">🟢 Available Spot</div>
         </div>
     `).join('');
 
     $("termEtfsList").innerHTML = data.etfs.map(s => `
-        <div onclick="selectAssetFromList('AMEX:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:9px; border-radius:8px; cursor:pointer;">
+        <div onclick="selectAssetFromList('AMEX:${s}')" style="background:#f0fdf4; border:1px solid #bbf7d0; padding:10px; border-radius:8px; cursor:pointer;">
             <div style="font-weight:900; color:#065f46; font-size:12px;">${s}</div>
             <div style="font-size:10px; color:#64748b;">🟢 ETF Spot</div>
         </div>
@@ -361,7 +345,7 @@ function selectAssetFromList(sym){
     window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// محرك التحليل الفني والشرعي الذكي (Rule-Based Engine)
+// محرك التحليل الفني والشرعي
 function analyzeAsset(){
     const symbol = cleanSymbol($("symbol").value);
     if(!symbol){ alert("Enter symbol first."); return; }
