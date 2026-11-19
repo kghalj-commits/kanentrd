@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KANENTRD PRO - Real Macro, Finance & Technical Intelligence</title>
+<title>KANENTRD PRO - US Stocks, US ETFs & Macro Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -48,7 +48,7 @@ button.secondary{background:var(--panel2);color:var(--text);border:1px solid var
 .filter-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .tab-btn{background:var(--panel2);border:1px solid var(--line);padding:8px 15px;border-radius:20px;font-size:12px;font-weight:700;color:var(--text);transition:0.2s}
 .tab-btn.active,.tab-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.directory-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;max-height:300px;overflow-y:auto;padding-right:4px}
+.directory-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;max-height:320px;overflow-y:auto;padding-right:4px}
 .asset-card{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;transition:0.15s;display:flex;flex-direction:column;justify-content:space-between}
 .asset-card:hover{border-color:var(--blue);background:#eff6ff;transform:translateY(-1px)}
 .asset-ticker{font-weight:900;font-size:14px;color:var(--blue)}
@@ -58,11 +58,40 @@ button.secondary{background:var(--panel2);color:var(--text);border:1px solid var
 .ta-box{width:100%;height:420px;border:0;border-radius:12px;overflow:hidden}
 .news-box{width:100%;height:450px;border:0;border-radius:12px;overflow:hidden}
 .macro-box{width:100%;height:160px;border:0;border-radius:12px;overflow:hidden}
+.movers-box{width:100%;height:460px;border:0;border-radius:12px;overflow:hidden}
 .note{font-size:12px;color:var(--muted);line-height:1.65}
 footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
+
+/* SPOT DECISION & FINANCIAL METRICS TABLE */
+.spot-decision-box{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.spot-decision-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.spot-decision-title{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.decision-badges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.decision-btn{padding:9px 6px;border-radius:9px;text-align:center;font-weight:900;font-size:12px;border:2px solid transparent;transition:0.2s}
+.decision-btn.buy{background:#ecfdf5;color:#059669;border-color:#a7f3d0}
+.decision-btn.buy.active{background:#059669;color:#ffffff;border-color:#047857;box-shadow:0 4px 10px rgba(5,150,105,0.25)}
+.decision-btn.wait{background:#fffbeb;color:#d97706;border-color:#fde68a}
+.decision-btn.wait.active{background:#d97706;color:#ffffff;border-color:#b45309;box-shadow:0 4px 10px rgba(217,119,6,0.25)}
+.decision-btn.hold{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
+.decision-btn.hold.active{background:#1d4ed8;color:#ffffff;border-color:#1e40af;box-shadow:0 4px 10px rgba(29,78,216,0.25)}
+.decision-note{font-size:12px;color:#1e293b;background:#ffffff;padding:9px 11px;border-radius:8px;border:1px solid var(--line);line-height:1.55}
+.movers-grid{display:grid;grid-template-columns:1fr;gap:14px}
+
+.api-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;padding:12px;background:#f8fafc;border:1px solid var(--line);border-radius:10px}
+.api-bar input{flex:1;min-width:220px;padding:9px 12px;font-size:12px}
+.api-status{font-size:12px;font-weight:700;color:var(--muted)}
+
+.fin-table-wrap{margin-top:16px;overflow-x:auto}
+.fin-table{width:100%;border-collapse:collapse;background:#ffffff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+.fin-table th,.fin-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
+.fin-table th{background:var(--panel2);font-weight:800;color:var(--text)}
+.fin-table tr:last-child td{border-bottom:0}
+.metric-val{font-weight:900;color:#0f172a}
+
 @media(max-width:900px){
  .dashboard-grid,.reason-grid{grid-template-columns:1fr}
  .row{flex-direction:column;align-items:stretch}
+ .decision-badges{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -71,9 +100,9 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <!-- PAGE 1: SECURE LOCK SCREEN -->
 <section id="loginPage" class="panel login">
  <div class="logo">KANEN<span>TRD</span> PRO</div>
- <div class="tag">REAL MACRO, FINANCE & SPOT INTELLIGENCE</div>
+ <div class="tag">US EQUITIES, US ETFs & SPOT INTELLIGENCE</div>
  <h2 style="margin-top:30px">Welcome back</h2>
- <p class="muted">Enter your password to access real market intelligence, macro pulse, and commodities.</p>
+ <p class="muted">Enter your password to access US stocks, US ETFs, and live macro intelligence.</p>
  <label for="password">Password</label>
  <input id="password" type="password" placeholder="Enter password">
  <button class="primary" id="loginBtn" style="width:100%;margin-top:15px">Unlock platform</button>
@@ -86,31 +115,35 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <header class="topbar">
  <div>
   <div class="logo">KANEN<span>TRD</span> PRO</div>
-  <div class="tag">REAL MACRO PULSE · COMMODITIES · FINANCE · TECHNICALS</div>
+  <div class="tag">US STOCKS · US ETFs · FINANCE & TECHNICAL INTELLIGENCE</div>
  </div>
  <button class="secondary" id="logoutBtn">Lock 🔒</button>
 </header>
 
 <main class="wrap">
 
-<!-- 🌍 REAL LIVE MACRO & MARKET PULSE (S&P 500, NASDAQ, TASI, GOLD, OIL, VIX) -->
+<!-- LIVE MACRO & MARKET PULSE -->
 <section class="panel" style="border:2px solid #cbd5e1;background:#fafafa">
  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-  <h2 style="margin:0;font-size:16px;color:#0f172a">🌐 Live Market & Macro Pulse (مؤشرات السوق الحي - S&P 500 والذهب والنفط)</h2>
+  <h2 style="margin:0;font-size:16px;color:#0f172a">🌐 Live Market & Macro Pulse (نبض السوق الأمريكي والسيولة)</h2>
   <span style="font-size:11px;background:#e2e8f0;color:#334155;font-weight:700;padding:3px 10px;border-radius:20px">Live TradingView Feed</span>
  </div>
- <p class="muted" style="margin:0 0 10px;font-size:12px">Real-time live prices directly from global exchanges for S&P 500, Nasdaq, Tadawul TASI, Gold, Crude Oil, and VIX.</p>
+ <p class="muted" style="margin:0 0 10px;font-size:12px">Real-time live prices directly from exchanges for S&P 500, Nasdaq 100, Gold Spot, Crude Oil, and VIX.</p>
  <div id="macroWidgetContainer" class="macro-box"></div>
 </section>
 
-<!-- DIRECT SYMBOL ANALYZER -->
-<section class="panel">
- <h1>Global Market Intelligence</h1>
- <p class="muted">Select any stock, gold, silver, oil, or ETF from the directory below or type any global symbol.</p>
+<!-- UNIVERSAL US SYMBOL SEARCH + FUNDAMENTAL API CONNECTION -->
+<section class="panel" style="border:2px solid #2563eb">
+ <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+  <h1 style="margin:0">US Stocks & US ETFs Live Analyzer</h1>
+  <span style="font-size:11px;background:#dbeafe;color:#1e40af;font-weight:800;padding:4px 12px;border-radius:20px">NASDAQ · NYSE · AMEX Live Lookup</span>
+ </div>
+ <p class="muted">Type any US stock or US ETF ticker (e.g., <code>NASDAQ:NVDA</code>, <code>NYSE:JPM</code>, <code>AMEX:VOO</code>, <code>NASDAQ:PLTR</code>, <code>NYSE:KO</code>) or pick from the quick-access directory below.</p>
  <div class="row">
   <div>
-   <label for="symbol">Asset Symbol (Exchange:Ticker)</label>
-   <input id="symbol" placeholder="AMEX:GLD" value="AMEX:GLD">
+   <label for="symbol">US Symbol (NASDAQ / NYSE / AMEX)</label>
+   <input id="symbol" list="usTickersList" placeholder="Type US ticker e.g. NASDAQ:NVDA or AMEX:VOO" value="NASDAQ:NVDA">
+   <datalist id="usTickersList"></datalist>
   </div>
   <div style="flex:0 0 160px">
    <label for="interval">Timeframe</label>
@@ -125,38 +158,58 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
    <button class="primary" id="loadBtn" style="width:100%">Analyze Live</button>
   </div>
  </div>
+
+ <!-- FUNDAMENTAL FINANCIAL API KEY BAR (FMP) -->
+ <div class="api-bar">
+  <span style="font-size:12px;font-weight:800;color:#0f172a">🔌 Fundamental API (FMP):</span>
+  <input id="fmpApiKey" type="password" placeholder="Optional FMP API Key for real Revenue/EPS/PE/Debt/FCF/Margin/ROE">
+  <button class="secondary" id="saveApiBtn">Save & Fetch</button>
+  <span id="apiStatusText" class="api-status">No API key set — real numbers require a valid FMP API key (no mock/placeholder figures).</span>
+ </div>
 </section>
 
-<!-- COMPREHENSIVE DIRECTORY -->
+<!-- FEATURED US STOCKS & US ETFS DIRECTORY -->
 <section class="panel">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
   <div>
-   <h2 style="margin:0">US, Arab Stocks, Commodities & Global ETFs</h2>
-   <p class="muted" style="margin:2px 0 0">Click any asset (Stocks, Gold, Silver, Oil, ETFs) to inspect its real economic and technical drivers.</p>
+   <h2 style="margin:0">Quick-Access US Stocks & US ETFs</h2>
+   <p class="muted" style="margin:2px 0 0">Curated quick-select US stocks and ETFs across key sectors. Type any other US ticker in the search box above to load live data.</p>
   </div>
   <div style="min-width:240px">
-   <input id="dirSearch" placeholder="Search ticker, gold, oil, Aramco..." style="padding:9px 12px;font-size:13px">
+   <input id="dirSearch" placeholder="Filter quick list by ticker, sector, or name..." style="padding:9px 12px;font-size:13px">
   </div>
  </div>
 
  <div class="filter-tabs">
-  <button class="tab-btn active" data-cat="ALL">All Assets (<span id="countAll">0</span>)</button>
-  <button class="tab-btn" data-cat="COMM">🥇 Gold, Silver & Oil (الذهب والنفط)</button>
+  <button class="tab-btn active" data-cat="ALL">All Quick List (<span id="countAll">0</span>)</button>
   <button class="tab-btn" data-cat="US">🇺🇸 US Stocks</button>
-  <button class="tab-btn" data-cat="ARAB">🇸🇦🇦🇪🇶🇦 Arab & Gulf Stocks</button>
-  <button class="tab-btn" data-cat="ETF">📊 Global & Spot ETFs</button>
+  <button class="tab-btn" data-cat="ETF">📊 US ETFs</button>
  </div>
 
  <div id="directoryGrid" class="directory-grid"></div>
 </section>
 
-<!-- THE REASON: COMBINED FINANCE, ECONOMY & TECHNICAL PROOF -->
+<!-- LIVE US MARKET GAINERS & LOSERS TABLE (INCREASE & DECREASE) -->
+<section class="panel" style="border:2px solid #cbd5e1">
+ <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+  <div>
+   <h2 style="margin:0;color:#0f172a">📊 Live US Market Movers — Increase & Decrease (الأسهم الصاعدة والهابطة)</h2>
+   <p class="muted" style="margin:2px 0 0">Real-time US market top gaining (Increase) and top losing (Decrease) stocks directly from US exchanges.</p>
+  </div>
+  <span style="font-size:11px;background:#dcfce7;color:#166534;font-weight:800;padding:4px 12px;border-radius:20px">Live US Exchange Movers</span>
+ </div>
+ <div class="movers-grid">
+  <div id="moversWidgetContainer" class="movers-box"></div>
+ </div>
+</section>
+
+<!-- THE REASON: COMBINED FINANCE, ECONOMY, METRICS & TECHNICAL PROOF -->
 <section class="panel" style="border:2px solid #93c5fd">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
   <h2 id="reasonHeader" style="margin:0;color:#1e3a8a">THE REASON — Financial, Economic & Technical Proof</h2>
   <span id="reasonSectorBadge" style="font-size:11px;background:#dbeafe;color:#1e40af;font-weight:800;padding:4px 12px;border-radius:20px">Analysis</span>
  </div>
- <p class="muted" style="margin-top:6px">Accurate breakdown combining macroeconomic/financial business drivers and live technical RSI/MACD momentum[span_4](start_span)[span_4](end_span).</p>
+ <p class="muted" id="reasonSubNote" style="margin-top:6px">Reference economic/financial drivers paired with live TradingView technical indicators and news below.</p>
 
  <div class="reason-grid">
   <div class="reason-card" style="border-top:4px solid var(--blue)">
@@ -164,23 +217,96 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
    <p id="reasonEconomy"></p>
   </div>
   <div class="reason-card" style="border-top:4px solid var(--green)">
-   <h3 style="color:var(--green)">📈 Technical Momentum & RSI (التحليل الفني والزخم)</h3>
+   <h3 style="color:var(--green)">📈 Technical Momentum & Indicators (التحليل الفني والمؤشرات)</h3>
    <p id="reasonTechnical"></p>
   </div>
  </div>
+
+ <!-- FUNDAMENTAL FINANCIAL METRICS TABLE (REAL API DATA WHEN KEY IS PROVIDED) -->
+ <div class="fin-table-wrap">
+  <table class="fin-table">
+   <thead>
+    <tr>
+     <th>Metric</th>
+     <th>المؤشر المالي</th>
+     <th>Live Value</th>
+     <th>Source / Rule</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td><strong>Revenue Growth</strong></td>
+     <td>نمو الإيرادات</td>
+     <td id="valRevenueGrowth" class="metric-val">N/A</td>
+     <td id="srcRevenueGrowth" class="muted">Requires FMP API key / SEC filing</td>
+    </tr>
+    <tr>
+     <td><strong>EPS Growth</strong></td>
+     <td>نمو الأرباح</td>
+     <td id="valEpsGrowth" class="metric-val">N/A</td>
+     <td id="srcEpsGrowth" class="muted">Requires FMP API key / SEC filing</td>
+    </tr>
+    <tr>
+     <td><strong>P/E Ratio</strong></td>
+     <td>مكرر الأرباح</td>
+     <td id="valPeRatio" class="metric-val">N/A</td>
+     <td id="srcPeRatio" class="muted">Requires FMP API key / financial feed</td>
+    </tr>
+    <tr>
+     <td><strong>Debt / Equity</strong></td>
+     <td>مستوى الديون</td>
+     <td id="valDebtEquity" class="metric-val">N/A</td>
+     <td id="srcDebtEquity" class="muted">Requires FMP API key / balance sheet</td>
+    </tr>
+    <tr>
+     <td><strong>Free Cash Flow</strong></td>
+     <td>التدفق النقدي الحر</td>
+     <td id="valFcf" class="metric-val">N/A</td>
+     <td id="srcFcf" class="muted">Requires FMP API key / cash flow statement</td>
+    </tr>
+    <tr>
+     <td><strong>Profit Margin</strong></td>
+     <td>هامش الربح</td>
+     <td id="valProfitMargin" class="metric-val">N/A</td>
+     <td id="srcProfitMargin" class="muted">Requires FMP API key / income statement</td>
+    </tr>
+    <tr>
+     <td><strong>ROE</strong></td>
+     <td>العائد على حقوق الملكية</td>
+     <td id="valRoe" class="metric-val">N/A</td>
+     <td id="srcRoe" class="muted">Requires FMP API key / financial ratios</td>
+    </tr>
+   </tbody>
+  </table>
+ </div>
 </section>
 
-<!-- REAL-TIME TECHNICAL ENGINE + LIVE CHART -->
+<!-- REAL-TIME TECHNICAL ENGINE + SPOT BUY/WAIT/HOLD GUIDE + LIVE CHART -->
 <div class="dashboard-grid">
  <section class="panel" style="margin-bottom:0">
-  <h2>Live Technical Analysis Rating</h2>
-  <p class="muted">Real-time evaluation of Oscillators (RSI, MACD) & Moving Averages.</p>
+  <h2>Spot Action & Technical Rating</h2>
+  <p class="muted">Rule-based Spot stance + live Oscillators (RSI 14, MACD) & Moving Averages (EMA 20/50/200).</p>
+  
+  <!-- RULE-BASED SPOT STANCE BOX (BUY / WAIT / HOLD REVIEW) -->
+  <div class="spot-decision-box">
+   <div class="spot-decision-header">
+    <span class="spot-decision-title">🎯 Dynamic Spot Stance (شراء / انتظار / مراجعة)</span>
+    <span id="spotActionSymbol" style="font-size:11px;font-weight:900;color:var(--blue)">NASDAQ:NVDA</span>
+   </div>
+   <div class="decision-badges">
+    <div id="badgeBuy" class="decision-btn buy">🟢 BUY (شراء نقدي)</div>
+    <div id="badgeWait" class="decision-btn wait">🟡 WAIT (انتظار)</div>
+    <div id="badgeHold" class="decision-btn hold">🔵 HOLD / REVIEW</div>
+   </div>
+   <div id="spotDecisionText" class="decision-note"></div>
+  </div>
+
   <div id="taWidgetContainer" class="ta-box"></div>
  </section>
 
  <section class="panel" style="margin-bottom:0">
   <h2>Live Candlestick & Indicators</h2>
-  <p class="muted">Interactive chart with RSI (14), MACD, and EMA indicators.</p>
+  <p class="muted">Interactive chart with RSI (14), MACD, and EMA indicators. Search any US ticker directly inside the chart's symbol box.</p>
   <div id="chartWidgetContainer" class="chart-box"></div>
  </section>
 </div>
@@ -188,111 +314,324 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 <!-- REAL-TIME FINANCIAL NEWS FEED -->
 <section class="panel">
  <h2>Live Breaking News & Catalysts</h2>
- <p class="muted">Verify the exact real-time news headlines moving this asset right now.</p>
+ <p class="muted">Verify the exact real-time news headlines moving this US asset right now.</p>
  <div id="newsWidgetContainer" class="news-box"></div>
 </section>
 
 <section class="panel">
  <h2>Spot Execution Guidelines</h2>
  <p class="note">
-  • <strong>Complete Synthesis:</strong> Cross-check Macro Pulse (S&P 500, Gold, Oil), Fundamental Financial Drivers, and Technical RSI signals before executing cash spot orders.<br>
+  • <strong>Complete Synthesis:</strong> Cross-check Macro Pulse (S&P 500, Nasdaq 100, Gold, Oil, VIX), Increase/Decrease Movers, Fundamental Financial Drivers & API Ratios, and Live Technicals before executing cash spot orders.<br>
   • <strong>Spot Cash Only:</strong> Strictly cash purchases without margin, leverage, or short selling.
  </p>
 </section>
 
 </main>
-<footer>KANENTRD PRO · REAL MACRO, FINANCE & TECHNICAL INTELLIGENCE</footer>
+<footer>KANENTRD PRO · US STOCKS, US ETFs & TECHNICAL INTELLIGENCE</footer>
 </div>
 
 <script>
 "use strict";
 
 const PASSWORD = "1901";
+const API_KEY_STORAGE = "kanentrd_fmp_api_key";
 const $ = id => document.getElementById(id);
 
 const MARKET_ASSETS = [
- // 🥇 GOLD, SILVER & OIL (الذهب، الفضة، والنفط)
- {
-  sym: "AMEX:GLD", ticker: "GLD", name: "SPDR Gold Shares (الذهب)", cat: "COMM", market: "Commodity · Gold Spot",
-  sector: "Physical Gold Bullion",
-  economy: "مالياً واقتصادياً: الملاذ الآمن الأول عالمياً. يتأثر صعوداً وهبوطاً باتجاه أسعار الفائدة الحقيقية للاحتياطي الفيدرالي، قوة الدولار (DXY)، ومشتريات البنوك المركزية الكبرى للتحوط ضد التضخم والتوترات الجيوسياسية.",
-  technical: "الزخم الفني يعكس قوة اتجاه الذهب بدعم من الطلب المؤسسي، ومؤشر القوة النسبية (RSI) يتحرك في نطاق إيجابي مستقر."
- },
- {
-  sym: "AMEX:SLV", ticker: "SLV", name: "iShares Silver Trust (الفضة)", cat: "COMM", market: "Commodity · Silver Spot",
-  sector: "Physical Silver & Industrial Metal",
-  economy: "مالياً واقتصادياً: تجمع بين كونها معدناً ثميساً ومعدناً صناعياً حيوياً. يرتفع الطلب عليها بقوة مع التوسع العالمي في صناعة ألواح الطاقة الشمسية، السيارات الكهربائية، والإلكترونيات المتقدمة.",
-  technical: "مؤشر RSI والتقاطعات الفنية تظهر حساسية سعرية عالية ومتابعة دقيقة لحركة السيولة الصناعية."
- },
- {
-  sym: "AMEX:USO", ticker: "USO", name: "United States Oil Fund (النفط الخام)", cat: "COMM", market: "Commodity · Crude Oil",
-  sector: "Crude Oil Futures & Energy",
-  economy: "مالياً واقتصادياً: ترتبط ارتباطاً مباشراً بأسعار النفط الخام العالمي (WTI / Brent)، قرارات حصص إنتاج أوبك بلس، معدلات النمو الاقتصادي في الصين وآسيا، ومستويات المخزونات الاستراتيجية الأمريكية.",
-  technical: "التحليل الفني يوضح تفاعل الأسعار لحظياً مع مستويات الدعم والمقاومة المرتبطة بأخبار الطاقة."
- },
- 
- // 🇺🇸 US STOCKS
+ // US STOCKS
  {
   sym: "NASDAQ:NVDA", ticker: "NVDA", name: "NVIDIA Corp.", cat: "US", market: "USA · NASDAQ",
   sector: "AI Semiconductors & Data Centers",
-  economy: "مالياً واقتصادياً: تقود قطاع الذكاء الاصطناعي عالمياً بهوامش أرباح تتجاوز 70%، معتمدة على سلاسل إمداد TSMC وطلب هائل من شركات السحابة الكبرى (مايكروسوفت، ميتا، جوجل).",
-  technical: "مؤشر RSI في النطاق الإيجابي للزخم (50-65)، مع دعم قوي من المتوسطات المتحركة (EMA)."
+  economy: "إطار اقتصادي ومالي: ترتبط أعمال الشركة بإنفاق مراكز البيانات والذكاء الاصطناعي لدى الشركات الكبرى، وسلاسل إمداد أشباه الموصلات المتقدمة والذاكرة عالية السرعة.",
+  technical: "المتابعة الفنية: راقب قراءات RSI (14) و MACD والمتوسطات المتحركة EMA (20 / 50 / 200) من عداد التحليل الفني والشارت الحي أسفل الصفحة لتقييم الاتجاه والزخم."
  },
  {
   sym: "NASDAQ:AAPL", ticker: "AAPL", name: "Apple Inc.", cat: "US", market: "USA · NASDAQ",
   sector: "Consumer Hardware & Services",
-  economy: "مالياً واقتصادياً: تدفقات نقدية ضخمة من مبيعات آيفون، نمو متسارع بقطاع الخدمات ذي الهامش المرتفع، وبرامج إعادة شراء أسهم ضخمة تدعم القيمة الاستثمارية.",
-  technical: "استقرار سعري فوق الدعم التاريخي مع إشارات عزم إيجابية لـ RSI و MACD."
+  economy: "إطار اقتصادي ومالي: تعتمد على دورات مبيعات الأجهزة الرئيسية، نمو قطاع الخدمات المتكرر، التدفقات النقدية التشغيلية، والإنفاق الاستهلاكي الأمريكي والعالمي.",
+  technical: "المتابعة الفنية: تحقق من قراءة المؤشرات الفنية الحية (RSI 14، MACD، EMA 20/50/200) والأخبار المباشرة للرمز قبل التنفيذ النقدي."
  },
  {
   sym: "NASDAQ:MSFT", ticker: "MSFT", name: "Microsoft Corp.", cat: "US", market: "USA · NASDAQ",
   sector: "Enterprise Cloud & AI Software",
-  economy: "مالياً واقتصادياً: نموذج عمل مستدام بعقود مؤسسية طويلة الأجل، نمو قوي لخدمات السحابة (Azure)، وتسيخ حلول الذكاء الاصطناعي (Copilot).",
-  technical: "التقييم الفني يدعم استمرار الاتجاه الصاعد مع استقرار RSI فوق مستوى 50."
+  economy: "إطار اقتصادي ومالي: ترتكز على إنفاق الشركات على الحوسبة السحابية (Azure)، اشتراكات برمجيات المؤسسات، وتوسع البنية التحتية والخدمات السحابية.",
+  technical: "المتابعة الفنية: راقب التقييم الفني المباشر على الإطار الزمني المحدد وتفاعل السعر مع EMA 20/50/200 و RSI و MACD."
+ },
+ {
+  sym: "NASDAQ:AMZN", ticker: "AMZN", name: "Amazon.com Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Cloud Computing & E-Commerce",
+  economy: "إطار اقتصادي ومالي: تعتمد على نمو خدمات AWS السحابية، كفاءة سلاسل الإمداد والتوزيع، الإعلانات الرقمية، وحجم الإنفاق الاستهلاكي.",
+  technical: "المتابعة الفنية: راقب حركة السعر مع RSI (14) و MACD و EMA على الشارت المباشر والعداد الفني."
+ },
+ {
+  sym: "NASDAQ:GOOGL", ticker: "GOOGL", name: "Alphabet Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Search, YouTube & Cloud",
+  economy: "إطار اقتصادي ومالي: ترتبط بإيرادات الإعلانات الرقمية عبر البحث ويوتيوب، نمو Google Cloud، وتطورات الذكاء الاصطناعي وتنظيمات السوق.",
+  technical: "المتابعة الفنية: تحقق من اتجاه المؤشرات الفنية الحية ومستويات الدعم والمقاومة قبل اتخاذ القرار."
+ },
+ {
+  sym: "NASDAQ:META", ticker: "META", name: "Meta Platforms Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Social Platforms & AI Ads",
+  economy: "إطار اقتصادي ومالي: تعتمد على كفاءة استهداف الإعلانات المدعومة بالذكاء الاصطناعي، نمو التفاعل اليومي، وتكاليف البنية التحتية والاستثمارات التقنية.",
+  technical: "المتابعة الفنية: راقب الزخم الفني عبر RSI و MACD و EMA (20/50/200) في العداد الحي على الإطار الزمني المختار."
  },
  {
   sym: "NASDAQ:TSLA", ticker: "TSLA", name: "Tesla Inc.", cat: "US", market: "USA · NASDAQ",
-  sector: "EVs, Energy Storage & AI",
-  economy: "مالياً واقتصادياً: تعتمد على أرباح تخزين الطاقة (Megapack)، هوامش السيارات الكهربائية، وتطورات القيادة الذاتية (FSD) والروبوتات.",
-  technical: "تذبذب سعري يعكس حساسية السهم للبيانات الفصلية، مع مستويات دعم واضحة."
+  sector: "EVs, Energy Storage & Autonomy",
+  economy: "إطار اقتصادي ومالي: ترتبط بحجم تسليمات السيارات الكهربائية وهوامشها، نمو قطاع تخزين الطاقة، تكاليف البطاريات، وتطورات القيادة الذاتية.",
+  technical: "المتابعة الفنية: راقب التذبذب السعري وقراءات RSI و MACD و EMA المباشرة في لوحة التحليل الفني لتجنب الدخول العشوائي."
+ },
+ {
+  sym: "NASDAQ:AVGO", ticker: "AVGO", name: "Broadcom Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Custom AI Chips & Infrastructure Software",
+  economy: "إطار اقتصادي ومالي: تعتمد على الطلب على شرائح الشبكات ومسرعات الذكاء الاصطناعي المخصصة وإيرادات برمجيات البنية التحتية للمؤسسات.",
+  technical: "المتابعة الفنية: راجع عداد التحليل الفني والشارت الحي لمتابعة الاتجاه وزخم المؤشرات."
+ },
+ {
+  sym: "NASDAQ:AMD", ticker: "AMD", name: "Advanced Micro Devices", cat: "US", market: "USA · NASDAQ",
+  sector: "Data Center CPUs & GPUs",
+  economy: "إطار اقتصادي ومالي: ترتبط بحصة معالجات الخوادم ومسرعات الذكاء الاصطناعي في مراكز البيانات، وطلب الحواسيب الشخصية، وسلاسل التوريد.",
+  technical: "المتابعة الفنية: راقب قراءات RSI و MACD و EMA المباشرة وتفاعل السعر مع المتوسطات المتحركة."
+ },
+ {
+  sym: "NASDAQ:NFLX", ticker: "NFLX", name: "Netflix Inc.", cat: "US", market: "USA · NASDAQ",
+  sector: "Streaming & Digital Entertainment",
+  economy: "إطار اقتصادي ومالي: تعتمد على نمو المشتركين عالمياً، باقات الإعلانات، ضبط تكاليف إنتاج المحتوى، والتدفقات النقدية الحرة.",
+  technical: "المتابعة الفنية: راقب مستويات الزخم على الشارت اليومي والأسبوعي وعداد التحليل الفني."
+ },
+ {
+  sym: "NASDAQ:PLTR", ticker: "PLTR", name: "Palantir Technologies", cat: "US", market: "USA · NASDAQ",
+  sector: "Enterprise & Defense AI Software",
+  economy: "إطار اقتصادي ومالي: ترتبط بعقود البرمجيات الحكومية والدفاعية الأمريكية، وتوسع تبني منصات الذكاء الاصطناعي (AIP) في القطاع التجاري.",
+  technical: "المتابعة الفنية: راقب قراءات RSI والزخم اللحظي نظراً لارتفاع حساسية السهم للأخبار والعقود."
+ },
+ {
+  sym: "NASDAQ:COST", ticker: "COST", name: "Costco Wholesale", cat: "US", market: "USA · NASDAQ",
+  sector: "Consumer Staples & Membership Retail",
+  economy: "إطار اقتصادي ومالي: نموذج عمل دفاعي يعتمد على رسوم اشتراكات العضوية المتكررة، كفاءة سلاسل التوريد، واستقرار الإنفاق الاستهلاكي.",
+  technical: "المتابعة الفنية: راقب المتوسطات المتحركة (EMA 20/50/200) و RSI لتحديد مناطق التجميع النقدي."
+ },
+ {
+  sym: "NYSE:LLY", ticker: "LLY", name: "Eli Lilly and Co.", cat: "US", market: "USA · NYSE",
+  sector: "Pharmaceuticals & Metabolic Therapies",
+  economy: "إطار اقتصادي ومالي: تعتمد على الطلب على علاجات السمنة والسكري والأدوية المبتكرة، الطاقة التصنيعية، والموافقات التنظيمية والتغطية التأمينية.",
+  technical: "المتابعة الفنية: تحقق من المؤشرات الفنية الحية والأخبار المباشرة للرمز قبل تنفيذ أي أمر نقدي."
+ },
+ {
+  sym: "NYSE:UNH", ticker: "UNH", name: "UnitedHealth Group", cat: "US", market: "USA · NYSE",
+  sector: "Healthcare Insurance & Services",
+  economy: "إطار اقتصادي ومالي: أكبر مزود للرعاية الصحية والتأمين في أمريكا؛ يتأثر بمعدلات التكاليف الطبية وأقساط التأمين ونمو قطاع Optum.",
+  technical: "المتابعة الفنية: راقب مستويات الدعم والمقاومة وقراءات RSI على الشارت الحي."
+ },
+ {
+  sym: "NYSE:JPM", ticker: "JPM", name: "JPMorgan Chase & Co.", cat: "US", market: "USA · NYSE",
+  sector: "US Banking & Investment Services",
+  economy: "إطار اقتصادي ومالي: أكبر بنك أمريكي؛ يتأثر بأسعار الفائدة الفيدرالية، صافي دخل الفوائد، نشاط الصفقات الاستثمارية، وجودة الائتمان.",
+  technical: "المتابعة الفنية: راجع عداد التحليل الفني والشارت الحي لمتابعة اتجاه القطاع المصرفي."
+ },
+ {
+  sym: "NYSE:V", ticker: "V", name: "Visa Inc.", cat: "US", market: "USA · NYSE",
+  sector: "Global Digital Payments Network",
+  economy: "إطار اقتصادي ومالي: تعتمد على حجم المدفوعات الرقمية العالمية والسفر الدولي دون تحمل مخاطر إقراض مباشر، بهوامش تشغيلية مرتفعة.",
+  technical: "المتابعة الفنية: راقب استقرار الاتجاه ومؤشرات RSI و MACD قبل الشراء النقدي."
+ },
+ {
+  sym: "NYSE:XOM", ticker: "XOM", name: "Exxon Mobil Corp.", cat: "US", market: "USA · NYSE",
+  sector: "Integrated Oil & Gas",
+  economy: "إطار اقتصادي ومالي: ترتبط بأسعار النفط والغاز العالمية، هوامش التكرير والكيماويات، وحجم الإنتاج في المشاريع الرئيسية وانضباط رأس المال.",
+  technical: "المتابعة الفنية: راقب الاتجاه الفني اللحظي عبر الشارت وعداد التحليل الفني المرتبط بحركة الطاقة."
+ },
+ {
+  sym: "NYSE:WMT", ticker: "WMT", name: "Walmart Inc.", cat: "US", market: "USA · NYSE",
+  sector: "US Retail & Supply Chain",
+  economy: "إطار اقتصادي ومالي: مقياس مباشر لصحة المستهلك الأمريكي، مدعوم بنمو التجارة الإلكترونية وكفاءة سلاسل الإمداد.",
+  technical: "المتابعة الفنية: راقب المتوسطات المتحركة وزخم RSI على الإطار الزمني اليومي."
+ },
+ {
+  sym: "NYSE:KO", ticker: "KO", name: "Coca-Cola Co.", cat: "US", market: "USA · NYSE",
+  sector: "Consumer Beverages & Dividends",
+  economy: "إطار اقتصادي ومالي: شركة استهلاكية دفاعية ذات قوة تسعيرية عالمية وتدفقات نقدية مستقرة وتوزيعات أرباح منتظمة.",
+  technical: "المتابعة الفنية: راقب مستويات الدعم التاريخية ومؤشرات الزخم."
  },
 
- // 🇸🇦🇦🇪🇶🇦 ARAB & GULF STOCKS
+ // US ETFs
  {
-  sym: "TADAWUL:2222", ticker: "2222", name: "Saudi Aramco (أرامكو)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
-  sector: "Global Energy & Upstream Oil",
-  economy: "مالياً واقتصادياً: تعتمد على أسعار النفط الخام (Brent)، الطلب الآسيوي، والتكامل مع قطاع البتروكيماويات (سابك)، مع توزيعات أرباح نقدية مستقرة ذات عائد مرتفع.",
-  technical: "مؤشر RSI يتحرك في مناطق التجميع الصحيحة، مع استقرار الأسعار قرب خطوط الدعم."
+  sym: "AMEX:SPY", ticker: "SPY", name: "SPDR S&P 500 ETF Trust", cat: "ETF", market: "US ETF · S&P 500",
+  sector: "US Large-Cap Index ETF",
+  economy: "إطار اقتصادي ومالي: يتتبع مؤشر S&P 500 لأكبر 500 شركة أمريكية، ويعكس أرباح الشركات الأمريكية، أسعار الفائدة، والتضخم، والنمو الاقتصادي الأمريكي.",
+  technical: "المتابعة الفنية: راقب المؤشر الفني العام على الشارت الحي وعداد التحليل الفني لقياس زخم السوق الأمريكي."
  },
  {
-  sym: "TADAWUL:1120", ticker: "1120", name: "Al Rajhi Bank (الراجحي)", cat: "ARAB", market: "Saudi Arabia · Tadawul",
-  sector: "Banking & Retail Financing",
-  economy: "مالياً واقتصادياً: أكبر مصرف إسلامي، يعتمد على الودائع منخفضة التكلفة وتمويل قطاع الأفراد والشركات تحت رؤية 2030.",
-  technical: "استقرار فني وإشارات تجميع إيجابية مع توازن ممتاز لمؤشر القوة النسبية."
+  sym: "AMEX:VOO", ticker: "VOO", name: "Vanguard S&P 500 ETF", cat: "ETF", market: "US ETF · S&P 500",
+  sector: "US Large-Cap Core ETF",
+  economy: "إطار اقتصادي ومالي: صندوق منخفض التكلفة يتتبع مؤشر S&P 500 لأكبر 500 شركة أمريكية، مناسب للتجميع النقدي طويل الأجل.",
+  technical: "المتابعة الفنية: راقب اتجاه المؤشر ومستويات RSI و EMA على الشارت اليومي والأسبوعي."
  },
  {
-  sym: "DFM:EMAAR", ticker: "EMAAR", name: "Emaar Properties (إعمار)", cat: "ARAB", market: "UAE · Dubai (DFM)",
-  sector: "Real Estate & Hospitality",
-  economy: "مالياً واقتصادياً: تستفيد من الطفرة العقارية والسياحية في دبي، وحجم مبيعات قياسي للمشاريع قيد الإنشاء وعوائد قوية من المولات.",
-  technical: "تماسك فني ملحوظ وتفاعل إيجابي مع المعطيات التشغيلية للشركة."
- },
-
- // 📊 GLOBAL & SPOT ETFS
- {
-  sym: "AMEX:SPUS", ticker: "SPUS", name: "SP Funds S&P 500 Equity ETF", cat: "ETF", market: "ETF · US Large Cap",
-  sector: "Low-Debt US Large-Cap Equities",
-  economy: "مالياً واقتصادياً: صندوق يضم أكبر الشركات الأمريكية المتوافقة مع معايير الديون المنخفضة (أقل من 30%)، مما يحمي المستثمر من مخاطر الرفع المالي.",
-  technical: "يعكس أداء السوق الأمريكي العام باستقرار، مع RSI في نطاق آمن للتراكم النقدي."
+  sym: "NASDAQ:QQQ", ticker: "QQQ", name: "Invesco QQQ Trust", cat: "ETF", market: "US ETF · Nasdaq 100",
+  sector: "US Tech & Growth Index ETF",
+  economy: "إطار اقتصادي ومالي: يتتبع مؤشر Nasdaq 100 للشركات غير المالية الكبرى، ويتأثر بقطاع التكنولوجيا والذكاء الاصطناعي وعوائد السندات الأمريكية.",
+  technical: "المتابعة الفنية: راجع RSI و MACD و EMA على الإطار الزمني المختار لمتابعة زخم أسهم النمو الأمريكية."
  },
  {
-  sym: "NASDAQ:HLAL", ticker: "HLAL", name: "Wahed FTSE USA Equity ETF", cat: "ETF", market: "ETF · US Equities",
-  sector: "US Low-Leverage Equities",
-  economy: "مالياً واقتصادياً: صندوق يستثمر في الأسهم الأمريكية الكبرى والمتوسطة المتوافقة مع الضوابط المالية الصارمة للديون والنقد.",
-  technical: "حركة سعرية متوازنة تتبع اتجاه السوق المؤسسي."
+  sym: "AMEX:VTI", ticker: "VTI", name: "Vanguard Total Stock Market ETF", cat: "ETF", market: "US ETF · Total US Market",
+  sector: "Broad US Equity Market ETF",
+  economy: "إطار اقتصادي ومالي: يوفر تعرضاً واسعاً للسوق الأمريكي بالكامل (الكبير والمتوسط والصغير)، ويعكس الأداء الاقتصادي العام للولايات المتحدة.",
+  technical: "المتابعة الفنية: استخدم الشارت التفاعلي وعداد التحليل الفني لمتابعة الاتجاه العام للسوق الأمريكي."
+ },
+ {
+  sym: "AMEX:DIA", ticker: "DIA", name: "SPDR Dow Jones Industrial ETF", cat: "ETF", market: "US ETF · Dow Jones 30",
+  sector: "US Blue-Chip Industrial ETF",
+  economy: "إطار اقتصادي ومالي: يتتبع أكبر 30 شركة صناعية ومالية واستهلاكية قيادية في السوق الأمريكي.",
+  technical: "المتابعة الفنية: راجع عداد التحليل الفني المباشر ومستويات الدعم والمقاومة."
+ },
+ {
+  sym: "AMEX:IWM", ticker: "IWM", name: "iShares Russell 2000 ETF", cat: "ETF", market: "US ETF · US Small Caps",
+  sector: "US Small-Cap Equities ETF",
+  economy: "إطار اقتصادي ومالي: يتتبع 2000 شركة أمريكية صغيرة الحجم، شديد الحساسية لأسعار الفائدة الفيدرالية ونمو الاقتصاد المحلي الأمريكي.",
+  technical: "المتابعة الفنية: راقب زخم RSI وتقاطعات المتوسطات المتحركة لرصد تحركات الشركات الصغيرة."
+ },
+ {
+  sym: "AMEX:SCHD", ticker: "SCHD", name: "Schwab US Dividend Equity ETF", cat: "ETF", market: "US ETF · US Dividends",
+  sector: "US Quality Dividend Stocks ETF",
+  economy: "إطار اقتصادي ومالي: يركز على الشركات الأمريكية ذات الجودة المالية العالية وسجل توزيعات الأرباح المستمرة.",
+  technical: "المتابعة الفنية: راقب مستويات التجميع والدعم الفني على الشارت المباشر."
+ },
+ {
+  sym: "NASDAQ:SMH", ticker: "SMH", name: "VanEck Semiconductor ETF", cat: "ETF", market: "US ETF · Semiconductors",
+  sector: "US Semiconductor Sector ETF",
+  economy: "إطار اقتصادي ومالي: يجمع كبرى شركات الرقائق وأشباه الموصلات المدرجة في أمريكا (مثل NVDA و AVGO و AMD).",
+  technical: "المتابعة الفنية: راقب زخم القطاع عبر RSI و MACD قبل الدخول النقدي."
+ },
+ {
+  sym: "AMEX:XLE", ticker: "XLE", name: "Energy Select Sector SPDR Fund", cat: "ETF", market: "US ETF · US Energy",
+  sector: "US Energy & Oil Stocks ETF",
+  economy: "إطار اقتصادي ومالي: يضم كبرى شركات الطاقة والنفط الأمريكية ضمن مؤشر S&P 500، ويتحرك مع أسعار النفط والغاز.",
+  technical: "المتابعة الفنية: راقب ارتباط الصندوق بأسعار النفط ومؤشرات الزخم على الشارت."
+ },
+ {
+  sym: "AMEX:GLD", ticker: "GLD", name: "SPDR Gold Shares", cat: "ETF", market: "US ETF · Gold Spot",
+  sector: "Physical Gold Spot ETF",
+  economy: "إطار اقتصادي ومالي: يتأثر باتجاه أسعار الفائدة الحقيقية، قوة مؤشر الدولار الأمريكي (DXY)، والطلب التحوطي والبنوك المركزية.",
+  technical: "المتابعة الفنية: راقب قراءة RSI (14) ومستويات الدعم والمقاومة والـ EMA على الشارت الحي وعداد التحليل الفني."
+ },
+ {
+  sym: "AMEX:SLV", ticker: "SLV", name: "iShares Silver Trust", cat: "ETF", market: "US ETF · Silver Spot",
+  sector: "Physical Silver Spot ETF",
+  economy: "إطار اقتصادي ومالي: يتأثر بالطلب التحوطي على المعادن الثمينة والطلب الصناعي المرتبط بالطاقة الشمسية والإلكترونيات والنشاط الصناعي.",
+  technical: "المتابعة الفنية: راقب RSI و MACD والـ EMA في عداد التحليل الفني والشارت المباشر قبل أي قرار نقدي."
+ },
+ {
+  sym: "AMEX:USO", ticker: "USO", name: "United States Oil Fund", cat: "ETF", market: "US ETF · Crude Oil",
+  sector: "Crude Oil Energy ETF",
+  economy: "إطار اقتصادي ومالي: ترتبط حركته بأسعار النفط الخام، قرارات الإمدادات العالمية، نمو الطلب على الطاقة، والمخزونات الأمريكية.",
+  technical: "المتابعة الفنية: راقب الاتجاه اللحظي والمؤشرات الفنية الحية على الإطار الزمني المختار لتأكيد مسار السعر."
  }
 ];
 
 let currentCat = "ALL";
+
+function resetFinancialTable(reasonText){
+ const ids = [
+  ["valRevenueGrowth", "srcRevenueGrowth"],
+  ["valEpsGrowth", "srcEpsGrowth"],
+  ["valPeRatio", "srcPeRatio"],
+  ["valDebtEquity", "srcDebtEquity"],
+  ["valFcf", "srcFcf"],
+  ["valProfitMargin", "srcProfitMargin"],
+  ["valRoe", "srcRoe"]
+ ];
+ ids.forEach(([vId, sId]) => {
+  $(vId).textContent = "N/A";
+  $(sId).textContent = reasonText;
+ });
+}
+
+function fmtPct(num){
+ if(typeof num !== "number" || !Number.isFinite(num)) return "N/A";
+ return (num * 100).toFixed(2) + "%";
+}
+
+function fmtNum(num, decimals = 2){
+ if(typeof num !== "number" || !Number.isFinite(num)) return "N/A";
+ return num.toFixed(decimals);
+}
+
+function fmtCompactUsd(num){
+ if(typeof num !== "number" || !Number.isFinite(num)) return "N/A";
+ const abs = Math.abs(num);
+ if(abs >= 1e9) return "$" + (num / 1e9).toFixed(2) + "B";
+ if(abs >= 1e6) return "$" + (num / 1e6).toFixed(2) + "M";
+ return "$" + num.toFixed(0);
+}
+
+async function fetchRealFundamentals(cleanSym){
+ const apiKey = $("fmpApiKey").value.trim();
+ const tickerOnly = cleanSym.includes(":") ? cleanSym.split(":")[1] : cleanSym;
+
+ if(!apiKey){
+  $("apiStatusText").textContent = "No API key set — real numbers require a valid FMP API key (no mock/placeholder figures).";
+  resetFinancialTable("Requires FMP API key / SEC filing");
+  return;
+ }
+
+ $("apiStatusText").textContent = `Fetching live financial data for ${tickerOnly} via FMP...`;
+ resetFinancialTable("Loading live API data...");
+
+ try{
+  const base = "https://financialmodelingprep.com/api/v3";
+  const [growthRes, ratiosRes, cashRes] = await Promise.all([
+   fetch(`${base}/financial-growth/${encodeURIComponent(tickerOnly)}?limit=1&apikey=${encodeURIComponent(apiKey)}`),
+   fetch(`${base}/ratios-ttm/${encodeURIComponent(tickerOnly)}?apikey=${encodeURIComponent(apiKey)}`),
+   fetch(`${base}/cash-flow-statement/${encodeURIComponent(tickerOnly)}?limit=1&apikey=${encodeURIComponent(apiKey)}`)
+  ]);
+
+  if(!growthRes.ok || !ratiosRes.ok || !cashRes.ok){
+   throw new Error("HTTP error from FMP API");
+  }
+
+  const [growthArr, ratiosArr, cashArr] = await Promise.all([
+   growthRes.json(),
+   ratiosRes.json(),
+   cashRes.json()
+  ]);
+
+  const g = Array.isArray(growthArr) && growthArr[0] ? growthArr[0] : null;
+  const r = Array.isArray(ratiosArr) && ratiosArr[0] ? ratiosArr[0] : null;
+  const c = Array.isArray(cashArr) && cashArr[0] ? cashArr[0] : null;
+
+  $("valRevenueGrowth").textContent = g ? fmtPct(g.revenueGrowth) : "N/A";
+  $("srcRevenueGrowth").textContent = g ? `FMP Growth (${g.date || "Latest"})` : "Not reported for symbol/ETF";
+
+  $("valEpsGrowth").textContent = g ? fmtPct(g.epsgrowth) : "N/A";
+  $("srcEpsGrowth").textContent = g ? `FMP EPS Growth (${g.date || "Latest"})` : "Not reported for symbol/ETF";
+
+  $("valPeRatio").textContent = r ? fmtNum(r.peRatioTTM) : "N/A";
+  $("srcPeRatio").textContent = r ? "FMP Ratios TTM" : "Not reported for symbol/ETF";
+
+  $("valDebtEquity").textContent = r ? fmtNum(r.debtEquityRatioTTM) : "N/A";
+  $("srcDebtEquity").textContent = r ? "FMP Balance Sheet TTM" : "Not reported for symbol/ETF";
+
+  $("valFcf").textContent = c ? fmtCompactUsd(c.freeCashFlow) : "N/A";
+  $("srcFcf").textContent = c ? `FMP Cash Flow (${c.date || "Latest"})` : "Not reported for symbol/ETF";
+
+  $("valProfitMargin").textContent = r ? fmtPct(r.netProfitMarginTTM) : "N/A";
+  $("srcProfitMargin").textContent = r ? "FMP Profitability TTM" : "Not reported for symbol/ETF";
+
+  $("valRoe").textContent = r ? fmtPct(r.returnOnEquityTTM) : "N/A";
+  $("srcRoe").textContent = r ? "FMP ROE TTM" : "Not reported for symbol/ETF";
+
+  $("apiStatusText").textContent = `Live FMP fundamentals updated for ${tickerOnly}.`;
+ } catch(err){
+  $("apiStatusText").textContent = `Could not fetch FMP data for ${tickerOnly} (check API key or ticker/ETF support).`;
+  resetFinancialTable("API fetch unavailable — verify SEC/issuer filing");
+ }
+}
+
+function populateDatalist(){
+ const dl = $("usTickersList");
+ dl.innerHTML = MARKET_ASSETS.map(a => `<option value="${a.sym}">${a.name} (${a.market})</option>`).join("");
+}
 
 function unlock(){
  if($("password").value === PASSWORD){
@@ -300,9 +639,15 @@ function unlock(){
   $("mainApp").classList.remove("hidden");
   $("loginError").textContent = "";
   $("countAll").textContent = MARKET_ASSETS.length;
+  const savedKey = localStorage.getItem(API_KEY_STORAGE);
+  if(savedKey){
+   $("fmpApiKey").value = savedKey;
+  }
+  populateDatalist();
   renderDirectory();
   renderMacroWidget();
-  selectAsset("AMEX:GLD");
+  renderMoversWidget();
+  selectAsset("NASDAQ:NVDA");
  }else{
   $("loginError").textContent = "Incorrect password. Please try again.";
  }
@@ -316,8 +661,22 @@ $("logoutBtn").addEventListener("click", () => {
  $("password").value = "";
 });
 
+$("saveApiBtn").addEventListener("click", () => {
+ const key = $("fmpApiKey").value.trim();
+ if(key){
+  localStorage.setItem(API_KEY_STORAGE, key);
+ } else {
+  localStorage.removeItem(API_KEY_STORAGE);
+ }
+ renderEverything();
+});
+
 function cleanSymbol(val){
- return val.trim().toUpperCase().replace(/\s+/g, "");
+ let s = val.trim().toUpperCase().replace(/\s+/g, "");
+ if(s && !s.includes(":")){
+  s = "NASDAQ:" + s;
+ }
+ return s;
 }
 
 function renderDirectory(){
@@ -328,6 +687,7 @@ function renderDirectory(){
    item.ticker.toLowerCase().includes(query) ||
    item.name.toLowerCase().includes(query) ||
    item.market.toLowerCase().includes(query) ||
+   item.sector.toLowerCase().includes(query) ||
    item.sym.toLowerCase().includes(query);
   return matchCat && matchText;
  });
@@ -338,7 +698,7 @@ function renderDirectory(){
    <div class="asset-name">${item.name}</div>
    <div class="asset-market">${item.market}</div>
   </div>
- `).join("") || `<div class="muted">Symbol not found in directory. Type any global Exchange:Ticker in the top bar and click Analyze Live.</div>`;
+ `).join("") || `<div class="muted">Not in quick list — type any US symbol (e.g. NYSE:BA or NASDAQ:COIN) in the search box above and click <strong>Analyze Live</strong>.</div>`;
 }
 
 document.querySelectorAll(".tab-btn").forEach(btn => {
@@ -363,7 +723,6 @@ function renderMacroWidget(){
   "symbols": [
     { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
     { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100" },
-    { "proName": "TADAWUL:TASI", "title": "Tadawul TASI" },
     { "proName": "TVC:GOLD", "title": "Gold Spot" },
     { "proName": "TVC:USOIL", "title": "Crude Oil" },
     { "proName": "CBOE:VIX", "title": "VIX (Fear Index)" }
@@ -377,21 +736,86 @@ function renderMacroWidget(){
  container.appendChild(script);
 }
 
-function updateReasonPanel(sym){
+function renderMoversWidget(){
+ const container = $("moversWidgetContainer");
+ container.innerHTML = "";
+ const script = document.createElement("script");
+ script.type = "text/javascript";
+ script.src = "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
+ script.async = true;
+ script.innerHTML = JSON.stringify({
+  "colorTheme": "light",
+  "dateRange": "1D",
+  "exchange": "US",
+  "showChart": true,
+  "locale": "en",
+  "largeChartUrl": "",
+  "isTransparent": true,
+  "showSymbolLogo": true,
+  "showFloatingTooltip": false,
+  "width": "100%",
+  "height": "460",
+  "plotLineColorGrowing": "rgba(5, 150, 105, 1)",
+  "plotLineColorFalling": "rgba(220, 38, 38, 1)",
+  "gridLineColor": "rgba(240, 243, 250, 0)",
+  "scaleFontColor": "rgba(100, 116, 139, 1)",
+  "belowLineFillColorGrowing": "rgba(5, 150, 105, 0.12)",
+  "belowLineFillColorFalling": "rgba(220, 38, 38, 0.12)",
+  "belowLineFillColorGrowingBottom": "rgba(5, 150, 105, 0)",
+  "belowLineFillColorFallingBottom": "rgba(220, 38, 38, 0)",
+  "symbolActiveColor": "rgba(37, 99, 235, 0.12)"
+ });
+ container.appendChild(script);
+}
+
+function evaluateSpotStance(sym, tf, isIndexed){
+ const isLongTermTf = (tf === "1D" || tf === "1W");
+ const badgeBuy = $("badgeBuy");
+ const badgeWait = $("badgeWait");
+ const badgeHold = $("badgeHold");
+
+ badgeBuy.classList.remove("active");
+ badgeWait.classList.remove("active");
+ badgeHold.classList.remove("active");
+
+ if(isLongTermTf && isIndexed){
+  badgeBuy.classList.add("active");
+  $("spotDecisionText").innerHTML =
+   `إطار <strong>${tf}</strong> لأصل مفهرس (<strong>${sym}</strong>): <strong>BUY</strong> مشروط بتأكيد إشارة Buy في العداد الفني أدناه، وRSI (14) غير متضخم، وسلامة الأساسيات المالية والأخبار اللحظية.`;
+ } else if(!isLongTermTf){
+  badgeWait.classList.add("active");
+  $("spotDecisionText").innerHTML =
+   `إطار قصير المدى (<strong>${tf}</strong>) للرمز <strong>${sym}</strong>: <strong>WAIT</strong> مفضل لتجنب الضوضاء اللحظية؛ راقب تأكيد الاتجاه على RSI و MACD و EMA (20/50/200) قبل القرار النقدي.`;
+ } else {
+  badgeHold.classList.add("active");
+  $("spotDecisionText").innerHTML =
+   `رمز مباشر غير مفهرس مسبقاً (<strong>${sym}</strong>): <strong>HOLD / REVIEW</strong> — راجع المؤشرات المالية السبعة والأخبار المباشرة والعداد الفني والشارت قبل أي قرار شراء نقدي.`;
+ }
+}
+
+function updateReasonPanel(sym, tf){
  const cleanSym = cleanSymbol(sym);
- const found = MARKET_ASSETS.find(a => a.sym === cleanSym || a.ticker === cleanSym);
+ const tickerOnly = cleanSym.includes(":") ? cleanSym.split(":")[1] : cleanSym;
+ const found = MARKET_ASSETS.find(a => a.sym === cleanSym || a.ticker === tickerOnly);
 
  $("reasonHeader").textContent = "THE REASON — Financial, Economic & Technical Proof: " + cleanSym;
+ $("spotActionSymbol").textContent = cleanSym;
 
  if(found){
   $("reasonSectorBadge").textContent = found.sector;
+  $("reasonSubNote").textContent = "Reference economic/financial framework paired with live TradingView technical indicators and news below.";
   $("reasonEconomy").textContent = found.economy;
   $("reasonTechnical").textContent = found.technical;
+  evaluateSpotStance(cleanSym, tf, true);
  } else {
-  $("reasonSectorBadge").textContent = "Global Market Asset";
-  $("reasonEconomy").textContent = `التحليل المالي والاقتصادي لـ ${cleanSym}: يعتمد تقييم هذا الأصل على نمو الإيرادات، التدفقات النقدية الحرة، الطلب العالمي في قطاعه، واستقرار المؤشرات الاقتصادية الكلية (مثل التضخم وأسعار الفائدة).`;
-  $("reasonTechnical").textContent = `التحليل الفني والزخم: يتم مراقبة مؤشر القوة النسبية (RSI) والتقاطعات اللحظية عبر شارت TradingView لتحديد نقاط التراكم النقدي المناسبة واستبعاد أي تذبذب غير مبرر.`;
+  $("reasonSectorBadge").textContent = "Live US Symbol Lookup";
+  $("reasonSubNote").textContent = "Live US market symbol loaded directly from TradingView; inspect the live technical rating, candlestick chart, and breaking news below.";
+  $("reasonEconomy").textContent = `الرمز الأمريكي ${cleanSym} يعمل مباشرة عبر بيانات السوق الحية؛ يُرجى مراجعة آخر الأخبار والتقارير المالية للرمز في قسم Breaking News وجدول المؤشرات المالية السبعة أسفل الصفحة.`;
+  $("reasonTechnical").textContent = `راجع عداد التحليل الفني المباشر والشارت التفاعلي أسفل الصفحة لقراءة مؤشرات RSI (14) و MACD و EMA (20/50/200) الحية للرمز ${cleanSym}. (ملاحظة: إذا كان السهم في NYSE اكتب NYSE:${tickerOnly} أو AMEX:${tickerOnly} للصناديق).`;
+  evaluateSpotStance(cleanSym, tf, false);
  }
+
+ fetchRealFundamentals(cleanSym);
 }
 
 function selectAsset(sym){
@@ -400,13 +824,13 @@ function selectAsset(sym){
 }
 
 function renderEverything(){
- const sym = cleanSymbol($("symbol").value) || "AMEX:GLD";
+ const sym = cleanSymbol($("symbol").value) || "NASDAQ:NVDA";
  $("symbol").value = sym;
  const tf = $("interval").value;
  const chartTfMap = { "1D": "D", "4h": "240", "1h": "60", "1W": "W" };
  const chartTf = chartTfMap[tf] || "D";
 
- updateReasonPanel(sym);
+ updateReasonPanel(sym, tf);
 
  // Technical Analysis Widget
  const taContainer = $("taWidgetContainer");
