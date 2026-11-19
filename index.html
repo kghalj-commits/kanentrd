@@ -62,7 +62,6 @@ button.secondary{background:var(--panel2);color:var(--text);border:1px solid var
 .note{font-size:12px;color:var(--muted);line-height:1.65}
 footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 
-/* SPOT DECISION & FINANCIAL METRICS TABLE */
 .spot-decision-box{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
 .spot-decision-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .spot-decision-title{font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
@@ -97,7 +96,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 </head>
 <body>
 
-<!-- PAGE 1: SECURE LOCK SCREEN -->
 <section id="loginPage" class="panel login">
  <div class="logo">KANEN<span>TRD</span> PRO</div>
  <div class="tag">US EQUITIES, US ETFs & SPOT INTELLIGENCE</div>
@@ -110,7 +108,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  <p class="note" style="margin-top:15px">Strictly Spot Cash Investment Only. No Margin or Leverage.</p>
 </section>
 
-<!-- PAGE 2: DASHBOARD -->
 <div id="mainApp" class="hidden">
 <header class="topbar">
  <div>
@@ -122,7 +119,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 
 <main class="wrap">
 
-<!-- LIVE MACRO & MARKET PULSE -->
 <section class="panel" style="border:2px solid #cbd5e1;background:#fafafa">
  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
   <h2 style="margin:0;font-size:16px;color:#0f172a">🌐 Live Market & Macro Pulse (نبض السوق الأمريكي والسيولة)</h2>
@@ -132,7 +128,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  <div id="macroWidgetContainer" class="macro-box"></div>
 </section>
 
-<!-- UNIVERSAL US SYMBOL SEARCH + FUNDAMENTAL API CONNECTION -->
 <section class="panel" style="border:2px solid #2563eb">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
   <h1 style="margin:0">US Stocks & US ETFs Live Analyzer</h1>
@@ -159,7 +154,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
   </div>
  </div>
 
- <!-- FUNDAMENTAL FINANCIAL API KEY BAR (FMP) -->
  <div class="api-bar">
   <span style="font-size:12px;font-weight:800;color:#0f172a">🔌 Fundamental API (FMP):</span>
   <input id="fmpApiKey" type="password" placeholder="Optional FMP API Key for real Revenue/EPS/PE/Debt/FCF/Margin/ROE">
@@ -168,7 +162,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  </div>
 </section>
 
-<!-- FEATURED US STOCKS & US ETFS DIRECTORY -->
 <section class="panel">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
   <div>
@@ -189,7 +182,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  <div id="directoryGrid" class="directory-grid"></div>
 </section>
 
-<!-- LIVE US MARKET GAINERS & LOSERS TABLE (INCREASE & DECREASE) -->
 <section class="panel" style="border:2px solid #cbd5e1">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
   <div>
@@ -203,7 +195,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  </div>
 </section>
 
-<!-- THE REASON: COMBINED FINANCE, ECONOMY, METRICS & TECHNICAL PROOF -->
 <section class="panel" style="border:2px solid #93c5fd">
  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
   <h2 id="reasonHeader" style="margin:0;color:#1e3a8a">THE REASON — Financial, Economic & Technical Proof</h2>
@@ -222,7 +213,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
   </div>
  </div>
 
- <!-- FUNDAMENTAL FINANCIAL METRICS TABLE (REAL API DATA WHEN KEY IS PROVIDED) -->
  <div class="fin-table-wrap">
   <table class="fin-table">
    <thead>
@@ -281,13 +271,11 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  </div>
 </section>
 
-<!-- REAL-TIME TECHNICAL ENGINE + SPOT BUY/WAIT/HOLD GUIDE + LIVE CHART -->
 <div class="dashboard-grid">
  <section class="panel" style="margin-bottom:0">
   <h2>Spot Action & Technical Rating</h2>
   <p class="muted">Rule-based Spot stance + live Oscillators (RSI 14, MACD) & Moving Averages (EMA 20/50/200).</p>
   
-  <!-- RULE-BASED SPOT STANCE BOX (BUY / WAIT / HOLD REVIEW) -->
   <div class="spot-decision-box">
    <div class="spot-decision-header">
     <span class="spot-decision-title">🎯 Dynamic Spot Stance (شراء / انتظار / مراجعة)</span>
@@ -311,7 +299,6 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
  </section>
 </div>
 
-<!-- REAL-TIME FINANCIAL NEWS FEED -->
 <section class="panel">
  <h2>Live Breaking News & Catalysts</h2>
  <p class="muted">Verify the exact real-time news headlines moving this US asset right now.</p>
@@ -328,9 +315,7 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
 
 </main>
 <footer>KANENTRD PRO · US STOCKS, US ETFs & TECHNICAL INTELLIGENCE</footer>
-</div>
-
-<script>
+</div><script>
 "use strict";
 
 const PASSWORD = "1901";
@@ -338,7 +323,6 @@ const API_KEY_STORAGE = "kanentrd_fmp_api_key";
 const $ = id => document.getElementById(id);
 
 const MARKET_ASSETS = [
- // US STOCKS
  {
   sym: "NASDAQ:NVDA", ticker: "NVDA", name: "NVIDIA Corp.", cat: "US", market: "USA · NASDAQ",
   sector: "AI Semiconductors & Data Centers",
@@ -453,8 +437,6 @@ const MARKET_ASSETS = [
   economy: "إطار اقتصادي ومالي: شركة استهلاكية دفاعية ذات قوة تسعيرية عالمية وتدفقات نقدية مستقرة وتوزيعات أرباح منتظمة.",
   technical: "المتابعة الفنية: راقب مستويات الدعم التاريخية ومؤشرات الزخم."
  },
-
- // US ETFs
  {
   sym: "AMEX:SPY", ticker: "SPY", name: "SPDR S&P 500 ETF Trust", cat: "ETF", market: "US ETF · S&P 500",
   sector: "US Large-Cap Index ETF",
@@ -733,164 +715,4 @@ function renderMacroWidget(){
   "colorTheme": "light",
   "locale": "en"
  });
- container.appendChild(script);
-}
-
-function renderMoversWidget(){
- const container = $("moversWidgetContainer");
- container.innerHTML = "";
- const script = document.createElement("script");
- script.type = "text/javascript";
- script.src = "https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js";
- script.async = true;
- script.innerHTML = JSON.stringify({
-  "colorTheme": "light",
-  "dateRange": "1D",
-  "exchange": "US",
-  "showChart": true,
-  "locale": "en",
-  "largeChartUrl": "",
-  "isTransparent": true,
-  "showSymbolLogo": true,
-  "showFloatingTooltip": false,
-  "width": "100%",
-  "height": "460",
-  "plotLineColorGrowing": "rgba(5, 150, 105, 1)",
-  "plotLineColorFalling": "rgba(220, 38, 38, 1)",
-  "gridLineColor": "rgba(240, 243, 250, 0)",
-  "scaleFontColor": "rgba(100, 116, 139, 1)",
-  "belowLineFillColorGrowing": "rgba(5, 150, 105, 0.12)",
-  "belowLineFillColorFalling": "rgba(220, 38, 38, 0.12)",
-  "belowLineFillColorGrowingBottom": "rgba(5, 150, 105, 0)",
-  "belowLineFillColorFallingBottom": "rgba(220, 38, 38, 0)",
-  "symbolActiveColor": "rgba(37, 99, 235, 0.12)"
- });
- container.appendChild(script);
-}
-
-function evaluateSpotStance(sym, tf, isIndexed){
- const isLongTermTf = (tf === "1D" || tf === "1W");
- const badgeBuy = $("badgeBuy");
- const badgeWait = $("badgeWait");
- const badgeHold = $("badgeHold");
-
- badgeBuy.classList.remove("active");
- badgeWait.classList.remove("active");
- badgeHold.classList.remove("active");
-
- if(isLongTermTf && isIndexed){
-  badgeBuy.classList.add("active");
-  $("spotDecisionText").innerHTML =
-   `إطار <strong>${tf}</strong> لأصل مفهرس (<strong>${sym}</strong>): <strong>BUY</strong> مشروط بتأكيد إشارة Buy في العداد الفني أدناه، وRSI (14) غير متضخم، وسلامة الأساسيات المالية والأخبار اللحظية.`;
- } else if(!isLongTermTf){
-  badgeWait.classList.add("active");
-  $("spotDecisionText").innerHTML =
-   `إطار قصير المدى (<strong>${tf}</strong>) للرمز <strong>${sym}</strong>: <strong>WAIT</strong> مفضل لتجنب الضوضاء اللحظية؛ راقب تأكيد الاتجاه على RSI و MACD و EMA (20/50/200) قبل القرار النقدي.`;
- } else {
-  badgeHold.classList.add("active");
-  $("spotDecisionText").innerHTML =
-   `رمز مباشر غير مفهرس مسبقاً (<strong>${sym}</strong>): <strong>HOLD / REVIEW</strong> — راجع المؤشرات المالية السبعة والأخبار المباشرة والعداد الفني والشارت قبل أي قرار شراء نقدي.`;
- }
-}
-
-function updateReasonPanel(sym, tf){
- const cleanSym = cleanSymbol(sym);
- const tickerOnly = cleanSym.includes(":") ? cleanSym.split(":")[1] : cleanSym;
- const found = MARKET_ASSETS.find(a => a.sym === cleanSym || a.ticker === tickerOnly);
-
- $("reasonHeader").textContent = "THE REASON — Financial, Economic & Technical Proof: " + cleanSym;
- $("spotActionSymbol").textContent = cleanSym;
-
- if(found){
-  $("reasonSectorBadge").textContent = found.sector;
-  $("reasonSubNote").textContent = "Reference economic/financial framework paired with live TradingView technical indicators and news below.";
-  $("reasonEconomy").textContent = found.economy;
-  $("reasonTechnical").textContent = found.technical;
-  evaluateSpotStance(cleanSym, tf, true);
- } else {
-  $("reasonSectorBadge").textContent = "Live US Symbol Lookup";
-  $("reasonSubNote").textContent = "Live US market symbol loaded directly from TradingView; inspect the live technical rating, candlestick chart, and breaking news below.";
-  $("reasonEconomy").textContent = `الرمز الأمريكي ${cleanSym} يعمل مباشرة عبر بيانات السوق الحية؛ يُرجى مراجعة آخر الأخبار والتقارير المالية للرمز في قسم Breaking News وجدول المؤشرات المالية السبعة أسفل الصفحة.`;
-  $("reasonTechnical").textContent = `راجع عداد التحليل الفني المباشر والشارت التفاعلي أسفل الصفحة لقراءة مؤشرات RSI (14) و MACD و EMA (20/50/200) الحية للرمز ${cleanSym}. (ملاحظة: إذا كان السهم في NYSE اكتب NYSE:${tickerOnly} أو AMEX:${tickerOnly} للصناديق).`;
-  evaluateSpotStance(cleanSym, tf, false);
- }
-
- fetchRealFundamentals(cleanSym);
-}
-
-function selectAsset(sym){
- $("symbol").value = sym;
- renderEverything();
-}
-
-function renderEverything(){
- const sym = cleanSymbol($("symbol").value) || "NASDAQ:NVDA";
- $("symbol").value = sym;
- const tf = $("interval").value;
- const chartTfMap = { "1D": "D", "4h": "240", "1h": "60", "1W": "W" };
- const chartTf = chartTfMap[tf] || "D";
-
- updateReasonPanel(sym, tf);
-
- // Technical Analysis Widget
- const taContainer = $("taWidgetContainer");
- taContainer.innerHTML = "";
- const taScript = document.createElement("script");
- taScript.type = "text/javascript";
- taScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js";
- taScript.async = true;
- taScript.innerHTML = JSON.stringify({
-  "interval": tf,
-  "width": "100%",
-  "isTransparent": true,
-  "height": "420",
-  "symbol": sym,
-  "showIntervalTabs": true,
-  "displayMode": "single",
-  "locale": "en",
-  "colorTheme": "light"
- });
- taContainer.appendChild(taScript);
-
- // Chart Widget
- const chartContainer = $("chartWidgetContainer");
- chartContainer.innerHTML = "";
- const chartIframe = document.createElement("iframe");
- chartIframe.style.width = "100%";
- chartIframe.style.height = "560px";
- chartIframe.style.border = "0";
- chartIframe.src = "https://www.tradingview.com/widgetembed/?" +
-  "symbol=" + encodeURIComponent(sym) +
-  "&interval=" + encodeURIComponent(chartTf) +
-  "&hidesidetoolbar=0&symboledit=1&saveimage=1" +
-  "&toolbarbg=f1f5f9&theme=light&style=1" +
-  "&timezone=Etc%2FUTC&withdateranges=1&hideideas=1&locale=en" +
-  "&studies=RSI%40tv-basicstudies%1FMACD%40tv-basicstudies%1FMAExp%40tv-basicstudies";
- chartContainer.appendChild(chartIframe);
-
- // News Widget
- const newsContainer = $("newsWidgetContainer");
- newsContainer.innerHTML = "";
- const newsScript = document.createElement("script");
- newsScript.type = "text/javascript";
- newsScript.src = "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
- newsScript.async = true;
- newsScript.innerHTML = JSON.stringify({
-  "feedMode": "symbol",
-  "symbol": sym,
-  "colorTheme": "light",
-  "isTransparent": true,
-  "displayMode": "regular",
-  "width": "100%",
-  "height": "450",
-  "locale": "en"
- });
- newsContainer.appendChild(newsScript);
-}
-
-$("loadBtn").addEventListener("click", renderEverything);
-$("interval").addEventListener("change", renderEverything);
-$("symbol").addEventListener("keydown", e => { if(e.key === "Enter") renderEverything(); });
-</script>
-</body>
-</html>
+ container.appendC
